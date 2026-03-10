@@ -1,0 +1,22 @@
+[book]
+title = "Hugin Documentation"
+authors = ["HuginSecurity"]
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/HuginSecurity/Hugin"
+edit-url-template = "https://github.com/HuginSecurity/Hugin/edit/main/docs/book/{path}"
+site-url = "/hugin/"
+no-section-label = false
+
+[output.html.search]
+enable = true
+limit-results = 30
+boost-hierarchy = 2
+
+[build]
+build-dir = "../../target/book"
+create-missing = true
