@@ -33,6 +33,9 @@ jobs:
         working-directory: docs/book
         run: mdbook build
 
+      - name: Add CNAME
+        run: echo "docs.hugin.nu" > target/book/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

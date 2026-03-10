@@ -9,7 +9,7 @@ default-theme = "navy"
 preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/HuginSecurity/Hugin"
 edit-url-template = "https://github.com/HuginSecurity/Hugin/edit/main/docs/book/{path}"
-site-url = "/hugin/"
+site-url = "/"
 no-section-label = false
 
 [output.html.search]
