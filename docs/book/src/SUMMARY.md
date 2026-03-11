@@ -24,6 +24,7 @@
 - [Session Rules](./core/session-rules.md)
 - [Intercept Rules](./core/intercept-rules.md)
 - [WebSocket](./core/websocket.md)
+- [Bug Bounty Platforms](./core/platforms.md)
 
 # Scanning
 
