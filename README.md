@@ -29,7 +29,8 @@ Hugin is a security proxy built for bug bounty hunters and penetration testers. 
 - Intruder (fuzzer with payload generators, processors, grep matching)
 - Repeater
 - Sequencer, Decoder, Comparer, Site Map
-- 126 MCP tools (connect Claude, Cursor, or any MCP-compatible AI agent)
+- Scriptable UI automation (navigate views, select flows, switch panes, highlight, screenshot — all from MCP)
+- 128 MCP tools (connect Claude, Cursor, or any MCP-compatible AI agent)
 
 **Pro (5 EUR/month — for everyone):**
 - Race condition engine (60+ modules, single-packet, last-byte sync)
@@ -37,7 +38,7 @@ Hugin is a security proxy built for bug bounty hunters and penetration testers. 
 - Lua extensions (modify live traffic with scripts)
 - E2E encrypted real-time collaboration
 - Multi-project workspaces
-- 74 offensive MCP tools (HTTP smuggling, deserialization, SSRF chains, race conditions, and more)
+- 56 offensive vurl MCP tools (HTTP smuggling, deserialization, SSRF chains, WAF evasion, AI agent exploitation, and more)
 
 No subscriptions. No auto-renewal. Pay when you need it.
 Researcher, pentester, hacker — we don't differentiate. Everyone's welcome.
