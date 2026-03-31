@@ -1,56 +1,40 @@
 # Installation
 
-## Package Managers
+## Download
 
-### Homebrew (macOS / Linux)
+Download the latest release from [hugin.nu/download](https://hugin.nu/download) or from [GitHub Releases](https://github.com/HuginSecurity/Hugin/releases).
 
-```bash
-brew install HuginSecurity/tap/hugin
-```
+Every release includes `.sha256` checksum files and `.sig` Ed25519 signatures.
 
-### cargo-binstall (pre-built binary)
+### macOS
 
-```bash
-cargo binstall hugin-bin
-```
+Available for both Apple Silicon (aarch64) and Intel (x86_64):
 
-### AUR (Arch Linux)
+- **Desktop app:** `.dmg` -- mount and drag to Applications
+- **CLI binary:** `.tar.gz` -- extract and copy `hugin` to a directory on your `$PATH`
 
-```bash
-yay -S hugin-proxy
-```
+### Linux
 
-### Nix
+Available for x86_64 and aarch64:
 
-```bash
-nix run github:HuginSecurity/Hugin
-```
+- **Debian/Ubuntu:** `.deb` -- install with `sudo dpkg -i hugin-desktop-linux-x86_64.deb`
+- **Other distros:** `.tar.gz` -- extract and copy `hugin` to `/usr/local/bin/`
 
-### Debian / Ubuntu
+### Windows
 
-Download the `.deb` from the latest [GitHub Release](https://github.com/HuginSecurity/Hugin/releases), then:
+Available for x86_64:
 
-```bash
-sudo dpkg -i hugin-desktop-linux-x86_64.deb
-```
+- **Desktop + CLI:** `.zip` -- extract and run `hugin.exe`
 
-## Pre-built Binaries
+## Verify a Download
 
-Download from [GitHub Releases](https://github.com/HuginSecurity/Hugin/releases). Every release includes `.sha256` checksum files and `.sig` Ed25519 signatures.
-
-Available artifacts per platform:
-
-- **macOS (Apple Silicon)** -- `.dmg` desktop app, `.tar.gz` CLI binary
-- **macOS (Intel)** -- `.dmg` desktop app, `.tar.gz` CLI binary
-- **Linux x86_64** -- `.deb`, `.AppImage`, `.tar.gz`
-- **Linux AArch64** -- `.deb`, `.AppImage`, `.tar.gz`
-- **Windows x86_64** -- `.zip` (desktop and CLI)
-
-Verify a downloaded binary:
+Every release binary is Ed25519 signed. Verify with:
 
 ```bash
 hugin verify hugin-desktop-darwin-aarch64.dmg
 ```
+
+This checks the `.sig` file (expected at `<file>.sig` in the same directory) against the public key embedded in the binary.
 
 ## Building from Source
 
@@ -91,7 +75,6 @@ Hugin ships unsigned. If macOS shows "cannot be opened because the developer can
   ```bash
   xattr -d com.apple.quarantine /usr/local/bin/hugin
   ```
-- **Homebrew:** No action needed. Homebrew handles quarantine automatically.
 
 ### Windows -- SmartScreen
 

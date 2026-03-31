@@ -21,7 +21,7 @@ hugin-service         Business logic: repeater, intruder, decoder, session, sequ
                       intelligence, updater, telemetry
 hugin-api             Axum REST (~200 endpoints) + async-graphql API server
 hugin-ui              Unified binary: Dioxus desktop GUI + CLI (31 views, 16+ subcommands)
-hugin-mcp             MCP server (126 tool modules: 42 base + 49 vurl + 35 advanced)
+hugin-mcp             MCP server (129 tool modules: 73 base + 56 vurl)
 hugin-crawler         Web crawler (static + headless Chromium), JS analysis, form submission
 hugin-oastify         OOB detection: DNS/HTTP/SMTP/LDAP/FTP/SMB listeners, payload generator
 hugin-oastify-server  Standalone OOB callback server binary
@@ -70,7 +70,7 @@ Hugin has three distinct code execution systems. Each serves a different purpose
 
 ### 1. Native ActiveCheck (hugin-engine)
 
-The built-in scanner. 23 vulnerability check types compiled into the binary. Users do not write these.
+The built-in scanner. 41 active vulnerability checks compiled into the binary. Users do not write these.
 
 - **Trait:** `ActiveCheck` in `hugin-engine/src/scanner/active.rs`
 - **Registration:** `ScanExecutor::register_default_checks()` in `executor.rs`

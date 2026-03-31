@@ -20,7 +20,8 @@ listen_addr = "127.0.0.1:8080"     # Proxy listen address
 api_addr = "127.0.0.1:8081"        # API / MCP server address
 upstream_proxy = "socks5://127.0.0.1:9050"  # Route traffic through Tor, Burp, etc.
 invisible_proxy = false             # Transparent proxy mode (no browser config needed)
-additional_ports = [8443]           # Extra ports to listen on
+additional_ports = [8443]           # Extra ports to listen on (legacy, binds 127.0.0.1)
+additional_listeners = ["0.0.0.0:8082"]  # Multi-interface listeners (mobile/remote)
 ```
 
 ## CA Certificate
@@ -106,11 +107,3 @@ hugin config telemetry on
 hugin config telemetry off
 ```
 
-## External Tools
-
-```toml
-[tools]
-xmass_api = "http://127.0.0.1:8080"
-vectorsploit_hub = "http://127.0.0.1:50051"
-subflow_path = "/usr/local/bin/subflow"
-```

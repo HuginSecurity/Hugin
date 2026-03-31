@@ -124,7 +124,7 @@ License authentication controls feature access, not API access. It is separate f
 ### Tiers
 
 - **Community (free):** Proxy, scanner, intruder, sequencer, repeater, decoder, basic MCP tools
-- **Pro (paid):** Vurl MCP tools (49 offensive modules), Synaps WASM modules, RatRace, Lua extensions, multi-project, collaboration
+- **Pro (paid):** Vurl MCP tools (56 offensive modules), Synaps WASM modules, RatRace, Lua extensions, multi-project, collaboration
 
 ### Account Setup
 

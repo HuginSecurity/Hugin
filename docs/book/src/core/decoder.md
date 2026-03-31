@@ -68,6 +68,16 @@ Constructs a new JWT from arbitrary header and payload JSON objects.
 
 The forged token is ready to paste into Repeater or an Intruder payload list.
 
+## Convert (3-Column Layout)
+
+The Transform tab uses a Caido-style 3-column Convert layout:
+
+- **Start** — editable textarea for input text. Copy button + byte count in header.
+- **Chain** — vertical stack of transform selects. Each step has a dropdown (45 operations in 12 categories) and an X button to remove. "+ Add" appends a new step, "Clear" resets to a single Base64 Encode.
+- **End** — read-only textarea showing the live conversion result. Copy button, swap button (feeds output back as input), byte count.
+
+Conversion is **live** — the output updates instantly as you type or change the chain. All 45 operations from the Encode/Decode/Hash/Transform sections are available in the chain dropdowns, grouped by category.
+
 ## Chained Operations
 
 The `chain` action applies a sequence of operations in order, passing the output of each step as the input to the next.

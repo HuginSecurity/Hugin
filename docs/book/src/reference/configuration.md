@@ -30,8 +30,13 @@ api_addr = "127.0.0.1:8081"
 # Enable transparent (invisible) proxy mode — no browser config required
 invisible_proxy = false
 
-# Additional ports to bind the proxy on (e.g., for HTTPS interception)
+# Additional ports to bind the proxy on (legacy — binds to 127.0.0.1:<port>)
 additional_ports = []
+
+# Additional listener addresses for multi-interface binding (e.g., mobile/remote testing)
+# Each entry is a full addr:port string. These relay to the main proxy.
+additional_listeners = []
+# additional_listeners = ["0.0.0.0:8082"]
 
 # Per-host custom TLS certificate overrides
 # [[proxy.per_host_certs]]
@@ -200,6 +205,23 @@ vectorsploit_hub = "http://127.0.0.1:50051"
 # Path to subflow binary (auto-detected from PATH if not set)
 # subflow_path = "/usr/local/bin/subflow"
 ```
+
+### `[mcp]`
+
+MCP server behavior. See [MCP Integration — Auto-Reload](../extensibility/mcp.md#auto-reload) for details.
+
+```toml
+[mcp]
+# Automatically restart the MCP server when the hugin binary is rebuilt.
+# Connected clients (Claude Code, Claude Desktop) pick up new tools
+# without manual reconnection.
+auto_reload = true
+
+# How often to check the binary for changes (seconds, minimum: 1)
+poll_interval_secs = 2
+```
+
+Also configurable from the desktop GUI: **Settings > General > MCP Server**.
 
 ### `[telemetry]`
 

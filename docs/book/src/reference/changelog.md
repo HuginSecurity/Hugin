@@ -13,7 +13,7 @@ Initial release.
 - Oastify out-of-band detection
 - Web crawler with headless browser support
 - Lua plugin system
-- MCP server with 94 tools for Claude integration
+- MCP server with 129 tools for Claude integration
 - REST + GraphQL API
 - Desktop GUI (Dioxus)
 - Self-update mechanism

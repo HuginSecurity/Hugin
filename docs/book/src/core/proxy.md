@@ -37,7 +37,7 @@ On first launch, Hugin generates an RSA CA key pair and writes it to disk. You i
 - **Firefox** -- Settings > Privacy & Security > Certificates > View Certificates > Import
 - **Chrome/Chromium** -- follows the OS trust store on macOS and Linux
 
-The CA cert PEM is served at `http://localhost:8080/ca.pem` for easy download. You can also export it via the CLI:
+The CA cert PEM is served at `http://127.0.0.1:8081/api/ca.pem` for easy download. You can also export it via the CLI:
 
 ```
 hugin ca --print
@@ -83,15 +83,15 @@ Flow recording can be paused and resumed without stopping the proxy. When paused
 
 ## Configuration
 
-Proxy settings are stored in `hugin.toml`:
+Proxy settings are stored in `~/.config/hugin/config.toml`:
 
 ```toml
 [proxy]
 listen_addr = "127.0.0.1:8080"
 
 [ca]
-cert_path = "~/.hugin/ca.crt"
-key_path  = "~/.hugin/ca.key"
+cert_path = "~/.config/hugin/Hugin-Proxy-CA.pem"
+key_path  = "~/.config/hugin/Hugin-Proxy-CA-key.pem"
 
 [http2]
 enabled        = true

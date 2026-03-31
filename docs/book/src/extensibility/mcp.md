@@ -1,6 +1,6 @@
 # MCP Integration
 
-Hugin ships a built-in [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes 126 tools to AI assistants. This is the primary interface for using Hugin with Claude Code, Claude Desktop, and any other MCP-compatible client.
+Hugin ships a built-in [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes 129 tools to AI assistants. This is the primary interface for using Hugin with Claude Code, Claude Desktop, and any other MCP-compatible client.
 
 The MCP server runs in-process and shares state directly with the proxy engine via `Arc<AppState>` -- zero HTTP overhead, zero serialization boundaries. Every tool call goes through the same service layer the GUI and REST API use.
 
@@ -72,12 +72,12 @@ Flow IDs accept both full UUIDs and short prefixes (minimum 4 characters), simil
 
 ## License Tiers
 
-- **Community (free):** 42 base tools covering proxy control, flow management, scanning, intruder, repeater, decoder, sequencer, and more.
-- **Pro (paid):** 49 additional vurl offensive tools for parser differentials, WAF evasion, request smuggling, AI agent exploitation, cloud SSRF, and more. Plus 35 additional advanced tools (ratrace, synaps, intelligence, etc.).
+- **Community (free):** 73 base tools covering proxy control, flow management, scanning, intruder, repeater, decoder, sequencer, UI automation, and more.
+- **Pro (paid):** 56 additional vurl offensive tools for parser differentials, WAF evasion, request smuggling, AI agent exploitation, cloud SSRF, and more.
 
 ## Tool Reference
 
-All 126 MCP tools grouped by category. Each tool uses an `action` parameter to select the operation.
+All 129 MCP tools grouped by category. Each tool uses an `action` parameter to select the operation.
 
 ---
 
@@ -249,17 +249,17 @@ Actions: `modes`, `check_proxy`, `start`, `stop`, `pause`, `resume`, `status`, `
 
 ---
 
-### Session and Authentication (4 tools)
+### Session and Authentication (5 tools)
 
 **session** -- Session and authentication management: track tokens, create login macros, auto-refresh sessions.
 
 Actions: `tokens`, `status`, `list_macros`, `create_macro`, `get_macro`, `delete_macro`, `execute_macro`, `refresh`
 
-**hugin_cookie_jar** -- Cookie jar management: view, edit, delete, filter, import/export cookies from proxy sessions.
+**cookie_jar** -- Cookie jar management: view, edit, delete, filter, import/export cookies from proxy sessions.
 
 Actions: `list`, `get`, `set`, `delete`, `clear`, `domains`, `export`, `import`, `from_flows`, `expired`, `purge_expired`
 
-**hugin_macros** -- Session macros: record, edit, and replay multi-step request sequences for session maintenance and authentication.
+**macros** -- Session macros: record, edit, and replay multi-step request sequences for session maintenance and authentication.
 
 Macro actions: `list_macros`, `get_macro`, `create_macro`, `update_macro`, `delete_macro`, `run_macro`, `test_macro`. Rule actions: `list_rules`, `create_rule`, `update_rule`, `delete_rule`, `enable_rule`, `disable_rule`
 
@@ -267,9 +267,13 @@ Macro actions: `list_macros`, `get_macro`, `create_macro`, `update_macro`, `dele
 
 Actions: `get_proxy`, `set_proxy`, `clear_proxy`, `list_rules`, `add_rule`, `remove_rule`, `replace_rules`, `test_proxy`, `preset` (tor/burp/mullvad/disable), `get_http2`, `set_http2`
 
+**user_agent** -- Global User-Agent pool: configure which User-Agent is injected into outbound requests (repeater, scanner, intruder, crawler). Supports fixed, round-robin, and random rotation strategies.
+
+Actions: `get`, `set` (strategy: fixed/round_robin/random, override_mode: fallback/override/disabled, agents: string[]), `preset` (desktop/mobile/all/stealth/random), `reset`, `list_presets`
+
 ---
 
-### Browser Automation (2 tools)
+### Browser Automation (3 tools)
 
 **browser** -- Browser automation: launch Chrome (CDP) or Mullvad Browser (Marionette) through Hugin proxy, navigate to URLs, capture all traffic, and run full recon pipeline.
 
@@ -278,6 +282,10 @@ Actions: `launch`, `browse`, `navigate`, `crawl`, `status`, `stop`, `exec_js`, `
 **screenshot** -- Screenshot capture for bug bounty PoC evidence. Uses the existing browser session from BrowserMap.
 
 Actions: `capture`, `capture_flow`, `capture_ui`, `record_start`, `record_stop`, `list`
+
+**websocket** -- WebSocket traffic inspection: view connections, read messages, send/replay messages, intercept WebSocket frames.
+
+Actions: `connections`, `get`, `messages`, `send`, `delete`, `poll_messages` (with since_id/since for streaming), `poll_connections` (with since_id/since for streaming), `intercept_status`, `intercept_toggle`, `intercept_list`, `intercept_get`, `intercept_forward`, `intercept_drop`, `intercept_forward_all`, `intercept_drop_all`
 
 ---
 
@@ -307,7 +315,7 @@ Actions: `capture`, `tokens`, `stop`, `analyze`, `list`, `delete`, `status`, `co
 
 Actions: `create`, `list`, `get`, `update`, `delete`, `activate`, `deactivate`, `archive`, `scope`, `stats`, `assign_flows`, `export`, `templates`, `create_from_template`, `fingerprint`, `import_scope`, `policy_get`, `policy_set`, `policy_search`. Legacy: `save`, `load`, `recent`
 
-**hugin_environment** -- Manage named environments and variables: create environments, set/get/delete variables, activate.
+**environment** -- Manage named environments and variables: create environments, set/get/delete variables, activate.
 
 ---
 
@@ -317,7 +325,7 @@ Actions: `create`, `list`, `get`, `update`, `delete`, `activate`, `deactivate`, 
 
 Actions: `sarif`, `summary`, `html`, `markdown`, `csv`, `formats`, `executive_summary`, `templates`, `list_templates`, `save_template`, `delete_template`, `generate`, `issue_select`
 
-**hugin_exports** -- Export captured flows and project data in JSON, CSV, or HAR format.
+**exports** -- Export captured flows and project data in JSON, CSV, or HAR format.
 
 **output_store** -- Searchable output storage for large tool results. Stores outputs from intruder, repeater, scanner in SQLite with FTS5 full-text search.
 
@@ -335,17 +343,17 @@ Actions: `events`, `tasks`, `stats`
 
 Actions: `list`, `recent`, `stats`, `clear`, `delete_before`
 
-**hugin_organizer** -- Organizer: save, categorize, annotate, and search interesting HTTP requests for triage and reporting.
+**organizer** -- Organizer: save, categorize, annotate, and search interesting HTTP requests for triage and reporting.
 
 Actions: `list`, `get`, `save`, `update`, `delete`, `search`, `categories`, `tags`, `export`, `bulk_tag`, `bulk_delete`
 
-**hugin_collections** -- Manage collections: curated bundles of HTTP requests with annotations.
+**collections** -- Manage collections: curated bundles of HTTP requests with annotations.
 
 Actions: `list`, `get`, `create`, `update`, `delete`, `add_flow`, `add_raw`, `remove_item`, `reorder`, `annotate_item`, `export`, `import`, `duplicate`, `share`
 
-**hugin_scheduler** -- Manage scheduled scan jobs: list, create, update, delete, trigger, and view run history.
+**scheduler** -- Manage scheduled scan jobs: list, create, update, delete, trigger, and view run history.
 
-**hugin_workflows** -- Manage event-driven workflows: create triggers and actions for automated flow processing.
+**workflows** -- Manage event-driven workflows with graph-based node pipelines. 17 actions: CRUD, validate (cycle detection), run/test, schedule/unschedule (cron/interval). Action types include Scan (wired to ScanExecutor), RunJavaScript (Node.js/Deno), RunShell, Flag, Repeat, AddToFindings, SendNotification, and 10 encoding/transform operations. Inter-node data passing via `{{template}}` syntax. Passive engine auto-triggers on live traffic; scheduler executes on cron/interval.
 
 ---
 
@@ -355,11 +363,11 @@ Actions: `list`, `get`, `create`, `update`, `delete`, `add_flow`, `add_raw`, `re
 
 Actions: `list`, `get`, `create`, `update`, `delete`, `groups_list`, `groups_create`, `groups_delete`
 
-**hugin_logger_filters** -- Logger filter management: save/load filter presets for HTTP history, manage capture filter rules for conditional logging.
+**logger_filters** -- Logger filter management: save/load filter presets for HTTP history, manage capture filter rules for conditional logging.
 
 Preset actions: `list_presets`, `get_preset`, `save_preset`, `delete_preset`, `apply_preset`. Capture filter actions: `list_capture_filters`, `create_capture_filter`, `update_capture_filter`, `delete_capture_filter`, `enable_capture_filter`, `disable_capture_filter`
 
-**hugin_bambda** -- Bambda: Lua filter expressions for flow tables. Write inline Lua code to filter, search, and transform captured proxy traffic.
+**bambda** -- Bambda: Lua filter expressions for flow tables. Write inline Lua code to filter, search, and transform captured proxy traffic.
 
 Actions: `filter`, `transform`, `test`, `presets`, `save_preset`, `delete_preset`
 
@@ -367,15 +375,15 @@ Actions: `filter`, `transform`, `test`, `presets`, `save_preset`, `delete_preset
 
 ### DOM/Client-Side Security (4 tools)
 
-**hugin_taint** -- Browser-based DOM XSS taint analysis: launch headless Chrome to trace data flow from user-controlled sources to dangerous sinks.
+**taint** -- Browser-based DOM XSS taint analysis: launch Chrome via CDP, inject instrumentation JS that hooks 7 source types (URL params, hash, referrer, cookies, window.name, postMessage, localStorage) and 14 sink types (innerHTML, eval, document.write, location.assign, setTimeout/setInterval string, Function constructor, script.src, jQuery.html, insertAdjacentHTML, dynamic script injection). Auto-creates findings with CWE classification and severity (High for DOM XSS, Medium for open redirect).
 
-Actions: `scan`, `analyze_flow`, `sources`, `sinks`
+Actions: `scan`, `scan_browser`, `analyze` (full flow: inject→navigate→collect→findings), `collect` (harvest from active session), `inject` (hook setup for manual testing), `analyze_flow`, `sources`, `sinks`
 
-**hugin_cors** -- CORS misconfiguration scanner: test `Access-Control-Allow-Origin` / `Access-Control-Allow-Credentials` behavior with 9 origin probes.
+**cors** -- CORS misconfiguration scanner: test `Access-Control-Allow-Origin` / `Access-Control-Allow-Credentials` behavior with 9 origin probes.
 
 Actions: `scan`, `scan_flow`, `techniques`
 
-**hugin_upload** -- File upload vulnerability scanner: test upload endpoints with 16 extension variants, 6 content-type mismatches, double extensions, null byte injection, and polyglot file generation.
+**upload** -- File upload vulnerability scanner: test upload endpoints with 16 extension variants, 6 content-type mismatches, double extensions, null byte injection, and polyglot file generation.
 
 Actions: `scan`, `techniques`, `generate_polyglot`
 
@@ -657,15 +665,129 @@ Actions: `share`, `join`, `status`, `leave`, `publish`
 
 Actions: `list`, `get`, `load`, `unload`, `enable`, `disable`, `reload`, `stats`, `test_hook`
 
-**hugin_tools_registry** -- External tools registry: list registered tools, check health, execute tool commands.
+**tools_registry** -- External tools registry: list registered tools, check health, execute tool commands.
 
-**hugin_files** -- Manage payload file library: add, remove, list, preview, search files and manage tags.
+**files** -- Manage payload file library: add, remove, list, preview, search files and manage tags.
 
 ---
 
 ### Campaigns and Automation (1 tool)
 
-**hugin_campaigns** -- Manage automation campaigns: create, configure, start/stop multi-step intruder attacks with payload sets.
+**campaigns** -- Manage automation campaigns: create, configure, start/stop multi-step intruder attacks with payload sets.
+
+---
+
+### Bug Bounty Platforms (1 tool)
+
+**platforms** -- Bug bounty platform integrations: manage API keys and sync programs from HackerOne, Bugcrowd, YesWeHack, and Intigriti.
+
+Actions: `list`, `get`, `set` (api_key + optional username/base_url), `remove`, `test` (verify API connectivity), `sync_programs` (fetch available programs), `get_program` (program details + scope)
+
+---
+
+### UI Automation (1 tool, 21 actions, 121 interactive components)
+
+**ui_automate** -- Scriptable UI automation for the Hugin desktop window. Every interactive element (buttons, inputs, selects, toggles, tabs, table rows) is registered in a component registry with stable IDs, enabling full programmatic control via MCP. An AI agent can take over the entire hunter's workflow — navigate views, fill inputs, click buttons, select flows, toggle settings, read state, and capture screenshots.
+
+Requires the desktop GUI to be running. Communication uses a Unix domain socket (`~/.config/hugin/ui_command.sock`) with newline-delimited JSON. The MCP tool translates high-level actions into `UiCommand`/`UiAction` dispatches to the Dioxus reactive runtime.
+
+#### Actions (21)
+
+**Navigation & State**
+
+- `navigate` (view) — Switch to a view by name. Accepts both labels ("HTTP History") and enum names ("Dashboard").
+- `status` — Return current view, selected flow, flow/MCP flow counts.
+- `list_components` (view?) — List all interactive components registered for the current or specified view. Returns component IDs, kinds, labels, and current state.
+- `get_state` (id) — Read current state of a specific component (input value, toggle state, selected option, etc.).
+- `refresh` (view?) — Trigger a data refresh on the current or specified view.
+
+**Component Interaction**
+
+- `click` (id) — Click a button by component ID (e.g., `logger.refresh`, `scanner.start`).
+- `type_input` (id, value) — Set text input value (e.g., `type_input id=decoder.input value="SGVsbG8="`).
+- `set_select` (id, value) — Set dropdown/select value (e.g., `set_select id=scanner.severity_filter value=High`).
+- `toggle` (id) — Toggle a boolean control on/off (e.g., `toggle id=intercept.toggle`).
+- `select_row` (table, row_id) — Select a table row by ID (e.g., `select_row table=http_flows row_id=a3f2`).
+- `sort_table` (table, column) — Sort a table by column name.
+- `filter_table` (table, query) — Apply a text filter to a table.
+
+**Flow & Detail Pane**
+
+- `select_flow` (flow_id, navigate?=true) — Select a flow by UUID/prefix, optionally auto-navigate to Logger.
+- `set_pane` (pane?=response, mode?=pretty) — Switch detail pane display: pane=request|response, mode=pretty|raw|hex|preview.
+
+**Visual**
+
+- `scroll` (target, container?=detail) — Scroll to position: target={kind: top|bottom|offset|css_selector}, container=detail|table|workspace.
+- `highlight` (css_selector, duration_ms?=2000) — Highlight a DOM element with a visual pulse.
+- `highlight_text` (text, search_in?=detail, duration_ms?=2000) — Find and highlight text in detail|request|response pane.
+- `capture` (output?, delay_ms?=200) — Screenshot the window to a file. Returns the output path.
+
+**Dialogs & Sequences**
+
+- `open_dialog` (name) — Open a dialog: go_to_flow, keyboard_shortcuts, command_palette.
+- `close_dialog` (name) — Close a named dialog.
+- `sequence` (steps, delay_ms?=300) — Run multiple actions in order with configurable delay between steps.
+
+#### Component Registry (121 components across 15 views)
+
+Every view registers its interactive elements on mount with stable IDs following the pattern `{view}.{element}`. Use `list_components` to discover available components for any view.
+
+**Logger** (5): `logger.search` (input), `logger.source_filter` (select), `logger.select_flow` (table_row), `logger.refresh` (button), `logger.clear_filters` (button)
+
+**Intercept** (13): `intercept.toggle` (toggle), `intercept.hold` (toggle), `intercept.responses` (toggle), `intercept.websockets` (toggle), `intercept.forward` (button), `intercept.forward_all` (button), `intercept.drop` (button), `intercept.drop_all` (button), `intercept.clear` (button), `intercept.rules` (button), `intercept.select_request` (table_row), `intercept.edit_body` (input), `intercept.search` (input)
+
+**Repeater** (11): `repeater.send` (button), `repeater.request_editor` (input), `repeater.target_input` (input), `repeater.follow_redirects` (toggle), `repeater.auto_content_length` (toggle), `repeater.send_mode` (select), `repeater.settings_toggle` (toggle), `repeater.collections_toggle` (toggle), `repeater.select_history` (table_row), `repeater.new_tab` (button), `repeater.transport_select` (select)
+
+**Scanner** (17): `scanner.start` (button), `scanner.stop` (button), `scanner.pause` (button), `scanner.resume` (button), `scanner.refresh` (button), `scanner.report` (button), `scanner.comparer` (button), `scanner.clear_filters` (button), `scanner.select_scan` (table_row), `scanner.select_finding` (table_row), `scanner.severity_filter` (select), `scanner.confidence_filter` (select), `scanner.check_filter` (select), `scanner.passive` (toggle), `scanner.active` (toggle), `scanner.consolidate` (toggle), `scanner.view_tab` (tab)
+
+**WebSocket** (13): `ws.search` (input), `ws.refresh` (button), `ws.clear_all` (button), `ws.select_connection` (table_row), `ws.select_message` (table_row), `ws.send_message` (button), `ws.message_input` (input), `ws.send_opcode` (select), `ws.direction_filter` (select), `ws.content_filter` (input), `ws.auto_scroll` (toggle), `ws.intercept_toggle` (toggle), `ws.detail_mode` (tab)
+
+**Decoder** (6): `decoder.input` (input), `decoder.output` (input), `decoder.encode` (button), `decoder.decode` (button), `decoder.operation_select` (select), `decoder.smart_decode` (button)
+
+**Intruder** (9): `intruder.start` (button), `intruder.stop` (button), `intruder.pause` (button), `intruder.resume` (button), `intruder.search` (input), `intruder.target_url` (input), `intruder.payload_input` (input), `intruder.select_result` (table_row), `intruder.attack_type` (select)
+
+**Search** (4): `search.query` (input), `search.search_button` (button), `search.select_result` (table_row), `search.scope_filter` (select)
+
+**Findings** (5): `findings.search` (input), `findings.select_finding` (table_row), `findings.severity_filter` (select), `findings.delete` (button), `findings.export` (button)
+
+**Scopes** (6): `scopes.add_include` (button), `scopes.add_exclude` (button), `scopes.mode_select` (select), `scopes.pattern_input` (input), `scopes.search` (input), `scopes.select_pattern` (table_row)
+
+**Crawler** (9): `crawler.start` (button), `crawler.stop` (button), `crawler.pause` (button), `crawler.resume` (button), `crawler.target_url` (input), `crawler.search` (input), `crawler.select_url` (table_row), `crawler.max_depth` (input), `crawler.max_pages` (input)
+
+**Sequencer** (6): `sequencer.start` (button), `sequencer.stop` (button), `sequencer.analyze` (button), `sequencer.target_url` (input), `sequencer.token_name` (input), `sequencer.select_capture` (table_row)
+
+**Comparer** (4): `comparer.compare` (button), `comparer.request_a` (input), `comparer.request_b` (input), `comparer.select_diff` (table_row)
+
+**Dashboard / HTTP History** (7): `dashboard.search` (input), `dashboard.select_flow` (table_row), `dashboard.refresh` (button), `dashboard.method_filter` (select), `dashboard.status_filter` (select), `dashboard.host_filter` (input), `dashboard.flag_filter` (toggle)
+
+**Oastify / Collaborator** (6): `oastify.start` (button), `oastify.stop` (button), `oastify.generate_payload` (button), `oastify.search` (input), `oastify.select_interaction` (table_row), `oastify.copy_payload` (button)
+
+#### Example: Full Agent Workflow
+
+```
+# 1. Navigate to scanner, start a scan
+ui_automate action=navigate view=Scanner
+ui_automate action=type_input id=scanner.target_url value="https://target.com"
+ui_automate action=click id=scanner.start
+
+# 2. Check findings
+ui_automate action=set_select id=scanner.severity_filter value=High
+ui_automate action=list_components    # see what's available
+ui_automate action=get_state id=scanner.active  # check if scan is running
+
+# 3. Select a finding and screenshot
+ui_automate action=select_row table=scanner_findings row_id=abc123
+ui_automate action=capture output=/tmp/finding.png
+
+# 4. Multi-step sequence
+ui_automate action=sequence steps='[
+  {"action":"navigate","view":"Repeater"},
+  {"action":"type_input","id":"repeater.request_editor","value":"GET /api/admin HTTP/1.1\\nHost: target.com"},
+  {"action":"click","id":"repeater.send"},
+  {"action":"capture","output":"/tmp/repeater.png"}
+]' delay_ms=500
+```
 
 ---
 
@@ -679,11 +801,11 @@ Actions: `list_users`, `get_user`, `create_user`, `update_user`, `delete_user`, 
 
 Actions: `status`, `configure`, `enable`, `disable`, `generate_rules`, `connections`, `dns_config`
 
-**hugin_http3** -- HTTP/3 (QUIC) proxy configuration and analysis.
+**http3** -- HTTP/3 (QUIC) proxy configuration and analysis.
 
 Actions: `status`, `configure`, `probe`, `alt_svc_scan`, `fingerprint`, `stats`
 
-**hugin_spnego** -- SPNEGO/NTLM enterprise authentication: configure credentials, detect auth challenges, generate tokens.
+**spnego** -- SPNEGO/NTLM enterprise authentication: configure credentials, detect auth challenges, generate tokens.
 
 Actions: `status`, `configure`, `list_credentials`, `delete_credential`, `detect`, `generate_type1`, `parse_challenge`, `generate_type3`, `sessions`, `test`
 
@@ -693,9 +815,59 @@ Actions: `status`, `configure`, `list_credentials`, `delete_credential`, `detect
 
 The MCP server also exposes resources for reading configuration and state:
 
-- `hugin://config` -- Current proxy configuration
-- `hugin://scope` -- Active scope patterns
-- `hugin://stats` -- Proxy statistics (flow count, hosts, etc.)
+- `hugin://flows` -- Last 20 captured HTTP flows
+- `hugin://findings` -- Current vulnerability scanner findings
+- `hugin://stats` -- Proxy status and statistics
+- `hugin://scope` -- Active scope configuration (mode, include/exclude patterns)
+- `hugin://ratrace` -- Recent race condition test sessions and results
+- `hugin://outputs` -- Output store statistics (intruder, repeater, scanner saved outputs)
+
+## Auto-Reload
+
+When developing Hugin or using it in a workflow where the binary is frequently rebuilt, the MCP server supports transparent auto-reload. This means connected MCP clients (Claude Code, Claude Desktop, Cursor, etc.) automatically pick up new tools and changes without manual reconnection.
+
+### How It Works
+
+When you run `hugin mcp`, the process operates as a lightweight relay:
+
+1. The relay spawns `hugin mcp --inner` as a child process, which runs the actual MCP server
+2. All JSON-RPC messages are piped transparently between the MCP client and the inner server
+3. A background watcher polls the hugin binary's modification time (every 2 seconds by default)
+4. When the binary changes (e.g., after `cargo build --release`):
+   - The old inner server is gracefully killed
+   - A new inner server is spawned from the updated binary
+   - A `notifications/tools/list_changed` notification is sent to the client
+   - The client automatically re-fetches the tool list
+
+From the MCP client's perspective, the connection never drops — only the tool list refreshes.
+
+### Configuration
+
+Auto-reload is enabled by default. To configure it, edit `~/.config/hugin/config.toml`:
+
+```toml
+[mcp]
+# Enable/disable auto-reload (default: true)
+auto_reload = true
+
+# How often to check for binary changes, in seconds (default: 2)
+poll_interval_secs = 2
+```
+
+You can also toggle this from the desktop GUI: **Settings > General > MCP Server**.
+
+To disable auto-reload and run the MCP server directly (legacy behavior), either set `auto_reload = false` in config or use the internal flag:
+
+```bash
+hugin mcp --inner
+```
+
+### Notes
+
+- The relay process itself stays as the original binary version — it's intentionally minimal (just a stdio pipe + file watcher), so it doesn't need updating
+- stderr output from the inner server is passed through, so tracing logs work normally
+- If the inner server crashes unexpectedly (not from a reload), the relay exits with the same exit code
+- Auto-reload works with any MCP client that supports the `notifications/tools/list_changed` notification (Claude Code, Claude Desktop, and most MCP SDK clients do)
 
 ## Usage Tips
 
