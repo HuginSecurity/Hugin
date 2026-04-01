@@ -1,0 +1,180 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v0.1.1)'
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-apple-darwin
+            os: macos-14
+            arch: x86_64
+            platform: darwin
+          - target: aarch64-apple-darwin
+            os: macos-14
+            arch: aarch64
+            platform: darwin
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-latest
+            arch: x86_64
+            platform: linux
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+            arch: x86_64
+            platform: windows
+
+    steps:
+      - name: Clone source (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          git clone --depth 1 https://x-access-token:${{ secrets.VURL_PAT }}@github.com/xmaryo/hugin.git .
+          mkdir -p ../vurl
+          curl -sL -H "Authorization: token ${{ secrets.VURL_PAT }}" \
+            https://api.github.com/repos/xmaryo/vurl/tarball | tar xz --strip-components=1 -C ../vurl
+
+      - name: Clone source (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          git clone --depth 1 "https://x-access-token:${{ secrets.VURL_PAT }}@github.com/xmaryo/hugin.git" .
+          New-Item -ItemType Directory -Force -Path ../vurl
+          $headers = @{ Authorization = "token ${{ secrets.VURL_PAT }}" }
+          $tmp = "$env:TEMP\vurl.tar.gz"
+          Invoke-WebRequest -Uri "https://api.github.com/repos/xmaryo/vurl/tarball" -Headers $headers -OutFile $tmp
+          tar xzf $tmp --strip-components=1 -C ../vurl
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev \
+            libayatana-appindicator3-dev libxdo-dev
+
+      - name: Build (macOS)
+        if: runner.os == 'macOS'
+        run: cargo build --release --target ${{ matrix.target }} --bin hugin
+
+      - name: Build (Linux/Windows)
+        if: runner.os != 'macOS'
+        run: cargo build --release --target ${{ matrix.target }} --bin hugin --no-default-features
+
+      - name: Package (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          mkdir -p cli_dist dmg_contents
+          cp target/${{ matrix.target }}/release/hugin cli_dist/
+          cd cli_dist && tar czf ../hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz * && cd ..
+          shasum -a 256 hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz \
+            > hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz.sha256
+          cp target/${{ matrix.target }}/release/hugin dmg_contents/
+          cp README.md dmg_contents/
+          hdiutil create -volname "Hugin" -srcfolder dmg_contents \
+            -ov -format UDZO hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.dmg
+          shasum -a 256 hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.dmg \
+            > hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.dmg.sha256
+
+      - name: Package (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          [ -f target/${{ matrix.target }}/release/hugin ] || exit 0
+          mkdir -p cli_dist desktop_dist
+          cp target/${{ matrix.target }}/release/hugin cli_dist/
+          cd cli_dist && tar czf ../hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz * && cd ..
+          sha256sum hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz \
+            > hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz.sha256
+          cp target/${{ matrix.target }}/release/hugin desktop_dist/
+          cp README.md desktop_dist/
+          cd desktop_dist && tar czf ../hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz * && cd ..
+          sha256sum hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz \
+            > hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz.sha256
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path cli_dist, desktop_dist
+          Copy-Item target/${{ matrix.target }}/release/hugin.exe cli_dist/
+          Compress-Archive -Path cli_dist/* -DestinationPath hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.zip
+          (Get-FileHash hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.zip -Algorithm SHA256).Hash.ToLower() + "  hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.zip" | Out-File -Encoding ascii hugin-cli-${{ matrix.platform }}-${{ matrix.arch }}.zip.sha256
+          Copy-Item target/${{ matrix.target }}/release/hugin.exe desktop_dist/
+          Copy-Item README.md desktop_dist/
+          Compress-Archive -Path desktop_dist/* -DestinationPath hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.zip
+          (Get-FileHash hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.zip -Algorithm SHA256).Hash.ToLower() + "  hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.zip" | Out-File -Encoding ascii hugin-desktop-${{ matrix.platform }}-${{ matrix.arch }}.zip.sha256
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.platform }}-${{ matrix.arch }}
+          path: |
+            hugin-cli-*
+            hugin-desktop-*
+          if-no-files-found: ignore
+
+  sign-and-release:
+    name: Sign & Release
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone source for signing tool
+        run: git clone --depth 1 https://x-access-token:${{ secrets.VURL_PAT }}@github.com/xmaryo/hugin.git .
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Build signing tool and sign
+        env:
+          RELEASE_SIGNING_KEY: ${{ secrets.RELEASE_SIGNING_KEY }}
+        run: |
+          cargo build --release --manifest-path tools/sign/Cargo.toml
+          SIGNER=tools/sign/target/release/hugin-sign
+          for file in artifacts/hugin-cli-*.tar.gz artifacts/hugin-cli-*.zip \
+                      artifacts/hugin-desktop-*.tar.gz artifacts/hugin-desktop-*.zip \
+                      artifacts/hugin-desktop-*.dmg; do
+            [ -f "$file" ] && $SIGNER "$file"
+          done
+          ls -la artifacts/*.sig 2>/dev/null || echo "(no signatures)"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.version }}
+          generate_release_notes: false
+          body: |
+            ## Hugin ${{ github.event.inputs.version }}
+
+            Download the binary for your platform below.
+            Verify with: `hugin verify <downloaded-file>`
+          files: |
+            artifacts/hugin-cli-*
+            artifacts/hugin-desktop-*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
