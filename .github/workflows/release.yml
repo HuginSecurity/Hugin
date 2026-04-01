@@ -43,20 +43,14 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           git clone --depth 1 https://x-access-token:${{ secrets.VURL_PAT }}@github.com/xmaryo/hugin.git .
-          mkdir -p ../vurl
           curl -sL -H "Authorization: token ${{ secrets.VURL_PAT }}" \
-            https://api.github.com/repos/xmaryo/vurl/tarball | tar xz --strip-components=1 -C ../vurl
 
       - name: Clone source (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
           git clone --depth 1 "https://x-access-token:${{ secrets.VURL_PAT }}@github.com/xmaryo/hugin.git" .
-          New-Item -ItemType Directory -Force -Path ../vurl
           $headers = @{ Authorization = "token ${{ secrets.VURL_PAT }}" }
-          $tmp = "$env:TEMP\vurl.tar.gz"
-          Invoke-WebRequest -Uri "https://api.github.com/repos/xmaryo/vurl/tarball" -Headers $headers -OutFile $tmp
-          tar xzf $tmp --strip-components=1 -C ../vurl
 
       - uses: dtolnay/rust-toolchain@stable
         with:
