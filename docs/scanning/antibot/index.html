@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 442,
+                "wordCount": 134,
                 
                 "inLanguage": "en"
             }
@@ -1205,65 +1205,21 @@
     </header>
 
     <div class="article__content" itemprop="articleBody">
-        <p>Hugin includes two MCP tools focused on <strong>bot-detection bypass</strong>: <code>antibot</code> (general) and <code>datadome</code> (DataDome-specific). Both are aimed at the realistic scraping / authorised-testing problem of getting past commercial anti-bot products.</p>
-<p>The tools build on Hugin’s browser stack (<a href="../operations/browser-engines.md#mullvad-browser-marionette">Mullvad</a>, <a href="../operations/browser-engines.md#servo-ipc-child-process">Servo</a>) and the <a href="https://docs.hugin.nu/docs/scanning/antibot/./vurl.md#browser--identity">vurl-offensive <code>mirage</code></a> tool for fingerprint impersonation.</p>
-<h2 id="antibot-tool"><a class="zola-anchor" href="#antibot-tool" aria-label="Anchor link for: antibot-tool">🔗</a>Antibot Tool</h2>
-<p>General toolkit for any anti-bot product (Cloudflare BM, Akamai BMP, Imperva, PerimeterX, etc.).</p>
-<h3 id="actions"><a class="zola-anchor" href="#actions" aria-label="Anchor link for: actions">🔗</a>Actions</h3>
-<ul>
-<li><strong><code>batch_fetch</code></strong> — fetch multiple URLs through a configured strategy (handles cookies, fingerprints, retries)</li>
-<li><strong><code>captcha_detect</code></strong> — analyse a response and identify which anti-bot product is gating it</li>
-<li><strong><code>captcha_solve</code></strong> — submit a detected CAPTCHA for solving via configured providers (you bring your own solver API key)</li>
-<li><strong><code>monitor</code></strong> — start monitoring a browser session for anti-bot challenges; streams events when challenges appear or are passed</li>
-<li><strong><code>cookie_check</code></strong> — verify whether a session’s cookies still pass the bot check (catches expired tokens early)</li>
-</ul>
-<h2 id="datadome-tool"><a class="zola-anchor" href="#datadome-tool" aria-label="Anchor link for: datadome-tool">🔗</a>DataDome Tool</h2>
-<p>Specialised for DataDome.</p>
-<h3 id="actions-1"><a class="zola-anchor" href="#actions-1" aria-label="Anchor link for: actions-1">🔗</a>Actions</h3>
-<ul>
-<li><strong><code>detect</code></strong> — identify whether a URL is gated by DataDome and characterise the gate</li>
-<li><strong><code>solve</code></strong> — visual CAPTCHA solve via the browser stack</li>
-<li><strong><code>audio_solve</code></strong> — audio-CAPTCHA path (typically faster than visual)</li>
-<li><strong><code>scrape</code></strong> — one-shot scrape: detect → solve → fetch URL</li>
-<li><strong><code>swarm</code></strong> — multi-session scraping for high-volume work</li>
-<li><strong><code>stop</code></strong> — terminate active sessions</li>
-</ul>
-<h3 id="workflow-example"><a class="zola-anchor" href="#workflow-example" aria-label="Anchor link for: workflow-example">🔗</a>Workflow Example</h3>
-<p>Detect, then run an audio-solve scrape:</p>
-<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>datadome action:&quot;detect&quot; url:&quot;https://target.com&quot;</span></span>
-<span class="giallo-l"><span># → indicates whether DataDome is gating</span></span>
-<span class="giallo-l"></span>
-<span class="giallo-l"><span>datadome action:&quot;audio_solve&quot; url:&quot;https://target.com&quot;</span></span>
-<span class="giallo-l"><span># → returns a session cookie</span></span>
-<span class="giallo-l"></span>
-<span class="giallo-l"><span>datadome action:&quot;scrape&quot; url:&quot;https://target.com/page&quot;</span></span>
-<span class="giallo-l"><span># → returns the response after passing the gate</span></span></code></pre>
-<p>For large data extractions, use <code>swarm</code> with <code>parallel</code> sessions to spread the load.</p>
-<h2 id="use-cases"><a class="zola-anchor" href="#use-cases" aria-label="Anchor link for: use-cases">🔗</a>Use Cases</h2>
-<p>These tools are aimed at:</p>
-<ul>
-<li><strong>Authorised scraping</strong> for research / data journalism / public-interest analysis where the target’s bot-protection is too aggressive for stock browsers</li>
-<li><strong>Bug bounty programs</strong> where in-scope assets are behind bot detection (DataDome’s own bug bounty is a notable example)</li>
-<li><strong>Performance testing</strong> of your own bot-detection deployment</li>
-</ul>
-<p>They’re <strong>not</strong> aimed at:</p>
-<ul>
-<li>Account credential stuffing</li>
-<li>Spam / abuse</li>
-<li>Scraping for competitive copying of proprietary content</li>
-</ul>
-<p>Hugin doesn’t ship anti-fraud safeguards — assume the operator is acting within legal authorisation.</p>
-<h2 id="detection-reliability"><a class="zola-anchor" href="#detection-reliability" aria-label="Anchor link for: detection-reliability">🔗</a>Detection Reliability</h2>
-<p>Anti-bot products evolve weekly. Today’s working bypass may break tomorrow. Hugin tracks broken-detection signals via the <a href="../ui-views/events.md">Events</a> view — when a previously working strategy starts returning challenges, you’ll see warnings.</p>
-<p>For long-running deployments, monitor the success rate via the <strong>Monitor</strong> action and adjust strategies as needed.</p>
-<h2 id="see-also"><a class="zola-anchor" href="#see-also" aria-label="Anchor link for: see-also">🔗</a>See Also</h2>
-<ul>
-<li><a href="../operations/browser-engines.md">Browser Engines</a> — Servo and Mullvad are often more reliable than Chrome against fingerprint-based bot detection</li>
-<li><a href="https://docs.hugin.nu/docs/scanning/antibot/./vurl.md#browser--identity">vurl-offensive’s <code>mirage</code></a> — provides the underlying browser fingerprint impersonation</li>
-<li><a href="https://docs.hugin.nu/docs/scanning/antibot/./vurl.md#url-parsing--differentials">vurl-offensive’s <code>waf_evasion</code></a> — for WAF (vs anti-bot) bypass payloads</li>
-</ul>
-<h2 id="pro-tier"><a class="zola-anchor" href="#pro-tier" aria-label="Anchor link for: pro-tier">🔗</a>Pro Tier</h2>
-<p>Both tools are Pro features. Captcha solver providers usually require their own paid API keys; Hugin doesn’t bundle solver credits.</p>
+        <blockquote>
+<p><strong>Dev-gated feature.</strong> Antibot / DataDome-specific tooling is gated behind the <code>dev-bypass</code> build feature and is not part of a supported release. It is available for local research and authorised security testing only; this chapter is intentionally a placeholder.</p>
+</blockquote>
+<!--
+The `antibot` and `datadome` MCP tools are present in the workspace but
+intentionally undocumented in the public docs. They are gated behind
+the `dev-bypass` build flag (`cargo build --release --bin hugin --features dev-bypass`)
+which is explicitly for local dev / research and NEVER enabled in CI
+or shipped release builds.
+
+Public documentation will be expanded only if/when these capabilities
+become part of a supported release with a clear authorised-use contract.
+-->
+<p>If you’re researching bot-protection bypass techniques for authorised
+engagements, see the browser stack options under <a href="../operations/browser-engines.md">Browser Engines</a>.</p>
 
     </div>
 
@@ -1290,93 +1246,6 @@
 
 
 
-
-<aside id="page-toc-panel" class="page-toc-panel" aria-hidden="true" aria-label="On this page">
-    <div class="page-toc-panel__content">
-        <div class="page-toc-panel__header">
-            <span class="page-toc-panel__title">On this page</span>
-            <button class="page-toc-panel__close" type="button" aria-label="Close table of contents">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M18 6 6 18"/>
-                    <path d="m6 6 12 12"/>
-                </svg>
-            </button>
-        </div>
-        <nav class="page-toc-panel__nav" aria-label="Page sections">
-            <ul class="page-toc-panel__list">
-                
-                <li class="page-toc-panel__item">
-                    <a href="#antibot-tool" class="page-toc-panel__link">
-                        Antibot Tool
-                    </a>
-                    
-                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
-                        
-                        <li class="page-toc-panel__item">
-                            <a href="#actions" class="page-toc-panel__link">
-                                Actions
-                            </a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-                
-                <li class="page-toc-panel__item">
-                    <a href="#datadome-tool" class="page-toc-panel__link">
-                        DataDome Tool
-                    </a>
-                    
-                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
-                        
-                        <li class="page-toc-panel__item">
-                            <a href="#actions-1" class="page-toc-panel__link">
-                                Actions
-                            </a>
-                        </li>
-                        
-                        <li class="page-toc-panel__item">
-                            <a href="#workflow-example" class="page-toc-panel__link">
-                                Workflow Example
-                            </a>
-                        </li>
-                        
-                    </ul>
-                    
-                </li>
-                
-                <li class="page-toc-panel__item">
-                    <a href="#use-cases" class="page-toc-panel__link">
-                        Use Cases
-                    </a>
-                    
-                </li>
-                
-                <li class="page-toc-panel__item">
-                    <a href="#detection-reliability" class="page-toc-panel__link">
-                        Detection Reliability
-                    </a>
-                    
-                </li>
-                
-                <li class="page-toc-panel__item">
-                    <a href="#see-also" class="page-toc-panel__link">
-                        See Also
-                    </a>
-                    
-                </li>
-                
-                <li class="page-toc-panel__item">
-                    <a href="#pro-tier" class="page-toc-panel__link">
-                        Pro Tier
-                    </a>
-                    
-                </li>
-                
-            </ul>
-        </nav>
-    </div>
-</aside>
 
 
                 
@@ -1455,21 +1324,6 @@
 
     
     
-    
-    <button class="page-toc-toggle" type="button" aria-label="Toggle table of contents" aria-expanded="false" aria-controls="page-toc-panel" title="On this page">
-        <svg class="page-toc-toggle__icon page-toc-toggle__icon--list" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M16 5H3"/>
-            <path d="M16 12H3"/>
-            <path d="M16 19H3"/>
-            <path d="M21 5h.01"/>
-            <path d="M21 12h.01"/>
-            <path d="M21 19h.01"/>
-        </svg>
-        <svg class="page-toc-toggle__icon page-toc-toggle__icon--close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 6 6 18"/>
-            <path d="m6 6 12 12"/>
-        </svg>
-    </button>
     
 
     

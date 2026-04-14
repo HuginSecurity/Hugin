@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 1081,
+                "wordCount": 1068,
                 
                 "inLanguage": "en"
             }
@@ -1211,7 +1211,7 @@
 <p>The default for full-featured testing. Hugin spawns a Chrome instance with a custom profile and connects via the Chrome DevTools Protocol.</p>
 <h3 id="properties"><a class="zola-anchor" href="#properties" aria-label="Anchor link for: properties">🔗</a>Properties</h3>
 <ul>
-<li><strong>Fingerprint</strong> — BoringSSL TLS stack + Chrome user-agent. Blends with 65%+ of web traffic, defeats most JA3/JA4-based bot detection (Akamai BMP, Cloudflare BM, DataDome heuristic mode)</li>
+<li><strong>Fingerprint</strong> — BoringSSL TLS stack + Chrome user-agent. Matches a real Chrome’s JA3/JA4 signature so requests blend with normal web traffic.</li>
 <li><strong>Automation markers</strong> — <code>navigator.webdriver</code> is <code>false</code> (we patch it out at launch); CDP detection partially mitigated by anti-detect script injection</li>
 <li><strong>Speed</strong> — fastest of the three for JS-heavy SPAs</li>
 <li><strong>Memory</strong> — heaviest; Chrome’s ~200 MB baseline plus per-tab overhead</li>
@@ -1238,7 +1238,7 @@
 <li><strong>Automation markers</strong> — none visible by default (Marionette is server-side)</li>
 <li><strong>Speed</strong> — middle of the pack</li>
 <li><strong>Memory</strong> — slightly lighter than Chrome</li>
-<li><strong>Use cases</strong> — testing privacy-protection features, fingerprint-sensitive targets, anything DataDome aggressively blocks Chrome on</li>
+<li><strong>Use cases</strong> — testing privacy-protection features and fingerprint-sensitive targets</li>
 </ul>
 <h3 id="setup-1"><a class="zola-anchor" href="#setup-1" aria-label="Anchor link for: setup-1">🔗</a>Setup</h3>
 <p>Requires Mullvad Browser installed:</p>
@@ -1305,7 +1305,7 @@
 <table><thead><tr><th>Use case</th><th>Recommended engine</th></tr></thead><tbody>
 <tr><td>First-pass crawling</td><td>Chrome</td></tr>
 <tr><td>Heavy JS / SPA inspection</td><td>Chrome</td></tr>
-<tr><td>DataDome / Cloudflare BM target</td><td>Mullvad first; Servo if Mullvad blocks</td></tr>
+<tr><td>Fingerprint-sensitive target</td><td>Mullvad first; Servo as alternate</td></tr>
 <tr><td>PoC video / screenshot for report</td><td>Chrome</td></tr>
 <tr><td>Headless CI / scheduled scans</td><td>Servo</td></tr>
 <tr><td>Taint analysis with pre-script injection</td><td>Servo</td></tr>

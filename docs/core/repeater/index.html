@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 471,
+                "wordCount": 474,
                 
                 "inLanguage": "en"
             }
@@ -1232,7 +1232,7 @@
 </ul>
 <p>When a URL is relative (no <code>://</code>), Hugin merges it with the scheme and authority of the original URL. This lets you test path variations without retyping the full URL.</p>
 <h2 id="browser-routed-requests"><a class="zola-anchor" href="#browser-routed-requests" aria-label="Anchor link for: browser-routed-requests">🔗</a>Browser-Routed Requests</h2>
-<p>Set <code>browser_port</code> to route the request through a running browser’s <code>fetch()</code> API. This gives the request a real browser TLS fingerprint (JA3/JA4), bypassing WAF bot detection systems like Akamai BMP, DataDome, and Cloudflare Bot Management.</p>
+<p>Set <code>browser_port</code> to route the request through a running browser’s <code>fetch()</code> API. This gives the request a real browser TLS fingerprint (JA3/JA4) inherited from the live browser session — useful when the target filters on TLS / HTTP-2 fingerprints.</p>
 <h2 id="batch-send-modes"><a class="zola-anchor" href="#batch-send-modes" aria-label="Anchor link for: batch-send-modes">🔗</a>Batch Send Modes</h2>
 <p>Send multiple requests in one operation with three concurrency modes:</p>
 <ul>

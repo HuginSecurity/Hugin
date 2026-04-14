@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 620,
+                "wordCount": 612,
                 
                 "inLanguage": "en"
             }
@@ -1244,8 +1244,7 @@
 </ul>
 <p>Use this for high-volume content discovery and bulk fuzzing where speed matters.</p>
 <h3 id="browser-marionette"><a class="zola-anchor" href="#browser-marionette" aria-label="Anchor link for: browser-marionette">🔗</a>Browser (Marionette)</h3>
-<p>Routes each request through a Mullvad Browser session via Marionette. Slower but <strong>bypasses TLS-fingerprint-based bot detection</strong> (DataDome, Cloudflare BM, Akamai BMP) by inheriting the browser’s exact JA3/JA4.</p>
-<p>Use this when the HTTP engine triggers WAF blocks within a few requests.</p>
+<p>Routes each request through a Mullvad Browser session via Marionette. Slower but inherits the browser’s exact JA3/JA4 fingerprint — useful when the target filters on TLS fingerprint and the raw HTTP engine is getting filtered.</p>
 <h2 id="wordlists"><a class="zola-anchor" href="#wordlists" aria-label="Anchor link for: wordlists">🔗</a>Wordlists</h2>
 <p>Each keyword can use:</p>
 <ul>
