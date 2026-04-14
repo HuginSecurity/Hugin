@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <script>
+    (function(){var s='auto';try{s=localStorage.getItem('tanuki-theme')||'auto'}catch(e){}
+    var t=s==='auto'?(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):s;
+    document.documentElement.setAttribute('data-theme',t);
+    document.documentElement.setAttribute('data-theme-setting',s)})();
+    </script>
+
+    
+    <title>Intruder | Hugin Documentation</title>
+
+    
+    
+    <meta name="description" content="Security intercepting proxy for web application penetration testing">
+    
+
+    
+    
+
+    
+    
+
+    
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    
+    
+    <link rel="canonical" href="https://docs.hugin.nu/docs/core/intruder/">
+    <link rel="alternate" hreflang="en" href="https://docs.hugin.nu/docs/core/intruder/">
+    <link rel="alternate" hreflang="x-default" href="https://docs.hugin.nu/docs/core/intruder/">
+    
+
+    
+    <meta property="og:type" content="article">
+    
+    <meta property="og:url" content="https://docs.hugin.nu/docs/core/intruder/">
+    
+    
+    <meta property="og:title" content="Intruder">
+    
+    
+    <meta property="og:description" content="">
+    
+    
+    <meta property="og:site_name" content="Hugin Documentation">
+    <meta property="og:locale" content="en">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:url" content="https://docs.hugin.nu/docs/core/intruder/">
+    
+    
+    <meta name="twitter:title" content="Intruder">
+    
+    
+    <meta name="twitter:description" content="">
+    
+    
+    
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://docs.hugin.nu/docs#website",
+                "url": "https://docs.hugin.nu/docs",
+                "name": "Hugin Documentation",
+                "description": "Security intercepting proxy for web application penetration testing",
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "inLanguage": "en",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://docs.hugin.nu/docs?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://zentinelproxy.io/#organization",
+                "name": "raskell.io",
+                "url": "https://zentinelproxy.io",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://zentinelproxy.io/img/og-image.png",
+                    "width": 1200,
+                    "height": 630
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://docs.hugin.nu/docs/core/intruder/#webpage",
+                "url": "https://docs.hugin.nu/docs/core/intruder/",
+                "name": "Intruder",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs#website"
+                },
+                "description": "",
+                "inLanguage": "en"
+                
+                
+            }
+            
+            ,{
+                "@type": "Article",
+                "@id": "https://docs.hugin.nu/docs/core/intruder/#article",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs/core/intruder/#webpage"
+                },
+                "headline": "Intruder",
+                
+                
+                
+                "author": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                
+                
+                "wordCount": 1161,
+                
+                "inLanguage": "en"
+            }
+            
+        ]
+    }
+    </script>
+
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hugin Documentation",
+                "item": "https://docs.hugin.nu/docs"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Hugin",
+                "item": "https://docs.hugin.nu/docs/"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Core Tools",
+                "item": "https://docs.hugin.nu/docs/core/"
+            }
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Intruder",
+                "item": "https://docs.hugin.nu/docs/core/intruder/"
+            }
+        ]
+    }
+    </script>
+    
+
+    
+    <link rel="stylesheet" href="https://docs.hugin.nu/docs/style.css">
+
+    
+    
+
+    
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('tanuki-theme') || 'auto';
+                var theme = stored === 'auto'
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : stored;
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme-setting', stored);
+            } catch(e) {}
+        })();
+    </script>
+    
+
+    
+</head>
+<body class="page-intruder">
+    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+        
+    
+
+    
+    <div class="layout layout--docs layout--fixed-header" data-mode="docs">
+        
+
+
+<aside id="sidebar" class="sidebar" role="complementary" aria-labelledby="sidebar-title">
+    
+    <div class="sidebar__resize-handle" aria-hidden="true" title="Drag to resize sidebar width"></div>
+
+    <div class="sidebar__header">
+        <span id="sidebar-title" class="sidebar__title">Table of contents</span>
+        <button class="sidebar__close" type="button" aria-label="Close sidebar" title="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18"/>
+                <path d="m6 6 12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <nav class="sidebar__content" aria-label="Documentation navigation">
+        <div class="toc">
+            
+            
+
+            
+
+            
+
+            
+            
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/getting-started/" class="toc__section-title ">Getting Started</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/installation/" class="toc__link ">
+                            Installation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/first-run/" class="toc__link ">
+                            First Run
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/browser-setup/" class="toc__link ">
+                            Browser Setup
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/configuration/" class="toc__link ">
+                            Configuration
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/core/" class="toc__section-title ">Core Tools</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/proxy/" class="toc__link ">
+                            Proxy
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept/" class="toc__link ">
+                            Intercept
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/repeater/" class="toc__link ">
+                            Repeater
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intruder/" class="toc__link active">
+                            Intruder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/sequencer/" class="toc__link ">
+                            Sequencer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/decoder/" class="toc__link ">
+                            Decoder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/comparer/" class="toc__link ">
+                            Comparer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/findings/" class="toc__link ">
+                            Findings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/match-replace/" class="toc__link ">
+                            Match &amp; Replace
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/session-rules/" class="toc__link ">
+                            Session Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept-rules/" class="toc__link ">
+                            Intercept Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/websocket/" class="toc__link ">
+                            WebSocket
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ui-views/" class="toc__section-title ">UI Views</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/dashboard/" class="toc__link ">
+                            Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/logger/" class="toc__link ">
+                            HTTP History (Logger)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/projects/" class="toc__link ">
+                            Projects
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/sitemap/" class="toc__link ">
+                            Sitemap
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/search/" class="toc__link ">
+                            Search
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/settings/" class="toc__link ">
+                            Settings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/cookie-jar/" class="toc__link ">
+                            Cookie Jar
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/organizer/" class="toc__link ">
+                            Organizer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/exports/" class="toc__link ">
+                            Exports
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/environment/" class="toc__link ">
+                            Environment
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/events/" class="toc__link ">
+                            Events
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/files/" class="toc__link ">
+                            Files (Hosted Files)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/tools/" class="toc__link ">
+                            Tools (External Tool Registry)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/scanning/" class="toc__section-title ">Scanning</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/builtin-scanner/" class="toc__link ">
+                            Built-in Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/synaps/" class="toc__link ">
+                            Synaps Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/module-development/" class="toc__link ">
+                            Module Development
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/community-modules/" class="toc__link ">
+                            Community Modules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/vurl/" class="toc__link ">
+                            vurl-offensive (Active Hunting)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/authz/" class="toc__link ">
+                            Authorization Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/cors/" class="toc__link ">
+                            CORS Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/upload/" class="toc__link ">
+                            File Upload Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/scan-optimizer/" class="toc__link ">
+                            Scan Optimizer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/antibot/" class="toc__link ">
+                            Antibot &amp; DataDome Bypass
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/automation/" class="toc__section-title ">Automation</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/workflows/" class="toc__link ">
+                            Workflows
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/campaigns/" class="toc__link ">
+                            Campaigns
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/scheduler/" class="toc__link ">
+                            Scheduler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/macros/" class="toc__link ">
+                            Macros
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/recon/" class="toc__section-title ">Recon</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/assets/" class="toc__link ">
+                            Recon — Assets
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/param-discover/" class="toc__link ">
+                            Param Discover
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/ffuzzer/" class="toc__link ">
+                            FFuzzer (FUZZ keyword fuzzer)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/wordlists/" class="toc__link ">
+                            Wordlists
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/intelligence/" class="toc__section-title ">Intelligence</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/nerve/" class="toc__link ">
+                            Nerve — Passive Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/crawler/" class="toc__link ">
+                            Crawler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/ratrace/" class="toc__link ">
+                            RatRace — Race Conditions
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/oastify/" class="toc__link ">
+                            Oastify — OOB Detection
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/intelligence/" class="toc__link ">
+                            Intelligence (Cross-Flow Analysis)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/flow-analysis/" class="toc__link ">
+                            Flow Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/fingerprint/" class="toc__link ">
+                            Fingerprint
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ai/" class="toc__section-title ">AI &amp; Orchestration</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/assistant/" class="toc__link ">
+                            AI Assistant
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/orchestration/" class="toc__link ">
+                            Orchestration Engine
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/browser-automation/" class="toc__link ">
+                            Browser Automation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/taint-analysis/" class="toc__link ">
+                            Taint Analysis
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/plugins/" class="toc__section-title ">Plugins</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/discovery/" class="toc__link ">
+                            Discovery
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/yeswehugin/" class="toc__link ">
+                            YesWeHugin
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/collaboration/" class="toc__link ">
+                            Collaboration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/mobile/" class="toc__link ">
+                            Mobile (APK &#x2F; IPA + Frida)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/hackerone/" class="toc__link ">
+                            HackerOne
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/platforms/" class="toc__link ">
+                            Platforms (Unified BB Manager)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/extensibility/" class="toc__section-title ">Extensibility</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/lua-plugins/" class="toc__link ">
+                            Lua Plugins
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/mcp/" class="toc__link ">
+                            MCP Integration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugin-sdk/" class="toc__link ">
+                            Plugin SDK
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugins-ui/" class="toc__link ">
+                            Plugins UI
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/bambda/" class="toc__link ">
+                            Bambda (Inline Lua Filters)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/api/" class="toc__section-title ">API</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rest/" class="toc__link ">
+                            REST API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/graphql/" class="toc__link ">
+                            GraphQL API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/authentication/" class="toc__link ">
+                            Authentication
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rbac/" class="toc__link ">
+                            RBAC (Role-Based Access Control)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/operations/" class="toc__section-title ">Operations</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/release-signing/" class="toc__link ">
+                            Release Signing
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/license/" class="toc__link ">
+                            License &amp; Trial
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/backups/" class="toc__link ">
+                            Backup &amp; Restore
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/updates/" class="toc__link ">
+                            Updates &amp; Channels
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/browser-engines/" class="toc__link ">
+                            Browser Engines
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/reference/" class="toc__section-title ">Reference</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/cli/" class="toc__link ">
+                            CLI Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/configuration/" class="toc__link ">
+                            Configuration Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/architecture/" class="toc__link ">
+                            Architecture
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/telemetry/" class="toc__link ">
+                            Telemetry
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/changelog/" class="toc__link ">
+                            Changelog
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+    </nav>
+
+    <div class="sidebar__footer">
+        
+        <div class="sidebar__actions-mobile">
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Version</span>
+                <div class="sidebar__version">
+                    <span class="sidebar__version-current">v0.1.0</span>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Theme</span>
+                
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            </div>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="sidebar__github" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub (opens in new tab)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                <span>View on GitHub</span>
+            </a>
+            
+        </div>
+
+        
+        <a href="https://docs.hugin.nu/docs/print?auto=true" class="print-button" target="_blank" rel="noopener" aria-label="Print all documentation pages (opens print dialog)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect width="12" height="8" x="6" y="14"/>
+            </svg>
+            <span>Print all pages</span>
+        </a>
+    </div>
+</aside>
+
+
+
+
+        <div class="layout__main">
+            
+            
+
+
+
+
+<header class="header" role="banner">
+    <div class="header__left">
+        
+        
+        <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar navigation" aria-expanded="true" aria-controls="sidebar" title="Toggle sidebar">
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m14 9 3 3-3 3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+        <button class="toc-toggle toc-toggle--docs" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="sidebar" title="Table of contents">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+
+        
+        
+
+        
+        <a href="https://docs.hugin.nu/docs" class="header__logo" aria-label="Hugin Documentation - Go to homepage">
+            
+            
+            
+            <img src="https://docs.hugin.nu/docs/img/hugin-logo.png" alt="" aria-hidden="true">
+            
+            <span>Hugin Documentation</span>
+        </a>
+    </div>
+
+    
+    <nav class="header__nav" role="navigation" aria-label="Main navigation">
+        
+    </nav>
+
+    
+    <div class="header__actions" role="group" aria-label="Site actions">
+        
+        
+        <button class="search-toggle" type="button" aria-label="Open search dialog" aria-keyshortcuts="/" aria-haspopup="dialog" title="Search (press /)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+            </svg>
+        </button>
+        
+
+        
+        <div class="header__actions-desktop">
+            
+            
+            
+
+
+
+<div class="version-picker">
+    <button class="version-picker__button" aria-haspopup="listbox" aria-expanded="false">
+        <span>v0.1.0</span>
+        
+        
+        <span class="version-picker__badge">latest</span>
+        
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </button>
+
+    <div class="version-picker__dropdown" role="listbox">
+        
+        <a href="/docs/" class="version-picker__item active" role="option">
+            v0.1.0
+            
+            <span class="version-picker__badge">latest</span>
+            
+        </a>
+        
+        <hr class="version-picker__divider">
+        <a href="https://docs.hugin.nu/docs/appendix/versioning" class="version-picker__item version-picker__item--link">
+            All versions
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+
+            
+
+            
+            
+            
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin&#x2F;edit&#x2F;main&#x2F;docs&#x2F;zola&#x2F;content/core&#x2F;intruder.md" class="btn btn--icon btn--ghost" aria-label="Edit this page on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="Edit this page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    <path d="m15 5 4 4"/>
+                </svg>
+            </a>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="btn btn--icon btn--ghost" aria-label="View project on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+
+            
+
+            
+            
+            <div class="scroll-progress" aria-hidden="true">
+                <div class="scroll-progress__bar"></div>
+                <span class="scroll-progress__percent">0%</span>
+            </div>
+            
+
+            
+
+
+
+
+
+    
+
+
+    
+
+
+<nav class="nav-buttons" aria-label="Page navigation">
+    
+    
+    <a href="https://docs.hugin.nu/docs/core/repeater/" class="nav-button nav-button--prev" aria-label="Previous: Repeater">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+        </svg>
+        <span class="nav-button__label">
+            Repeater
+            <span class="nav-button__shortcut">←</span>
+        </span>
+    </a>
+    
+
+    
+    
+    <a href="https://docs.hugin.nu/docs/core/sequencer/" class="nav-button nav-button--next" aria-label="Next: Sequencer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+        </svg>
+        <span class="nav-button__label">
+            Sequencer
+            <span class="nav-button__shortcut">→</span>
+        </span>
+    </a>
+    
+</nav>
+
+
+
+
+            <div class="layout__content-area">
+                <main id="main-content" class="main-content" role="main" aria-label="Main content">
+                    
+
+
+<article class="article" itemscope itemtype="https://schema.org/Article" aria-labelledby="article-title">
+    
+    <header class="article__header article__header--docs">
+        <h1 id="article-title" itemprop="headline">Intruder</h1>
+        
+    </header>
+
+    <div class="article__content" itemprop="articleBody">
+        <p>Intruder is Hugin’s automated attack engine. Mark positions in a request with injection markers (<code>§name§</code>), choose payload generators and processors, and Intruder fires every payload through those positions while recording response status codes, lengths, timing, and pattern matches.</p>
+<h2 id="quick-start"><a class="zola-anchor" href="#quick-start" aria-label="Anchor link for: quick-start">🔗</a>Quick Start</h2>
+<ol>
+<li>Capture a request in the proxy.</li>
+<li>Send it to Intruder.</li>
+<li>Mark injection points by wrapping values with <code>§</code> markers: <code>/api/users/§id§</code>.</li>
+<li>Configure payload generators for each position.</li>
+<li>Start the attack.</li>
+<li>Review results, filtering by status code, response length, or timing anomalies.</li>
+</ol>
+<h2 id="payload-generators-19-types"><a class="zola-anchor" href="#payload-generators-19-types" aria-label="Anchor link for: payload-generators-19-types">🔗</a>Payload Generators (19 types)</h2>
+<p>The complete set is: <code>SimpleList</code>, <code>Numbers</code>, <code>Dates</code>, <code>BruteForcer</code>, <code>RuntimeFile</code>, <code>NullPayloads</code>, <code>UsernameGenerator</code>, <code>CharacterSubstitution</code>, <code>CharFrobber</code>, <code>BitFlipper</code>, <code>ExtensionGenerated</code>, <code>CustomIterator</code>, <code>CharacterBlocks</code>, <code>IllegalUnicode</code>, <code>CaseVariant</code>, <code>CopyOtherPayload</code>, <code>RecursiveGrep</code>, <code>OastifyPayloads</code>, <code>EcbBlockShuffler</code>.</p>
+<p>Each generator produces a lazy iterator of strings. Generators do not materialize the full list in memory unless required.</p>
+<p><strong>SimpleList</strong> – a fixed list of strings you provide inline. The most common generator for custom wordlists.</p>
+<p><strong>Numbers</strong> – a numeric range with step. Supports zero-padded formatting (<code>{:04}</code>) and negative steps for descending ranges. Example: <code>start=1, end=100, step=1</code> produces <code>1</code> through <code>100</code>.</p>
+<p><strong>BruteForcer</strong> – all permutations of a character set between a minimum and maximum length. Built-in charsets: lowercase, uppercase, digits, alphanumeric, hex. Maximum string length is capped at 12; maximum total payloads is 1,000,000.</p>
+<p><strong>Dates</strong> – a date range with a strftime format string. Useful for brute-forcing date-based tokens or IDs. Example: <code>start=2024-01-01, end=2024-12-31, format=%Y%m%d</code>.</p>
+<p><strong>CharacterSubstitution</strong> – generates all combinations of a base string where specific characters are replaced by alternatives. Includes a built-in leet-speak rule set (<code>a-&gt;4/@</code>, <code>e-&gt;3</code>, etc.) or define your own substitution map.</p>
+<p><strong>CharFrobber</strong> – applies character manipulations to a base string: toggle case per-character, toggle entire string, increment/decrement character codes, reverse, shift by offset. Produces the original plus all derived variants.</p>
+<p><strong>BitFlipper</strong> – flips bits in a base value systematically. Five modes: SingleBit (one bit at a time), SingleByte (XOR each byte with 0xFF), BitPairs (flip consecutive bit pairs), BytePairs (flip consecutive byte pairs), Nibble (flip each 4-bit nibble).</p>
+<p><strong>NullPayloads</strong> – emits N copies of an empty string, or a fixed set of 14 null-like values (<code>null</code>, <code>NULL</code>, <code>nil</code>, <code>None</code>, <code>undefined</code>, <code>NaN</code>, <code>0</code>, <code>-1</code>, <code>false</code>, <code>\0</code>, <code>\x00</code>, <code>%00</code>, <code>{{null}}</code>, and empty string).</p>
+<p><strong>UsernameGenerator</strong> – generates username variations from first/last name pairs. Patterns: <code>first.last</code>, <code>first_last</code>, <code>flast</code>, <code>firstl</code>, <code>first</code>, <code>last</code>, <code>first.last1..99</code>. Includes a CommonNames pattern that emits 25 common admin/system usernames.</p>
+<p><strong>RuntimeFile</strong> – reads payloads line by line from a file at attack time. Blank lines and comment lines (starting with <code>#</code>) are skipped. Validates the file path against an optional base directory to prevent path traversal.</p>
+<p><strong>ExtensionGenerated</strong> – a custom generator backed by a Lua extension closure. Lets extensions inject dynamic payload sequences at runtime.</p>
+<p><strong>CharacterBlocks</strong> – generates strings of a single character repeated at varying lengths. Useful for buffer overflow testing and length-based fuzzing. Configurable character, min/max length, and step.</p>
+<p><strong>CustomIterator</strong> – generates combinations from multiple word lists joined by a separator. Useful for producing structured strings like <code>admin-dev-01</code>, <code>admin-staging-02</code>.</p>
+<p><strong>IllegalUnicode</strong> – generates illegal and malformed Unicode sequences for testing parser robustness. Categories include overlong UTF-8, surrogate pairs, BOM variations, and null bytes. Output is percent-encoded for safe transport.</p>
+<p><strong>CaseVariant</strong> – generates case variations of base words: uppercase, lowercase, proper case, inverted case. Deduplicates results since different modes may produce identical output for certain inputs.</p>
+<p><strong>OastifyPayloads</strong> – generates out-of-band (OOB) callback payloads using the built-in Oastify system. Each payload contains a unique correlation ID for tracking interactions. Supports DNS, HTTP, HTTPS, SMTP, LDAP, FTP, and SMB protocols.</p>
+<p><strong>EcbBlockShuffler</strong> – rearranges ciphertext blocks to test ECB-mode encryption vulnerabilities. Operations include removing blocks, duplicating blocks, swapping pairs, reversing order, and generating all permutations. Supports hex and base64 encoded ciphertext with 8-byte (DES) or 16-byte (AES) block sizes.</p>
+<p><strong>RecursiveGrep</strong> – pulls payloads from extraction results of a previous attack. Use this to chain attacks: first extract values (e.g., CSRF tokens, IDs) from one attack’s responses, then feed them as payloads into the next.</p>
+<p><strong>CopyOtherPayload</strong> – copies the payload from another position. Resolved during generation; used when two positions must receive the same value.</p>
+<h2 id="payloadset-combination-modes"><a class="zola-anchor" href="#payloadset-combination-modes" aria-label="Anchor link for: payloadset-combination-modes">🔗</a>PayloadSet Combination Modes</h2>
+<p>When an attack uses multiple payload positions, generators are combined:</p>
+<ul>
+<li><strong>concat</strong> – all payloads from generator 1, then all from generator 2 (serial)</li>
+<li><strong>zip</strong> – pairs payloads position by position; stops when the shortest generator is exhausted</li>
+<li><strong>product</strong> – Cartesian product of all generators (every combination). Capped at 10,000,000 total combinations.</li>
+</ul>
+<h2 id="payload-processors-14-types"><a class="zola-anchor" href="#payload-processors-14-types" aria-label="Anchor link for: payload-processors-14-types">🔗</a>Payload Processors (14 types)</h2>
+<p>Processors transform each payload before injection. Chain multiple processors to build complex transformations.</p>
+<ul>
+<li><strong>AddPrefix</strong> / <strong>AddSuffix</strong> – prepend or append a fixed string</li>
+<li><strong>MatchReplace</strong> – regex or literal find/replace within the payload</li>
+<li><strong>UrlEncode</strong> / <strong>UrlDecode</strong> – percent encoding; configurable to encode all characters or only special ones</li>
+<li><strong>HtmlEncode</strong> / <strong>HtmlDecode</strong> – HTML entity encoding</li>
+<li><strong>Base64Encode</strong> / <strong>Base64Decode</strong> – standard Base64</li>
+<li><strong>Hash</strong> – hash the payload with MD5, SHA-1, SHA-256, or SHA-512</li>
+<li><strong>CaseModification</strong> – uppercase, lowercase, or toggle case</li>
+<li><strong>Substring</strong> – extract a substring by start and optional end index</li>
+<li><strong>ReverseString</strong> – reverse the payload</li>
+<li><strong>SkipIfMatch</strong> – drop the payload entirely if it matches a pattern (filter)</li>
+</ul>
+<p>For arbitrary custom transformation, use the <code>ExtensionGenerated</code> payload generator with a Lua extension closure.</p>
+<h2 id="response-analysis-grep-match"><a class="zola-anchor" href="#response-analysis-grep-match" aria-label="Anchor link for: response-analysis-grep-match">🔗</a>Response Analysis: Grep Match</h2>
+<p>Attach grep matchers to flag responses containing (or missing) specific content:</p>
+<ul>
+<li><strong>Contains</strong> – substring match, optionally case-sensitive</li>
+<li><strong>NotContains</strong> – inverse match</li>
+<li><strong>Regex</strong> – regular expression match with a 1 MB size limit to prevent ReDoS</li>
+</ul>
+<p>Match results include the patterns that fired and byte offsets within the response body.</p>
+<h2 id="response-analysis-grep-extract"><a class="zola-anchor" href="#response-analysis-grep-extract" aria-label="Anchor link for: response-analysis-grep-extract">🔗</a>Response Analysis: Grep Extract</h2>
+<p>Extractors pull values out of responses:</p>
+<ul>
+<li><strong>from_regex(name, pattern, group)</strong> – captures a named group from each response</li>
+<li><strong>from_delimiters(name, start, end)</strong> – extracts content between two delimiter strings</li>
+</ul>
+<p>Extracted values are stored per-result and visible in the results table.</p>
+<h2 id="result-filtering-and-sorting"><a class="zola-anchor" href="#result-filtering-and-sorting" aria-label="Anchor link for: result-filtering-and-sorting">🔗</a>Result Filtering and Sorting</h2>
+<p>Results can be filtered by:</p>
+<ul>
+<li>Exact status code or status code range (e.g., <code>2xx</code>)</li>
+<li>Response length (min, max)</li>
+<li>Response time (min, max)</li>
+<li>Whether a grep match fired</li>
+<li>Whether a specific key was extracted</li>
+<li>Errors only or exclude errors</li>
+</ul>
+<p>Results are sortable by payload, request ID, status code, response length, or response time.</p>
+<h2 id="grep-local"><a class="zola-anchor" href="#grep-local" aria-label="Anchor link for: grep-local">🔗</a>Grep Local</h2>
+<p>The <code>grep_local</code> action provides fast Rust-native regex searching across attack results. Supports filters for status codes, response time ranges, length ranges, field selection (body, headers, status), and result inversion.</p>
+<h2 id="resource-pool"><a class="zola-anchor" href="#resource-pool" aria-label="Anchor link for: resource-pool">🔗</a>Resource Pool</h2>
+<p>Each attack runs with a configurable concurrency limit controlling how many requests are in-flight simultaneously. Rate limiting is enforced between requests. Attacks can be paused and resumed.</p>
+<h2 id="csv-export"><a class="zola-anchor" href="#csv-export" aria-label="Anchor link for: csv-export">🔗</a>CSV Export</h2>
+<p>Any result set can be exported to CSV. The export includes request ID, payload, status code, response length, response time, grep match flag, matched patterns, extracted values, and error message.</p>
+<h2 id="mcp-tool"><a class="zola-anchor" href="#mcp-tool" aria-label="Anchor link for: mcp-tool">🔗</a>MCP Tool</h2>
+<p><strong><code>intruder</code></strong> – attack automation engine.</p>
+<p>Actions: <code>start</code>, <code>run</code> (standalone, no proxy required), <code>turbo_run</code> (Turbo Intruder mode), <code>list</code>, <code>get</code>, <code>status</code>, <code>pause</code>, <code>resume</code>, <code>cancel</code>, <code>delete</code>, <code>results</code>, <code>generators</code> (list available generator types), <code>processors</code> (list available processor types), <code>grep</code>, <code>grep_data</code>, <code>processing</code>, <code>export</code></p>
+<p>The <code>run</code> action executes an attack inline and returns results directly – useful for quick one-off fuzzing from MCP without managing attack state.</p>
+<h2 id="api"><a class="zola-anchor" href="#api" aria-label="Anchor link for: api">🔗</a>API</h2>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/intruder/attacks              Start a new attack</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/attacks              List all attacks</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/attacks/{id}         Get attack details</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/attacks/{id}/results Get results</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks/{id}/pause   Pause</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks/{id}/resume  Resume</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks/{id}/cancel  Cancel</span></span></code></pre>
+    </div>
+
+    
+    
+    
+</article>
+
+
+
+<nav class="page-nav" aria-label="Page navigation">
+    
+
+    
+</nav>
+
+
+
+                </main>
+
+                
+                
+                
+
+
+
+
+<aside id="page-toc-panel" class="page-toc-panel" aria-hidden="true" aria-label="On this page">
+    <div class="page-toc-panel__content">
+        <div class="page-toc-panel__header">
+            <span class="page-toc-panel__title">On this page</span>
+            <button class="page-toc-panel__close" type="button" aria-label="Close table of contents">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="page-toc-panel__nav" aria-label="Page sections">
+            <ul class="page-toc-panel__list">
+                
+                <li class="page-toc-panel__item">
+                    <a href="#quick-start" class="page-toc-panel__link">
+                        Quick Start
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#payload-generators-19-types" class="page-toc-panel__link">
+                        Payload Generators (19 types)
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#payloadset-combination-modes" class="page-toc-panel__link">
+                        PayloadSet Combination Modes
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#payload-processors-14-types" class="page-toc-panel__link">
+                        Payload Processors (14 types)
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#response-analysis-grep-match" class="page-toc-panel__link">
+                        Response Analysis: Grep Match
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#response-analysis-grep-extract" class="page-toc-panel__link">
+                        Response Analysis: Grep Extract
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#result-filtering-and-sorting" class="page-toc-panel__link">
+                        Result Filtering and Sorting
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#grep-local" class="page-toc-panel__link">
+                        Grep Local
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#resource-pool" class="page-toc-panel__link">
+                        Resource Pool
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#csv-export" class="page-toc-panel__link">
+                        CSV Export
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#mcp-tool" class="page-toc-panel__link">
+                        MCP Tool
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#api" class="page-toc-panel__link">
+                        API
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+                
+            </div>
+
+            
+            
+            
+        </div>
+    </div>
+
+    
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+
+    
+    
+    
+<div class="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-title" aria-describedby="search-description">
+    <div class="search">
+        <h2 id="search-title" class="sr-only">Search documentation</h2>
+        <p id="search-description" class="sr-only">Type to search. Use arrow keys to navigate results, Enter to select, Escape to close.</p>
+
+        <div class="search__input-wrapper">
+            <span class="search__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.3-4.3"/>
+                </svg>
+            </span>
+            <input
+                type="search"
+                class="search__input"
+                placeholder="Search documentation..."
+                autocomplete="off"
+                autofocus
+                aria-label="Search query"
+                aria-controls="search-results"
+                aria-autocomplete="list"
+            >
+            <span class="search__shortcut" aria-hidden="true">/</span>
+            <button class="search__close" type="button" aria-label="Close search dialog" title="Close (Esc)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="search-results" class="search__results" role="listbox" aria-label="Search results">
+            
+        </div>
+
+        <footer class="search__footer">
+            <nav class="search__hints" aria-label="Keyboard shortcuts">
+                <span class="search__hint">
+                    <kbd aria-label="Up and down arrows">↑</kbd><kbd aria-hidden="true">↓</kbd> <span>Navigate</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Enter">↵</kbd> <span>Select</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Escape">esc</kbd> <span>Close</span>
+                </span>
+            </nav>
+        </footer>
+    </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    <button class="page-toc-toggle" type="button" aria-label="Toggle table of contents" aria-expanded="false" aria-controls="page-toc-panel" title="On this page">
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--list" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 5H3"/>
+            <path d="M16 12H3"/>
+            <path d="M16 19H3"/>
+            <path d="M21 5h.01"/>
+            <path d="M21 12h.01"/>
+            <path d="M21 19h.01"/>
+        </svg>
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    <button class="fab scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    
+    <script src="https://docs.hugin.nu/docs/js/theme.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/navigation.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/code.js" defer></script>
+
+    
+    <script src="https://docs.hugin.nu/docs/elasticlunr.min.js"></script>
+    <script src="https://docs.hugin.nu/docs/search_index.en.js"></script>
+    <script src="https://docs.hugin.nu/docs/js/search.js" defer></script>
+    
+    
+
+    
+</body>
+</html>
