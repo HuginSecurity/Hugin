@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 208,
+                "wordCount": 264,
                 
                 "inLanguage": "en"
             }
@@ -1522,7 +1522,14 @@
 <span class="giallo-l"><span>PATCH  /api/scheduler/jobs/{id}         Update job</span></span>
 <span class="giallo-l"><span>DELETE /api/scheduler/jobs/{id}         Delete job</span></span>
 <span class="giallo-l"><span>POST   /api/scheduler/jobs/{id}/run     Trigger job</span></span>
-<span class="giallo-l"><span>GET    /api/scheduler/jobs/{id}/runs    List run history</span></span></code></pre><h3 id="graphql"><a class="zola-anchor" href="#graphql" aria-label="Anchor link for: graphql">🔗</a>GraphQL</h3>
+<span class="giallo-l"><span>GET    /api/scheduler/jobs/{id}/runs    List run history</span></span></code></pre><h3 id="workflows"><a class="zola-anchor" href="#workflows" aria-label="Anchor link for: workflows">🔗</a>Workflows</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/workflows                   List all workflows</span></span>
+<span class="giallo-l"><span>GET  /api/workflows/{id}              Fetch one workflow</span></span>
+<span class="giallo-l"><span>POST /api/workflows/{id}/validate     Validate graph (nodes, edges, trigger/action presence)</span></span>
+<span class="giallo-l"><span>POST /api/workflows/{id}/run          Manual one-shot run  (body: {&quot;flow_id&quot;: &quot;uuid&quot;})</span></span>
+<span class="giallo-l"><span>GET  /api/workflows/{id}/runs         Execution history    (?limit=N&amp;offset=N)</span></span></code></pre>
+<p>The passive engine auto-runs workflows against live flows – these REST routes are for manual invocation and history inspection. The <code>run</code> response includes <code>triggers_matched</code> so you can tell whether the passive engine would have selected this flow. Run records persist in SQLite (<code>workflow_runs</code> table). See the <a href="../../automation/workflows/">Workflows chapter</a> for the full data model.</p>
+<h3 id="graphql"><a class="zola-anchor" href="#graphql" aria-label="Anchor link for: graphql">🔗</a>GraphQL</h3>
 <pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /graphql    GraphQL Playground (HTML)</span></span>
 <span class="giallo-l"><span>POST /graphql    GraphQL query/mutation endpoint</span></span></code></pre><h3 id="real-time"><a class="zola-anchor" href="#real-time" aria-label="Anchor link for: real-time">🔗</a>Real-time</h3>
 <pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET /ws    WebSocket endpoint for real-time flow updates</span></span></code></pre><h2 id="response-format"><a class="zola-anchor" href="#response-format" aria-label="Anchor link for: response-format">🔗</a>Response Format</h2>
@@ -1793,6 +1800,12 @@
                         <li class="page-toc-panel__item">
                             <a href="#scheduler" class="page-toc-panel__link">
                                 Scheduler
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#workflows" class="page-toc-panel__link">
+                                Workflows
                             </a>
                         </li>
                         

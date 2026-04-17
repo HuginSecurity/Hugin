@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 809,
+                "wordCount": 1049,
                 
                 "inLanguage": "en"
             }
@@ -1300,8 +1300,51 @@
 <li><strong>JWT <code>alg:none</code></strong> — RunJavaScript that decodes JWTs in the Authorization header and AddToFindings when the alg is <code>none</code></li>
 </ul>
 <p>Hugin doesn’t currently ship a packaged workflow library — build the patterns you need in the editor and save.</p>
+<h2 id="execution-order"><a class="zola-anchor" href="#execution-order" aria-label="Anchor link for: execution-order">🔗</a>Execution Order</h2>
+<p>Actions execute in BFS order starting from the trigger(s). A single node can have any number of outgoing and incoming wires.</p>
+<ul>
+<li><strong>Fan-out</strong> (one trigger → many parallel actions) runs every branch.</li>
+<li><strong>Fan-in</strong> (many branches → one merged action) runs the converged node exactly once per flow — duplicate executions are deduplicated via a visited set.</li>
+</ul>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>    Trigger ──► Flag ────┐</span></span>
+<span class="giallo-l"><span>       │                 ├──► AddToFindings</span></span>
+<span class="giallo-l"><span>       └──► Notify ──────┘</span></span></code></pre>
+<p>Both <code>Flag</code> and <code>Notify</code> run, and <code>AddToFindings</code> runs once — not twice.</p>
+<h2 id="run-history-logs-pane"><a class="zola-anchor" href="#run-history-logs-pane" aria-label="Anchor link for: run-history-logs-pane">🔗</a>Run History (Logs Pane)</h2>
+<p>The toolbar Logs checkbox opens a wide table pane beneath the canvas showing every execution of the selected workflow. Columns:</p>
+<ul>
+<li><strong>Time</strong> — <code>YYYY-MM-DD HH:MM:SS</code></li>
+<li><strong>Source</strong> — <code>Passive</code> (auto-triggered on the flow stream) or <code>Manual</code> (one-shot Run)</li>
+<li><strong>Result</strong> — <code>OK</code> green badge or <code>Error</code> red badge</li>
+<li><strong>Triggers</strong> — <code>matched</code> or <code>skipped</code> (a manual run can skip trigger match and still execute)</li>
+<li><strong>Actions</strong> — number of action nodes executed in BFS order</li>
+<li><strong>Duration</strong> — wall time in ms</li>
+<li><strong>Flow</strong> — 8-char prefix of the flow UUID (click to jump back to Logger)</li>
+</ul>
+<p>Runs are stored in SQLite (<code>workflow_runs</code> table) so the history survives restarts. The pane refreshes live after every manual Run.</p>
+<h2 id="rest-api"><a class="zola-anchor" href="#rest-api" aria-label="Anchor link for: rest-api">🔗</a>REST API</h2>
+<p>Workflows expose five routes on the local Hugin API:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET    /api/workflows                   List all workflows (raw JSON from disk)</span></span>
+<span class="giallo-l"><span>GET    /api/workflows/{id}              Fetch one workflow</span></span>
+<span class="giallo-l"><span>POST   /api/workflows/{id}/validate     Validate graph structure</span></span>
+<span class="giallo-l"><span>POST   /api/workflows/{id}/run          Manual one-shot run against a flow</span></span>
+<span class="giallo-l"><span>GET    /api/workflows/{id}/runs         Execution history (newest first)</span></span></code></pre>
+<p>Run request body:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="json"><span class="giallo-l"><span style="color: #9CABCA;">{ &quot;</span><span style="color: #D27E99;">flow_id</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #98BB6C;"> &quot;c447a083-907c-4c8b-8520-dcb2635697c9&quot;</span><span style="color: #9CABCA;"> }</span></span></code></pre>
+<p>Run response:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="json"><span class="giallo-l"><span style="color: #9CABCA;">{</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">workflow_id</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #98BB6C;"> &quot;ec54bf71-405f-46e2-9c70-3a98ac985fd1&quot;</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">workflow_name</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #98BB6C;"> &quot;delivery-demo&quot;</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">flow_id</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #98BB6C;"> &quot;c447a083-907c-4c8b-8520-dcb2635697c9&quot;</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">triggers_matched</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #FFA066;"> true</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">actions_executed</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #D27E99;"> 3</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">run_count</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #D27E99;"> 1</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">}</span></span></code></pre>
+<p>The <code>/runs</code> endpoint accepts <code>?limit=N&amp;offset=N</code> query params for paging.</p>
 <h2 id="storage"><a class="zola-anchor" href="#storage" aria-label="Anchor link for: storage">🔗</a>Storage</h2>
-<p>Workflows are stored as JSON in the SQLite database under the active project. They survive across Hugin restarts and travel with <code>.huginproject</code> exports.</p>
+<p>All workflows live in a single file:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>~/.hugin/workflows.json</span></span></code></pre>
+<p>It’s a JSON array of workflow objects with <code>id</code>, <code>name</code>, <code>workflow_type</code>, <code>enabled</code>, <code>nodes[]</code>, <code>edges[]</code>, and <code>run_count</code>. Exports and imports are just this file. Run history is separate in SQLite (<code>workflow_runs</code> table).</p>
 <h2 id="mcp"><a class="zola-anchor" href="#mcp" aria-label="Anchor link for: mcp">🔗</a>MCP</h2>
 <p>The <code>workflows</code> MCP tool exposes 10 actions:</p>
 <ul>
@@ -1310,9 +1353,9 @@
 <li><code>duplicate</code></li>
 <li><code>run</code>, <code>test</code></li>
 </ul>
-<p>Scheduling a workflow on a cron / interval is handled by submitting it through the <a href="https://docs.hugin.nu/docs/automation/workflows/./scheduler.md">Scheduler</a>, not via a workflow-tool action.</p>
+<p>The same operations are also on REST (see above). Scheduling a workflow on a cron / interval is handled by submitting it through the <a href="https://docs.hugin.nu/docs/automation/workflows/./scheduler.md">Scheduler</a>, not via a workflow-tool action.</p>
 <h2 id="performance"><a class="zola-anchor" href="#performance" aria-label="Anchor link for: performance">🔗</a>Performance</h2>
-<p>Passive workflows run in a background task pool independent of the proxy hot path. A misbehaving workflow can’t slow request forwarding. RunShell and RunJavaScript actions have per-execution timeouts (default 30s for shell, 5s for JS). Workflows that exceed the timeout are killed and logged in <a href="../ui-views/events.md">Events</a>.</p>
+<p>Passive workflows run in a background task pool independent of the proxy hot path, capped at 16 concurrent evaluations by a semaphore. A misbehaving workflow can’t slow request forwarding. RunShell and RunJavaScript actions have per-execution timeouts (default 30s for shell, 5s for JS). Workflows that exceed the timeout are killed and logged in <a href="../ui-views/events.md">Events</a>.</p>
 
     </div>
 
@@ -1440,6 +1483,27 @@
                 <li class="page-toc-panel__item">
                     <a href="#sample-workflows" class="page-toc-panel__link">
                         Sample Workflows
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#execution-order" class="page-toc-panel__link">
+                        Execution Order
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#run-history-logs-pane" class="page-toc-panel__link">
+                        Run History (Logs Pane)
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#rest-api" class="page-toc-panel__link">
+                        REST API
                     </a>
                     
                 </li>

@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 5236,
+                "wordCount": 5342,
                 
                 "inLanguage": "en"
             }
@@ -1394,6 +1394,9 @@
 <span class="giallo-l"><span>orchestrate(action: &quot;explore_cancel&quot;, session_id: &quot;...&quot;)</span></span>
 <span class="giallo-l"><span>orchestrate(action: &quot;explore_approve&quot;, session_id: &quot;...&quot;, step_index: 3)</span></span>
 <span class="giallo-l"><span>orchestrate(action: &quot;explore_reject&quot;, session_id: &quot;...&quot;, step_index: 3, reason: &quot;Out of scope&quot;)</span></span></code></pre>
+<p>Purge a terminated session from history (removes it from memory and deletes the on-disk record at <code>~/.config/hugin/orchestration/sessions/{id}.json</code>):</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;explore_delete&quot;, session_id: &quot;...&quot;)</span></span></code></pre>
+<p><code>explore_delete</code> is a history-purge for completed / cancelled / errored sessions. If you want to stop a running session, call <code>explore_cancel</code> first – <code>explore_delete</code> does not abort live tasks as a side effect.</p>
 <p>Approval policies:</p>
 <ul>
 <li><code>none</code> – fully autonomous, no human checkpoints</li>
@@ -1475,6 +1478,7 @@
 <p>Actions: <code>list</code>, <code>get</code>, <code>create</code>, <code>update</code>, <code>delete</code>, <code>add_flow</code>, <code>add_raw</code>, <code>remove_item</code>, <code>reorder</code>, <code>annotate_item</code>, <code>export</code>, <code>import</code>, <code>duplicate</code>, <code>share</code></p>
 <p><strong>scheduler</strong> – Manage scheduled scan jobs: list, create, update, delete, trigger, and view run history.</p>
 <p><strong>workflows</strong> – Manage event-driven workflows with graph-based node pipelines. 17 actions: CRUD, validate (cycle detection), run/test, schedule/unschedule (cron/interval). Action types include Scan (wired to ScanExecutor), RunJavaScript (Node.js/Deno), RunShell, Flag, Repeat, AddToFindings, SendNotification, and 10 encoding/transform operations. Inter-node data passing via <code>{{template}}</code> syntax. Passive engine auto-triggers on live traffic; scheduler executes on cron/interval.</p>
+<p>The same operations are also exposed as REST routes for curl/scripting: <code>GET /api/workflows</code>, <code>GET /api/workflows/{id}</code>, <code>POST /api/workflows/{id}/validate</code>, <code>POST /api/workflows/{id}/run</code> (body: <code>{"flow_id": "..."}</code>), and <code>GET /api/workflows/{id}/runs</code> for execution history. See the <a href="../../automation/workflows/">Workflows chapter</a> for the full catalog and semantics.</p>
 <hr />
 <h3 id="rules-and-filters-3-tools"><a class="zola-anchor" href="#rules-and-filters-3-tools" aria-label="Anchor link for: rules-and-filters-3-tools">🔗</a>Rules and Filters (3 tools)</h3>
 <p><strong>rules</strong> – Manage intercept rules for request/response filtering and actions. Rules can match by host, path, method, headers, body content.</p>

@@ -140,7 +140,7 @@
                 },
                 
                 
-                "wordCount": 280,
+                "wordCount": 750,
                 
                 "inLanguage": "en"
             }
@@ -1247,6 +1247,40 @@
 <li>Disk persistent (<code>~/.hugin/cache/</code>)</li>
 <li>Provider-level (Anthropic cache_control, OpenAI prefix caching)</li>
 </ol>
+<h2 id="agents-tab-mcp-activity"><a class="zola-anchor" href="#agents-tab-mcp-activity" aria-label="Anchor link for: agents-tab-mcp-activity">🔗</a>Agents Tab (MCP Activity)</h2>
+<p>Running agent sessions are monitored from the <strong>MCP Activity -&gt; Agents</strong> sub-tab. The tab renders a two-pane split: a filtered session list on the left, a grouped detail view on the right. Both panes share a single recessed <code>bg-secondary</code> surface so the split reads as one pane.</p>
+<h3 id="session-list"><a class="zola-anchor" href="#session-list" aria-label="Anchor link for: session-list">🔗</a>Session List</h3>
+<p>Filter tabs at the top: <code>All</code>, <code>Active</code>, <code>Explore</code>, <code>Auto</code> – each carries a live count badge. Active sessions sort first (still running), then all sessions by <code>updated_at</code> descending so recent activity stays on top.</p>
+<p>Every row shows:</p>
+<ul>
+<li>Kind badge (<code>explore</code> blue / <code>auto</code> orange)</li>
+<li>Task label – ellipsised with a tooltip for long strings</li>
+<li>State badge – <code>planning</code> / <code>running</code> / <code>paused</code> / <code>completed</code> / <code>error</code> / <code>cancelled</code></li>
+<li>Relative timestamp – <code>just now</code> / <code>2m ago</code> / <code>3h ago</code> / <code>18h ago</code> with a dot separator</li>
+<li>Step count and token total</li>
+</ul>
+<p>Toolbar controls:</p>
+<ul>
+<li><code>N of M</code> counter – reports how many sessions the active filter hides</li>
+<li><strong>Export JSON</strong> – copies the filtered set (id, kind, state, label, steps, tokens, cost, updated_at)</li>
+<li><strong>Clear terminated (N)</strong> – two-click confirm that deletes every terminated session in one batch</li>
+</ul>
+<h3 id="session-detail"><a class="zola-anchor" href="#session-detail" aria-label="Anchor link for: session-detail">🔗</a>Session Detail</h3>
+<p>The detail pane is organized into four labelled 26 px section headers:</p>
+<p><strong>SESSION</strong> – kind badge, task label, state badge.</p>
+<p><strong>METRICS</strong> – budget pills with colour that shifts as the run approaches its limit: <code>Default -&gt; Warning (60%) -&gt; Error (90%)</code>. A thin progress bar next to the Steps pill shows consumption ratio. Step-kind distribution chips below the pills (<code>N reasoning / N tool / N checkpoint / N error</code>) are clickable shortcuts that pre-fill the step filter.</p>
+<p><strong>ACTIONS</strong> – icon-only controls:</p>
+<ul>
+<li>Red trash (<code>Cancel session</code> for active runs, <code>Delete session</code> for terminated)</li>
+<li>Gray copy (<code>Copy session as JSON</code>)</li>
+</ul>
+<p>Active Explore sessions additionally get text <code>Pause</code> / <code>Resume</code> buttons. Active Auto sessions get <code>Cancel</code> only.</p>
+<p><strong>STEPS N</strong> – header with live step count. Below it sits a text filter (<code>Filter steps (tool name, text, error)...</code>) with case-insensitive substring match over the step kind plus serialized body. When the filter hides rows, a hint bar reports <code>M matching, K hidden</code>. Clearing the filter restores the full log.</p>
+<p>Every step row carries its own <code>Copy</code> icon in the right edge of the header (Ghost variant). Tool-call steps also render a <strong>View flow</strong> link when the tool’s result carries a <code>flow_id</code> / <code>flow.id</code> / <code>flows[0].id</code> – clicking jumps to the flow in Logger.</p>
+<p>The step log auto-scrolls to the bottom when new steps arrive, so a live session stays tracking without manual scrolling. The browser’s scroll-anchoring keeps user-initiated upward scrolling intact.</p>
+<h3 id="session-persistence"><a class="zola-anchor" href="#session-persistence" aria-label="Anchor link for: session-persistence">🔗</a>Session Persistence</h3>
+<p>Explore sessions persist to <code>~/.config/hugin/orchestration/sessions/{uuid}.json</code> so the history survives restarts. The <code>session_status</code> path falls back to disk when a session ID isn’t in memory, so clicking a persisted session after a restart still renders the full step log.</p>
+<p>Auto-mode sessions follow the same persistence pattern with their own checkpoint files.</p>
 
     </div>
 
@@ -1354,6 +1388,35 @@
                     <a href="#5-tier-cache" class="page-toc-panel__link">
                         5-Tier Cache
                     </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#agents-tab-mcp-activity" class="page-toc-panel__link">
+                        Agents Tab (MCP Activity)
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#session-list" class="page-toc-panel__link">
+                                Session List
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#session-detail" class="page-toc-panel__link">
+                                Session Detail
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#session-persistence" class="page-toc-panel__link">
+                                Session Persistence
+                            </a>
+                        </li>
+                        
+                    </ul>
                     
                 </li>
                 
