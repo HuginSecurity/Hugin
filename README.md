@@ -31,7 +31,8 @@ All binaries are **Ed25519 signed**. Verify before running.
 Hugin is a security proxy built for bug bounty hunters and penetration testers. It gives you everything you need to start hunting on day 1 — free, with no account required.
 
 **Community (free, forever):**
-- MITM Proxy (HTTP/1.1, HTTP/2, WebSocket)
+- MITM Proxy (HTTP/1.1, HTTP/2, WebSocket) with HTTP/3 detection (Alt-Svc tagging)
+- HTTP/3 outbound client — Repeater and MCP can send QUIC requests, probe Alt-Svc, fingerprint QUIC implementations (full HTTP/3 MITM landing in v0.2.0)
 - Active Scanner (42 checks: SSRF, SQLi, SSTI, XSS, JWT, LDAP, BOLA, path traversal, HTTP smuggling, race conditions, prototype pollution, cache poisoning, and more)
 - Passive Scanner (36 checks: security headers, TLS, CSP, CORS, info disclosure, DOM XSS sources, stack traces, and more)
 - Intruder (20 payload types, 15 processing rules, grep match/extract)
