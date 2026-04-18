@@ -18,19 +18,27 @@
 
 ---
 
+## 🎉 v0.1.0 is live
+
+The first public release is out. [Download for your platform below](#download) or grab it from the [Releases page](../../releases/tag/v0.1.0).
+
+All binaries are **Ed25519 signed**. Verify before running.
+
+---
+
 ## What is Hugin?
 
 Hugin is a security proxy built for bug bounty hunters and penetration testers. It gives you everything you need to start hunting on day 1 — free, with no account required.
 
 **Community (free, forever):**
 - MITM Proxy (HTTP/1.1, HTTP/2, WebSocket)
-- Active Scanner (43 checks: SSRF, SQLi, SSTI, XSS, JWT, LDAP, BOLA, path traversal, smuggling, and more)
-- Passive Scanner
-- Intruder (fuzzer with payload generators, processors, grep matching)
+- Active Scanner (42 checks: SSRF, SQLi, SSTI, XSS, JWT, LDAP, BOLA, path traversal, HTTP smuggling, race conditions, prototype pollution, cache poisoning, and more)
+- Passive Scanner (36 checks: security headers, TLS, CSP, CORS, info disclosure, DOM XSS sources, stack traces, and more)
+- Intruder (20 payload types, 15 processing rules, grep match/extract)
 - Repeater
 - Sequencer, Decoder, Comparer, Site Map
 - Scriptable UI automation (navigate views, select flows, switch panes, highlight, screenshot — all from MCP)
-- 128 MCP tools (connect Claude, Cursor, or any MCP-compatible AI agent)
+- 130+ MCP tools (connect Claude, Cursor, or any MCP-compatible AI agent)
 
 **Pro (5 EUR/month — for everyone):**
 - Race condition engine (60+ modules, single-packet, last-byte sync)
@@ -62,15 +70,25 @@ Claim yours at [hugin.nu/students](https://hugin.nu/students).
 
 ## Download
 
-Download the latest release for your platform:
+Latest release: **[v0.1.0](../../releases/tag/v0.1.0)** (2026-04-18)
 
-| Platform | Architecture |
-|----------|-------------|
-| macOS | Apple Silicon (aarch64), Intel (x86_64) |
-| Linux | x86_64, aarch64 |
-| Windows | x86_64 |
+**macOS**
+- [Apple Silicon (.dmg)](../../releases/download/v0.1.0/hugin-desktop-darwin-aarch64.dmg)
+- [Intel (.dmg)](../../releases/download/v0.1.0/hugin-desktop-darwin-x86_64.dmg)
+- CLI only: [aarch64](../../releases/download/v0.1.0/hugin-cli-darwin-aarch64.tar.gz) · [x86_64](../../releases/download/v0.1.0/hugin-cli-darwin-x86_64.tar.gz)
 
-All binaries are **Ed25519 signed**. Verify downloads at [hugin.nu/verify](https://hugin.nu/verify).
+**Linux (x86_64)**
+- [AppImage](../../releases/download/v0.1.0/hugin-desktop-linux-x86_64.AppImage) — chmod +x and run, any distro
+- [.deb](../../releases/download/v0.1.0/hugin-desktop-linux-x86_64.deb) — Debian/Ubuntu
+- [Tarball](../../releases/download/v0.1.0/hugin-desktop-linux-x86_64.tar.gz) — portable
+- CLI only: [tarball](../../releases/download/v0.1.0/hugin-cli-linux-x86_64.tar.gz)
+
+**Coming in v0.1.1**
+- Linux aarch64
+- Windows x86_64
+
+All binaries are **Ed25519 signed**. Verify with `hugin verify <file>` or at [hugin.nu/verify](https://hugin.nu/verify).
+Public key: `a61ff9262c4509a7879ddaa5a8d86345ef805f6ddced28b097bf58dae270618b`
 
 ## Privacy
 
