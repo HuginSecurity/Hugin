@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <script>
+    (function(){var s='auto';try{s=localStorage.getItem('tanuki-theme')||'auto'}catch(e){}
+    var t=s==='auto'?(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):s;
+    document.documentElement.setAttribute('data-theme',t);
+    document.documentElement.setAttribute('data-theme-setting',s)})();
+    </script>
+
+    
+    <title>MCP Integration | Hugin Documentation</title>
+
+    
+    
+    <meta name="description" content="Security intercepting proxy for web application penetration testing">
+    
+
+    
+    
+
+    
+    
+
+    
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    
+    
+    <link rel="canonical" href="https://docs.hugin.nu/docs/extensibility/mcp/">
+    <link rel="alternate" hreflang="en" href="https://docs.hugin.nu/docs/extensibility/mcp/">
+    <link rel="alternate" hreflang="x-default" href="https://docs.hugin.nu/docs/extensibility/mcp/">
+    
+
+    
+    <meta property="og:type" content="article">
+    
+    <meta property="og:url" content="https://docs.hugin.nu/docs/extensibility/mcp/">
+    
+    
+    <meta property="og:title" content="MCP Integration">
+    
+    
+    <meta property="og:description" content="">
+    
+    
+    <meta property="og:site_name" content="Hugin Documentation">
+    <meta property="og:locale" content="en">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:url" content="https://docs.hugin.nu/docs/extensibility/mcp/">
+    
+    
+    <meta name="twitter:title" content="MCP Integration">
+    
+    
+    <meta name="twitter:description" content="">
+    
+    
+    
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://docs.hugin.nu/docs#website",
+                "url": "https://docs.hugin.nu/docs",
+                "name": "Hugin Documentation",
+                "description": "Security intercepting proxy for web application penetration testing",
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "inLanguage": "en",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://docs.hugin.nu/docs?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://zentinelproxy.io/#organization",
+                "name": "raskell.io",
+                "url": "https://zentinelproxy.io",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://zentinelproxy.io/img/og-image.png",
+                    "width": 1200,
+                    "height": 630
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://docs.hugin.nu/docs/extensibility/mcp/#webpage",
+                "url": "https://docs.hugin.nu/docs/extensibility/mcp/",
+                "name": "MCP Integration",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs#website"
+                },
+                "description": "",
+                "inLanguage": "en"
+                
+                
+            }
+            
+            ,{
+                "@type": "Article",
+                "@id": "https://docs.hugin.nu/docs/extensibility/mcp/#article",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs/extensibility/mcp/#webpage"
+                },
+                "headline": "MCP Integration",
+                
+                
+                
+                "author": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                
+                
+                "wordCount": 5756,
+                
+                "inLanguage": "en"
+            }
+            
+        ]
+    }
+    </script>
+
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hugin Documentation",
+                "item": "https://docs.hugin.nu/docs"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Hugin",
+                "item": "https://docs.hugin.nu/docs/"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Extensibility",
+                "item": "https://docs.hugin.nu/docs/extensibility/"
+            }
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 4,
+                "name": "MCP Integration",
+                "item": "https://docs.hugin.nu/docs/extensibility/mcp/"
+            }
+        ]
+    }
+    </script>
+    
+
+    
+    <link rel="stylesheet" href="https://docs.hugin.nu/docs/style.css">
+
+    
+    
+
+    
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('tanuki-theme') || 'auto';
+                var theme = stored === 'auto'
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : stored;
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme-setting', stored);
+            } catch(e) {}
+        })();
+    </script>
+    
+
+    
+</head>
+<body class="page-mcp">
+    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+        
+    
+
+    
+    <div class="layout layout--docs layout--fixed-header" data-mode="docs">
+        
+
+
+<aside id="sidebar" class="sidebar" role="complementary" aria-labelledby="sidebar-title">
+    
+    <div class="sidebar__resize-handle" aria-hidden="true" title="Drag to resize sidebar width"></div>
+
+    <div class="sidebar__header">
+        <span id="sidebar-title" class="sidebar__title">Table of contents</span>
+        <button class="sidebar__close" type="button" aria-label="Close sidebar" title="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18"/>
+                <path d="m6 6 12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <nav class="sidebar__content" aria-label="Documentation navigation">
+        <div class="toc">
+            
+            
+
+            
+
+            
+
+            
+            
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/getting-started/" class="toc__section-title ">Getting Started</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/installation/" class="toc__link ">
+                            Installation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/first-run/" class="toc__link ">
+                            First Run
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/browser-setup/" class="toc__link ">
+                            Browser Setup
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/configuration/" class="toc__link ">
+                            Configuration
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/core/" class="toc__section-title ">Core Tools</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/proxy/" class="toc__link ">
+                            Proxy
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept/" class="toc__link ">
+                            Intercept
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/repeater/" class="toc__link ">
+                            Repeater
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intruder/" class="toc__link ">
+                            Intruder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/sequencer/" class="toc__link ">
+                            Sequencer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/decoder/" class="toc__link ">
+                            Decoder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/comparer/" class="toc__link ">
+                            Comparer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/findings/" class="toc__link ">
+                            Findings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/match-replace/" class="toc__link ">
+                            Match &amp; Replace
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/session-rules/" class="toc__link ">
+                            Session Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept-rules/" class="toc__link ">
+                            Intercept Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/websocket/" class="toc__link ">
+                            WebSocket
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ui-views/" class="toc__section-title ">UI Views</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/dashboard/" class="toc__link ">
+                            Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/logger/" class="toc__link ">
+                            HTTP History (Logger)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/projects/" class="toc__link ">
+                            Projects
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/sitemap/" class="toc__link ">
+                            Sitemap
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/search/" class="toc__link ">
+                            Search
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/settings/" class="toc__link ">
+                            Settings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/cookie-jar/" class="toc__link ">
+                            Cookie Jar
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/organizer/" class="toc__link ">
+                            Organizer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/exports/" class="toc__link ">
+                            Exports
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/environment/" class="toc__link ">
+                            Environment
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/events/" class="toc__link ">
+                            Events
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/files/" class="toc__link ">
+                            Files (Hosted Files)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/tools/" class="toc__link ">
+                            Tools (External Tool Registry)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/authorize/" class="toc__link ">
+                            Authorize (BAC)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/scanning/" class="toc__section-title ">Scanning</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/builtin-scanner/" class="toc__link ">
+                            Built-in Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/synaps/" class="toc__link ">
+                            Synaps Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/module-development/" class="toc__link ">
+                            Module Development
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/community-modules/" class="toc__link ">
+                            Community Modules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/vurl/" class="toc__link ">
+                            vurl-offensive (Active Hunting)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/authz/" class="toc__link ">
+                            Authorization Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/bac/" class="toc__link ">
+                            BAC — Broken Access Control Pipeline
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/cors/" class="toc__link ">
+                            CORS Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/upload/" class="toc__link ">
+                            File Upload Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/scan-optimizer/" class="toc__link ">
+                            Scan Optimizer
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/automation/" class="toc__section-title ">Automation</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/workflows/" class="toc__link ">
+                            Workflows
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/campaigns/" class="toc__link ">
+                            Campaigns
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/scheduler/" class="toc__link ">
+                            Scheduler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/macros/" class="toc__link ">
+                            Macros
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/recon/" class="toc__section-title ">Recon</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/assets/" class="toc__link ">
+                            Recon — Assets
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/param-discover/" class="toc__link ">
+                            Param Discover
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/ffuzzer/" class="toc__link ">
+                            FFuzzer (FUZZ keyword fuzzer)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/wordlists/" class="toc__link ">
+                            Wordlists
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/intelligence/" class="toc__section-title ">Intelligence</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/nerve/" class="toc__link ">
+                            Nerve — Passive Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/crawler/" class="toc__link ">
+                            Crawler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/ratrace/" class="toc__link ">
+                            RatRace — Race Conditions
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/oastify/" class="toc__link ">
+                            Oastify — OOB Detection
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/intelligence/" class="toc__link ">
+                            Intelligence (Cross-Flow Analysis)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/flow-analysis/" class="toc__link ">
+                            Flow Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/fingerprint/" class="toc__link ">
+                            Fingerprint
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ai/" class="toc__section-title ">AI &amp; Orchestration</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/assistant/" class="toc__link ">
+                            AI Assistant
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/orchestration/" class="toc__link ">
+                            Orchestration Engine
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/browser-automation/" class="toc__link ">
+                            Browser Automation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/taint-analysis/" class="toc__link ">
+                            Taint Analysis
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/plugins/" class="toc__section-title ">Plugins</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/discovery/" class="toc__link ">
+                            Discovery
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/yeswehugin/" class="toc__link ">
+                            YesWeHugin
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/collaboration/" class="toc__link ">
+                            Collaboration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/mobile/" class="toc__link ">
+                            Mobile (APK &#x2F; IPA + Frida)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/hackerone/" class="toc__link ">
+                            HackerOne
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/platforms/" class="toc__link ">
+                            Platforms (Unified BB Manager)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/extensibility/" class="toc__section-title ">Extensibility</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/lua-plugins/" class="toc__link ">
+                            Lua Plugins
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/mcp/" class="toc__link active">
+                            MCP Integration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugin-sdk/" class="toc__link ">
+                            Plugin SDK
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugins-ui/" class="toc__link ">
+                            Plugins UI
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/bambda/" class="toc__link ">
+                            Bambda (Inline Lua Filters)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/api/" class="toc__section-title ">API</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rest/" class="toc__link ">
+                            REST API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/graphql/" class="toc__link ">
+                            GraphQL API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/authentication/" class="toc__link ">
+                            Authentication
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rbac/" class="toc__link ">
+                            RBAC (Role-Based Access Control)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/operations/" class="toc__section-title ">Operations</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/release-signing/" class="toc__link ">
+                            Release Signing
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/license/" class="toc__link ">
+                            License &amp; Trial
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/backups/" class="toc__link ">
+                            Backup &amp; Restore
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/updates/" class="toc__link ">
+                            Updates &amp; Channels
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/browser-engines/" class="toc__link ">
+                            Browser Engines
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/reference/" class="toc__section-title ">Reference</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/cli/" class="toc__link ">
+                            CLI Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/configuration/" class="toc__link ">
+                            Configuration Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/architecture/" class="toc__link ">
+                            Architecture
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/telemetry/" class="toc__link ">
+                            Telemetry
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/changelog/" class="toc__link ">
+                            Changelog
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+    </nav>
+
+    <div class="sidebar__footer">
+        
+        <div class="sidebar__actions-mobile">
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Version</span>
+                <div class="sidebar__version">
+                    <span class="sidebar__version-current">v0.1.0</span>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Theme</span>
+                
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            </div>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="sidebar__github" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub (opens in new tab)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                <span>View on GitHub</span>
+            </a>
+            
+        </div>
+
+        
+        <a href="https://docs.hugin.nu/docs/print?auto=true" class="print-button" target="_blank" rel="noopener" aria-label="Print all documentation pages (opens print dialog)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect width="12" height="8" x="6" y="14"/>
+            </svg>
+            <span>Print all pages</span>
+        </a>
+    </div>
+</aside>
+
+
+
+
+        <div class="layout__main">
+            
+            
+
+
+
+
+<header class="header" role="banner">
+    <div class="header__left">
+        
+        
+        <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar navigation" aria-expanded="true" aria-controls="sidebar" title="Toggle sidebar">
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m14 9 3 3-3 3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+        <button class="toc-toggle toc-toggle--docs" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="sidebar" title="Table of contents">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+
+        
+        
+
+        
+        <a href="https://docs.hugin.nu/docs" class="header__logo" aria-label="Hugin Documentation - Go to homepage">
+            
+            
+            
+            <img src="https://docs.hugin.nu/docs/img/hugin-logo.png" alt="" aria-hidden="true">
+            
+            <span>Hugin Documentation</span>
+        </a>
+    </div>
+
+    
+    <nav class="header__nav" role="navigation" aria-label="Main navigation">
+        
+    </nav>
+
+    
+    <div class="header__actions" role="group" aria-label="Site actions">
+        
+        
+        <button class="search-toggle" type="button" aria-label="Open search dialog" aria-keyshortcuts="/" aria-haspopup="dialog" title="Search (press /)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+            </svg>
+        </button>
+        
+
+        
+        <div class="header__actions-desktop">
+            
+            
+            
+
+
+
+<div class="version-picker">
+    <button class="version-picker__button" aria-haspopup="listbox" aria-expanded="false">
+        <span>v0.1.0</span>
+        
+        
+        <span class="version-picker__badge">latest</span>
+        
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </button>
+
+    <div class="version-picker__dropdown" role="listbox">
+        
+        <a href="/docs/" class="version-picker__item active" role="option">
+            v0.1.0
+            
+            <span class="version-picker__badge">latest</span>
+            
+        </a>
+        
+        <hr class="version-picker__divider">
+        <a href="https://docs.hugin.nu/docs/appendix/versioning" class="version-picker__item version-picker__item--link">
+            All versions
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+
+            
+
+            
+            
+            
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin&#x2F;edit&#x2F;main&#x2F;docs&#x2F;zola&#x2F;content/extensibility&#x2F;mcp.md" class="btn btn--icon btn--ghost" aria-label="Edit this page on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="Edit this page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    <path d="m15 5 4 4"/>
+                </svg>
+            </a>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="btn btn--icon btn--ghost" aria-label="View project on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+
+            
+
+            
+            
+            <div class="scroll-progress" aria-hidden="true">
+                <div class="scroll-progress__bar"></div>
+                <span class="scroll-progress__percent">0%</span>
+            </div>
+            
+
+            
+
+
+
+
+
+    
+
+
+    
+
+
+<nav class="nav-buttons" aria-label="Page navigation">
+    
+    
+    <a href="https://docs.hugin.nu/docs/extensibility/lua-plugins/" class="nav-button nav-button--prev" aria-label="Previous: Lua Plugins">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+        </svg>
+        <span class="nav-button__label">
+            Lua Plugins
+            <span class="nav-button__shortcut">←</span>
+        </span>
+    </a>
+    
+
+    
+    
+    <a href="https://docs.hugin.nu/docs/extensibility/plugin-sdk/" class="nav-button nav-button--next" aria-label="Next: Plugin SDK">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+        </svg>
+        <span class="nav-button__label">
+            Plugin SDK
+            <span class="nav-button__shortcut">→</span>
+        </span>
+    </a>
+    
+</nav>
+
+
+
+
+            <div class="layout__content-area">
+                <main id="main-content" class="main-content" role="main" aria-label="Main content">
+                    
+
+
+<article class="article" itemscope itemtype="https://schema.org/Article" aria-labelledby="article-title">
+    
+    <header class="article__header article__header--docs">
+        <h1 id="article-title" itemprop="headline">MCP Integration</h1>
+        
+    </header>
+
+    <div class="article__content" itemprop="articleBody">
+        <p>Hugin ships a built-in <a rel="external" href="https://modelcontextprotocol.io/">Model Context Protocol</a> (MCP) server that exposes 87 built-in tools (and ~47 more from optional dynamic plugins, ~134 total) to AI assistants, including an autonomous AI orchestration engine with 30+ actions for LLM-driven security testing. This is the primary interface for using Hugin with Claude Code, Claude Desktop, and any other MCP-compatible client.</p>
+<p>The MCP server runs in-process and shares state directly with the proxy engine via <code>Arc&lt;AppState&gt;</code> – zero HTTP overhead, zero serialization boundaries. Every tool call goes through the same service layer the GUI and REST API use.</p>
+<h2 id="setup"><a class="zola-anchor" href="#setup" aria-label="Anchor link for: setup">🔗</a>Setup</h2>
+<h3 id="claude-code"><a class="zola-anchor" href="#claude-code" aria-label="Anchor link for: claude-code">🔗</a>Claude Code</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7AA89F;">claude</span><span style="color: #98BB6C;"> mcp add hugin -- hugin mcp</span></span></code></pre>
+<p>Or add to your <code>.mcp.json</code>:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="json"><span class="giallo-l"><span style="color: #9CABCA;">{</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">mcpServers</span><span style="color: #9CABCA;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">    &quot;</span><span style="color: #E6C384;">hugin</span><span style="color: #9CABCA;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">      &quot;</span><span style="color: #FFA066;">command</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #98BB6C;"> &quot;hugin&quot;</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">      &quot;</span><span style="color: #FFA066;">args</span><span style="color: #9CABCA;">&quot;: [</span><span style="color: #98BB6C;">&quot;mcp&quot;</span><span style="color: #9CABCA;">]</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">    }</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  }</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">}</span></span></code></pre><h3 id="claude-desktop"><a class="zola-anchor" href="#claude-desktop" aria-label="Anchor link for: claude-desktop">🔗</a>Claude Desktop</h3>
+<p>Add to <code>claude_desktop_config.json</code> (macOS: <code>~/Library/Application Support/Claude/</code>, Linux: <code>~/.config/Claude/</code>):</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="json"><span class="giallo-l"><span style="color: #9CABCA;">{</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  &quot;</span><span style="color: #D27E99;">mcpServers</span><span style="color: #9CABCA;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">    &quot;</span><span style="color: #E6C384;">hugin</span><span style="color: #9CABCA;">&quot;: {</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">      &quot;</span><span style="color: #FFA066;">command</span><span style="color: #9CABCA;">&quot;:</span><span style="color: #98BB6C;"> &quot;hugin&quot;</span><span style="color: #9CABCA;">,</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">      &quot;</span><span style="color: #FFA066;">args</span><span style="color: #9CABCA;">&quot;: [</span><span style="color: #98BB6C;">&quot;mcp&quot;</span><span style="color: #9CABCA;">]</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">    }</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">  }</span></span>
+<span class="giallo-l"><span style="color: #9CABCA;">}</span></span></code></pre><h3 id="standalone-mode"><a class="zola-anchor" href="#standalone-mode" aria-label="Anchor link for: standalone-mode">🔗</a>Standalone Mode</h3>
+<p>The MCP server can also be started alongside the proxy:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7AA89F;">hugin</span><span style="color: #98BB6C;"> start --mcp</span></span></code></pre>
+<p>Or as a standalone process:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7AA89F;">hugin</span><span style="color: #98BB6C;"> mcp</span></span></code></pre>
+<p>In standalone mode, the MCP server starts its own proxy and API internally. No separate <code>hugin start</code> is needed.</p>
+<h2 id="architecture"><a class="zola-anchor" href="#architecture" aria-label="Anchor link for: architecture">🔗</a>Architecture</h2>
+<p>The MCP server (<code>hugin-mcp</code> crate) uses the <a rel="external" href="https://crates.io/crates/rmcp">rmcp</a> library and communicates over stdio (stdin/stdout). It has direct access to:</p>
+<ul>
+<li><code>HuginService</code> – business logic layer (flows, scanner, intruder, etc.)</li>
+<li><code>HuginStore</code> – SQLite persistence</li>
+<li><code>BrowserMap</code> – CDP/Marionette browser automation</li>
+<li><code>ScanExecutor</code> – vulnerability scanner engine</li>
+<li>All vurl offensive modules (Pro license)</li>
+</ul>
+<p>Responses are automatically capped at 12,000 characters to prevent context window overflow. Large bodies are truncated with size indicators by default (use <code>include_body=true</code> for full content).</p>
+<p>Flow IDs accept both full UUIDs and short prefixes (minimum 4 characters), similar to git short hashes.</p>
+<h2 id="license-tiers"><a class="zola-anchor" href="#license-tiers" aria-label="Anchor link for: license-tiers">🔗</a>License Tiers</h2>
+<ul>
+<li><strong>Community (free):</strong> 87 built-in tools compiled into the <code>hugin</code> binary — proxy control, flow management, scanning, intruder, repeater, decoder, sequencer, UI automation, browser automation, intelligence, and more.</li>
+<li><strong>Pro (paid):</strong> Two dynamic MCP plugins — <code>synaps</code> (WASM scanner) and <code>vurl-offensive</code> (~46 specialized hunting tools). Drop the <code>.dylib</code> / <code>.so</code> / <code>.dll</code> into <code>~/.hugin/plugins/</code> to load.</li>
+</ul>
+<h2 id="tool-reference"><a class="zola-anchor" href="#tool-reference" aria-label="Anchor link for: tool-reference">🔗</a>Tool Reference</h2>
+<p>All MCP tools grouped by category. Each tool uses an <code>action</code> parameter to select the operation.</p>
+<hr />
+<h3 id="flow-management-4-tools"><a class="zola-anchor" href="#flow-management-4-tools" aria-label="Anchor link for: flow-management-4-tools">🔗</a>Flow Management (4 tools)</h3>
+<p><strong>list_flows</strong> – List captured HTTP flows with optional filters for method, host, URL, status code, and flagged state.</p>
+<p>Parameters: <code>method</code>, <code>host</code>, <code>url_contains</code>, <code>status_code</code>, <code>flagged</code>, <code>limit</code>, <code>offset</code></p>
+<p><strong>get_flow</strong> – Get full details of a captured HTTP flow including request, response, headers, body, and persisted intelligence (nerve findings, client-side findings, response intel). Bodies are truncated by default – use <code>include_body=true</code> for full bodies. Accepts full UUIDs or short prefixes (&gt;= 4 chars).</p>
+<p>Parameters: <code>id</code>, <code>include_body</code>, <code>max_body_bytes</code></p>
+<p><strong>search_flows</strong> – Search/list captured flows. Provide query to filter by URL text, or omit to list all flows.</p>
+<p>Parameters: <code>query</code>, <code>limit</code></p>
+<p><strong>annotate_flow</strong> – Annotate a flow: flag, unflag, highlight, comment, or delete.</p>
+<p>Parameters: <code>id</code>, <code>action</code> (flag, unflag, highlight, comment, delete), <code>comment</code>, <code>color</code></p>
+<hr />
+<h3 id="proxy-control-3-tools"><a class="zola-anchor" href="#proxy-control-3-tools" aria-label="Anchor link for: proxy-control-3-tools">🔗</a>Proxy Control (3 tools)</h3>
+<p><strong>intercept</strong> – MITM intercept control: intercept, inspect, modify, forward or drop HTTP requests and responses in real time. Also controls flow recording (history capture).</p>
+<p>Actions: <code>status</code>, <code>toggle</code>, <code>recording</code>, <code>list</code>, <code>get</code>, <code>forward</code>, <code>drop</code>, <code>forward_all</code>, <code>drop_all</code>, <code>responses</code>, <code>response_get</code>, <code>response_forward</code>, <code>response_drop</code>, <code>responses_forward_all</code>, <code>responses_drop_all</code></p>
+<p><strong>scope</strong> – Proxy scope management: control which hosts/URLs are captured.</p>
+<p>Actions: <code>get</code>, <code>set_mode</code> (CaptureAll/InScopeOnly/OutOfScopeOnly/CaptureAllTagOOS), <code>add_pattern</code>, <code>remove_pattern</code>, <code>update</code>, <code>export</code>, <code>import</code>, <code>save_preset</code>, <code>load_preset</code>, <code>list_presets</code>, <code>delete_preset</code>, <code>from_sitemap</code></p>
+<p><strong>infra</strong> – Proxy infrastructure info and tunnel management.</p>
+<p>Actions: <code>health</code>, <code>status</code>, <code>ca_cert</code>, <code>tunnel_list</code>, <code>tunnel_add</code>, <code>tunnel_remove</code></p>
+<hr />
+<h3 id="request-replay-2-tools"><a class="zola-anchor" href="#request-replay-2-tools" aria-label="Anchor link for: request-replay-2-tools">🔗</a>Request Replay (2 tools)</h3>
+<p><strong>repeater</strong> – HTTP request repeater: replay requests with optional modifications. Set <code>browser_port</code> to route through a running browser’s JS <code>fetch()</code> for a real browser TLS fingerprint (JA3/JA4) inherited from the live session.</p>
+<p>Actions: <code>send</code>, <code>history</code>, <code>queue</code>, <code>queue_status</code>, <code>raw_send</code>, <code>batch_raw_send</code>, <code>repeat</code>, <code>repeat_flow</code>, <code>batch_send</code>, <code>list_queue</code>, <code>cancel</code>, <code>clear_queue</code>, <code>proxy_status</code>, <code>compare</code></p>
+<p><strong>comparer</strong> – Response comparer: compare HTTP responses for blind vulnerability detection.</p>
+<p>Actions: <code>compare</code>, <code>blind_detect</code>, <code>similarity</code></p>
+<hr />
+<h3 id="vulnerability-scanning-12-tools"><a class="zola-anchor" href="#vulnerability-scanning-12-tools" aria-label="Anchor link for: vulnerability-scanning-12-tools">🔗</a>Vulnerability Scanning (12 tools)</h3>
+<p><strong>scanner</strong> – Active vulnerability scanner: scan flows for security issues (SQLi, XSS, SSRF, etc.).</p>
+<p>Actions: <code>start</code> (provide flow_ids), <code>status</code>, <code>findings</code>, <code>checks</code>, <code>cancel</code>, <code>pause</code>, <code>resume</code>, <code>clear</code>, <code>list_scans</code>, <code>get_scan</code>, <code>delete_scan</code>, <code>get_finding</code>, <code>delete_finding</code>, <code>update_finding</code>, <code>audit_items</code>, <code>create_finding</code>, <code>set_finding_status</code>, <code>add_finding_flow</code>, <code>remove_finding_flow</code>, <code>list_finding_flows</code>, <code>add_finding_tag</code>, <code>remove_finding_tag</code>, <code>list_finding_tags</code></p>
+<p><strong>scanner_audit_items</strong> – Get scanner audit items: group vulnerability findings by check ID for a specific scan.</p>
+<p><strong>live_audit</strong> – Continuous passive-on-every-flow scanner. When enabled, every captured proxy flow is auto-scanned against the configured check set so issues surface as they land (no manual scan trigger). Dedup by <code>(method, host, path-pattern)</code> with numeric / UUID / hex segments normalised; skips known CDN / static-asset hosts.</p>
+<p>Actions: <code>start</code> (<code>profile</code> = quick|normal|thorough|audit|passive, default quick; or full <code>config</code>), <code>stop</code>, <code>status</code> (<code>flows_seen</code>, <code>flows_scanned</code>, <code>flows_skipped</code>, <code>findings_count</code>, <code>config</code>)</p>
+<p><strong>authz</strong> – Authorization matrix scanner (Autorize-like): replay captured flows with different auth contexts (admin, user, no-auth), diff responses, flag access control issues. <strong>Stateless</strong> — the matrix is returned inline with the scan result. For a persistent matrix stored in <code>authz_matrix_results</code>, use the <code>session_profiles</code> tool (actions: scan / matrix / clear_matrix). For scored BAC findings, use <code>bac_audit</code>.</p>
+<p>Action: <code>scan</code> (run auth matrix with <code>auth_contexts: [{name, header, value}]</code>)</p>
+<p><strong>idor</strong> – IDOR scanner: extract parameterized IDs from captured flows, swap them with attacker’s auth, compare responses. <strong>Stateless</strong> — findings are returned inline with the scan result. For persistent BAC findings (including path-param IDOR, cross-tenant, mass-assignment), use <code>bac_audit</code>.</p>
+<p>Actions: <code>scan</code>, <code>extract</code></p>
+<p><strong>bac_audit</strong> (Pro) – Broken Access Control audit — corpus-driven active scanner fed by passive signals from every captured flow. Detects role / tenant field leaks, predictable IDs, identity drift, response shape convergence, path-param IDOR, query / body param IDOR, cross-tenant rotation, authorization bypass headers, JWT escalation, GraphQL introspection, rate-limit bypass, role enumeration, OAuth scope escalation, mass assignment. See the <a href="/docs/scanning/bac">BAC pipeline</a> doc for the full surface.</p>
+<p>Actions: <code>audit</code> (run active matrix; returns <code>audit_id</code> for cancel / progress), <code>cancel</code> (flip cancel flag for <code>audit_id</code>), <code>progress</code> (read live counters: <code>processed_flows</code>, <code>total_flows</code>, <code>findings_so_far</code>, <code>requests_sent</code>, <code>state</code>, <code>elapsed_ms</code> for <code>audit_id</code>), <code>signals</code> (list passive observations, filter by <code>project_id</code> + <code>kind</code>), <code>corpus</code> (list observed identifiers, filter by <code>project_id</code> + <code>id_kind</code>), <code>findings</code> (scored active findings, filter by <code>project_id</code> + <code>kind</code> + <code>min_severity</code>), <code>shapes</code> (per-endpoint response shape fingerprint groupings), <code>purge</code> (delete findings for a project), <code>export</code> (render findings as <code>markdown | sarif | html | csv | summary | json</code>), <code>seed_corpus</code> (insert <code>bac_id_corpus</code> entries from an OpenAPI / Swagger spec body — params: <code>spec</code>, <code>project_id?</code>, <code>identity_id?</code>)</p>
+<p><strong>sqli</strong> – SQL injection scanner: test every parameter from captured flows for SQLi using error-based, time-based blind, and boolean-based blind techniques.</p>
+<p>Actions: <code>scan</code>, <code>test_param</code>, <code>payloads</code></p>
+<p><strong>xss</strong> – Reflected XSS scanner: inject probes into every parameter from captured flows, detect reflection without encoding, try context-appropriate payloads.</p>
+<p>Actions: <code>scan</code>, <code>test_param</code>, <code>payloads</code></p>
+<p><strong>pathtraversal</strong> – Path traversal fuzzer: fuzz file-related parameters with 8 encoding variants (plain, URL, double-URL, UTF-8 overlong, null byte, backslash, semicolon, mixed).</p>
+<p>Actions: <code>scan</code>, <code>test_param</code>, <code>payloads</code></p>
+<p><strong>pipeline</strong> – Security pipeline orchestrator: run all scanners in sequence (flow_analysis, authz, idor, sqli, pathtraversal, xss). Aggregate findings, generate reports.</p>
+<p>Actions: <code>run</code>, <code>findings</code>, <code>report</code></p>
+<p><strong>synaps</strong> – Synaps WASM vulnerability scanner: run security checks using hot-swappable WASM modules. Loaded as a dynamic plugin from <code>~/.hugin/plugins/</code>; not built into the binary.</p>
+<p>Core actions: <code>list</code>, <code>info</code>, <code>scan</code>, <code>validate</code>, <code>stats</code>, <code>tags</code>, <code>search</code>. Module-specific scans: <code>scan_ai_gateway</code>, <code>scan_oidc</code>, <code>scan_vectordb</code>, <code>scan_graphql_sub</code>, <code>scan_quic</code>, <code>scan_grpc_web</code>, <code>scan_mqtt</code>, <code>scan_charset_rce</code>, <code>scan_bare_lf</code>, <code>scan_rust_panic</code>, <code>scan_fluentbit</code>, <code>scan_rust_http</code>, <code>scan_ai_ssrf</code>, <code>scan_nextjs_csrf</code>, <code>scan_webtransport</code>, <code>scan_ssrf</code>, <code>scan_wcd</code>, <code>scan_cache_poison</code>, <code>scan_graphql_intro</code>, <code>scan_jwt_confusion</code>, <code>scan_mass_assign</code></p>
+<hr />
+<h3 id="fuzzing-and-discovery-5-tools"><a class="zola-anchor" href="#fuzzing-and-discovery-5-tools" aria-label="Anchor link for: fuzzing-and-discovery-5-tools">🔗</a>Fuzzing and Discovery (5 tools)</h3>
+<p><strong>intruder</strong> – Intruder attack automation: fuzz parameters, brute force, enumerate. Use <code>{}</code> markers for injection points.</p>
+<p>Actions: <code>start</code>, <code>list</code>, <code>get</code>, <code>status</code>, <code>pause</code>, <code>resume</code>, <code>cancel</code>, <code>delete</code>, <code>results</code>, <code>grep_local</code>, <code>grep_data</code>, <code>processing</code>, <code>export</code></p>
+<p><strong>discover</strong> – Content discovery: brute-force directories, files, and backup patterns. Auto-calibrates wildcard detection. Set <code>detect_sinks=true</code> to flag DOM XSS sinks in response bodies.</p>
+<p>Actions: <code>run</code>, <code>wildcard_check</code></p>
+<p><strong>ffuzzer</strong> – FUZZ keyword fuzzer: replaces FUZZ (and FUZ2-FUZ9 for multi-keyword) in URL/headers/body with wordlist entries. Two modes: <code>http</code> (raw TCP/TLS, fast) and <code>browser</code> (Mullvad Browser via Marionette, bypasses TLS fingerprinting).</p>
+<p><strong>param_discover</strong> – Parameter discovery: fuzz parameter names to find hidden/undocumented params. Batch testing (10 params/request) then individual verification via response diffing.</p>
+<p>Actions: <code>run</code>, <code>check</code></p>
+<p><strong>api_spec</strong> – API specification auto-discovery: probe known spec paths (OpenAPI/Swagger, GraphQL introspection, WSDL/SOAP, Docker registry) and parse into structured routes and parameters.</p>
+<p>Actions: <code>discover</code>, <code>parse</code></p>
+<hr />
+<h3 id="intelligence-and-analysis-5-tools"><a class="zola-anchor" href="#intelligence-and-analysis-5-tools" aria-label="Anchor link for: intelligence-and-analysis-5-tools">🔗</a>Intelligence and Analysis (5 tools)</h3>
+<p><strong>intelligence</strong> – Cross-flow intelligence engine: aggregate analysis of captured HTTP traffic.</p>
+<p>Params: <code>params</code>, <code>param_search</code>, <code>param_stats</code>, <code>param_endpoint</code>. Routes: <code>routes</code>, <code>route_detail</code>. Reflections: <code>reflections</code>, <code>reflection_candidates</code>, <code>reflection_stats</code>. Endpoints: <code>endpoints</code>, <code>endpoint_detail</code>, <code>endpoint_stats</code>. Security: <code>rollups</code>, <code>rollup_summary</code>, <code>rollup_host</code>. Nerve: <code>nerve_findings</code>, <code>nerve_stats</code>. Client-side: <code>client_side</code>, <code>client_side_stats</code>. Response: <code>response_intel</code>, <code>response_intel_stats</code>. Gold: <code>gold</code>. Backfill: <code>analyze</code>. Purge: <code>purge_intel</code>. Auth: <code>auth_diff</code>.</p>
+<p><strong>paramhunter</strong> – Parameter signal analysis: maps HTTP parameter names/values to 21 vulnerability categories with 700+ regex signals and confidence levels.</p>
+<p>Actions: <code>analyze</code>, <code>analyze_flows</code>, <code>categories</code>, <code>info</code>, <code>stats</code></p>
+<p><strong>flow_analysis</strong> – Flow security analyzer: scan captured proxy traffic for postMessage handlers and DOM sinks.</p>
+<p>Actions: <code>postmessage</code>, <code>dom_sinks</code>, <code>all</code></p>
+<p><strong>fingerprint</strong> – Technology fingerprinting: passive detection of web technologies from HTTP headers and response content.</p>
+<p>Actions: <code>categories</code>, <code>signatures</code>, <code>security_headers</code>, <code>recommend</code>, <code>analyze_headers</code>, <code>profile</code></p>
+<p><strong>scan_optimizer</strong> – AI-powered scan optimization: intelligent priority scoring and adaptive scanning.</p>
+<p>Actions: <code>analyze</code>, <code>recommend_checks</code>, <code>profile</code>, <code>stats</code>, <code>learn</code></p>
+<hr />
+<h3 id="race-condition-testing-1-tool"><a class="zola-anchor" href="#race-condition-testing-1-tool" aria-label="Anchor link for: race-condition-testing-1-tool">🔗</a>Race Condition Testing (1 tool)</h3>
+<p><strong>ratrace</strong> – Race condition testing engine: test for TOCTOU, double-spend, rate limit bypass vulnerabilities.</p>
+<p>Core actions: <code>test</code>, <code>detect</code>, <code>quick</code>, <code>limit</code>, <code>batch</code>, <code>sessions</code>, <code>session</code>, <code>cancel</code>, <code>result</code>, <code>discover</code>, <code>param_hunt</code>, <code>endpoints</code>, <code>scan</code>, <code>scan_findings</code>, <code>ws</code>, <code>microservice</code>, <code>cache_race</code>, <code>state_fuzz</code>, <code>orchestrate</code>, <code>report</code>, <code>graphql_subscription</code>, <code>oidc_logout</code>. Engine config: <code>engine_config</code>, <code>engine_timing</code>, <code>engine_graphql</code>. Enhancements: <code>enhance_fuzz</code>, <code>enhance_lock</code>, <code>enhance_protocol</code>, <code>enhance_lag</code>. Detection: <code>detect_db</code>, <code>detect_node</code>, <code>detect_thresholds</code>. Advanced: <code>blind</code>, <code>multisession</code>, <code>patterns</code>, <code>report_custom</code>.</p>
+<hr />
+<h3 id="encoding-and-decoding-2-tools"><a class="zola-anchor" href="#encoding-and-decoding-2-tools" aria-label="Anchor link for: encoding-and-decoding-2-tools">🔗</a>Encoding and Decoding (2 tools)</h3>
+<p><strong>decoder</strong> – Decoder/encoder for security testing. 622 polyglot payloads across 66 contexts (XSS, SQLi, NoSQL, command injection, SSTI, XXE, SSRF, path traversal, and many more).</p>
+<p>Actions: <code>encode</code>, <code>decode</code>, <code>chain</code>, <code>analyze</code>, <code>reencode</code>, <code>jwt_decode</code>, <code>jwt_forge</code>, <code>polyglot</code>, <code>operations</code></p>
+<p><strong>smart_decode</strong> – Smart decoder: auto-detect encoding chains (base64, URL, HTML entities, hex, JWT, unicode escapes, gzip, double-URL) and decode layer by layer.</p>
+<p>Actions: <code>detect</code>, <code>auto_decode</code>, <code>detect_and_decode</code>, <code>encodings</code></p>
+<hr />
+<h3 id="site-map-and-crawling-3-tools"><a class="zola-anchor" href="#site-map-and-crawling-3-tools" aria-label="Anchor link for: site-map-and-crawling-3-tools">🔗</a>Site Map and Crawling (3 tools)</h3>
+<p><strong>site_map</strong> – Site map: explore captured HTTP traffic by host and path.</p>
+<p>Actions: <code>hosts</code>, <code>hosts_simple</code>, <code>host</code>, <code>paths</code>, <code>flows</code>, <code>search</code>, <code>stats</code>, <code>tree</code>, <code>export</code>, <code>path_detail</code></p>
+<p><strong>crawler</strong> – Web crawler: discover pages, forms, and URLs by crawling a target site.</p>
+<p>Actions: <code>start</code>, <code>stop</code>, <code>pause</code>, <code>resume</code>, <code>status</code>, <code>urls</code>, <code>export</code></p>
+<p><strong>vurl_crawl</strong> – Standalone web crawler using Vurl HTTP engine. Works without Hugin proxy running. Supports multiple routing modes (direct, mullvad, hugin, custom proxy).</p>
+<p>Actions: <code>modes</code>, <code>check_proxy</code>, <code>start</code>, <code>stop</code>, <code>pause</code>, <code>resume</code>, <code>status</code>, <code>urls</code>, <code>export</code>, <code>list</code>, <code>delete</code></p>
+<hr />
+<h3 id="session-and-authentication-6-tools"><a class="zola-anchor" href="#session-and-authentication-6-tools" aria-label="Anchor link for: session-and-authentication-6-tools">🔗</a>Session and Authentication (6 tools)</h3>
+<p><strong>session_profiles</strong> (Pro) – Manage auth-context identities for BAC testing. Each profile is a named bundle of auth headers; the BAC matrix replays flows as each profile and diffs responses to surface access-control breaks. See the <a href="/docs/ui-views/authorize">Authorize view</a> doc for the UI surface.</p>
+<p>Actions: <code>create</code> (name, description?, is_baseline?, project_id?), <code>list</code> (project_id?), <code>get</code> (profile_id), <code>update</code> (profile_id, name, description?, is_baseline?), <code>delete</code> (profile_id), <code>capture</code> (profile_id, flow_id — extract auth headers from a captured flow), <code>add_header</code> (profile_id, header_name, header_value), <code>scan</code> (host?, flow_ids[]?, method_filter?, url_pattern?, limit?, skip_static?, delay_ms?, timeout_s? — run authz matrix scan into <code>authz_matrix_results</code>), <code>matrix</code> (profile_id? — view stored scan results), <code>clear_matrix</code> (profile_id?), <code>list_rules</code> (all registered SessionRules — id, name, scope, enabled, priority, reauth_macro, validation_type), <code>attached_rules</code> (profile_id — subset of rules whose scope matches the profile’s captured Origin / Referer / Host headers)</p>
+<p><strong>session</strong> – Session and authentication management: track tokens, create login macros, auto-refresh sessions.</p>
+<p>Actions: <code>tokens</code>, <code>status</code>, <code>list_macros</code>, <code>create_macro</code>, <code>get_macro</code>, <code>delete_macro</code>, <code>execute_macro</code>, <code>refresh</code></p>
+<p><strong>cookie_jar</strong> – Cookie jar management: view, edit, delete, filter, import/export cookies from proxy sessions.</p>
+<p>Actions: <code>list</code>, <code>get</code>, <code>set</code>, <code>delete</code>, <code>clear</code>, <code>domains</code>, <code>export</code>, <code>import</code>, <code>from_flows</code>, <code>expired</code>, <code>purge_expired</code></p>
+<p><strong>macros</strong> – Session macros: record, edit, and replay multi-step request sequences for session maintenance and authentication.</p>
+<p>Macro actions: <code>list_macros</code>, <code>get_macro</code>, <code>create_macro</code>, <code>update_macro</code>, <code>delete_macro</code>, <code>run_macro</code>, <code>test_macro</code>. Rule actions: <code>list_rules</code>, <code>create_rule</code>, <code>update_rule</code>, <code>delete_rule</code>, <code>enable_rule</code>, <code>disable_rule</code></p>
+<p><strong>settings</strong> – Proxy and HTTP/2 settings: configure upstream proxy, per-host rules, presets, HTTP/2 options.</p>
+<p>Actions: <code>get_proxy</code>, <code>set_proxy</code>, <code>clear_proxy</code>, <code>list_rules</code>, <code>add_rule</code>, <code>remove_rule</code>, <code>replace_rules</code>, <code>test_proxy</code>, <code>preset</code> (tor/burp/mullvad/disable), <code>get_http2</code>, <code>set_http2</code></p>
+<p><strong>user_agent</strong> – Global User-Agent pool: configure which User-Agent is injected into outbound requests (repeater, scanner, intruder, crawler). Supports fixed, round-robin, and random rotation strategies.</p>
+<p>Actions: <code>get</code>, <code>set</code> (strategy: fixed/round_robin/random, override_mode: fallback/override/disabled, agents: string[]), <code>preset</code> (desktop/mobile/all/stealth/random), <code>reset</code>, <code>list_presets</code></p>
+<hr />
+<h3 id="browser-automation-3-tools"><a class="zola-anchor" href="#browser-automation-3-tools" aria-label="Anchor link for: browser-automation-3-tools">🔗</a>Browser Automation (3 tools)</h3>
+<p><strong>browser</strong> – Browser automation: launch Chrome (CDP) or Mullvad Browser (Marionette) through Hugin proxy, navigate to URLs, capture all traffic, and run full recon pipeline.</p>
+<p>Actions: <code>launch</code>, <code>browse</code>, <code>navigate</code>, <code>crawl</code>, <code>status</code>, <code>stop</code>, <code>exec_js</code>, <code>source</code>, <code>screenshot</code>, <code>new_tab</code>, <code>switch_tab</code>, <code>close_tab</code>, <code>list_tabs</code></p>
+<p><strong>screenshot</strong> – Screenshot capture for bug bounty PoC evidence. Uses the existing browser session from BrowserMap.</p>
+<p>Actions: <code>capture</code>, <code>capture_flow</code>, <code>capture_ui</code>, <code>record_start</code>, <code>record_stop</code>, <code>list</code></p>
+<p><strong>websocket</strong> – WebSocket traffic inspection: view connections, read messages, send/replay messages, intercept WebSocket frames.</p>
+<p>Actions: <code>connections</code>, <code>get</code>, <code>messages</code>, <code>send</code>, <code>delete</code>, <code>poll_messages</code> (with since_id/since for streaming), <code>poll_connections</code> (with since_id/since for streaming), <code>intercept_status</code>, <code>intercept_toggle</code>, <code>intercept_list</code>, <code>intercept_get</code>, <code>intercept_forward</code>, <code>intercept_drop</code>, <code>intercept_forward_all</code>, <code>intercept_drop_all</code></p>
+<hr />
+<h3 id="ai-orchestration-1-tool-30-actions"><a class="zola-anchor" href="#ai-orchestration-1-tool-30-actions" aria-label="Anchor link for: ai-orchestration-1-tool-30-actions">🔗</a>AI Orchestration (1 tool, 30+ actions)</h3>
+<p><strong>orchestrate</strong> – AI-powered autonomous security testing. Spawns LLM agent sessions that use Hugin’s tools to explore, scan, and report on targets. Requires an AI provider configured in Settings &gt; AI.</p>
+<h4 id="generate-content"><a class="zola-anchor" href="#generate-content" aria-label="Anchor link for: generate-content">🔗</a>Generate Content</h4>
+<p>Generate security testing artifacts with a single call:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;generate&quot;, prompt: &quot;Generate XSS payloads for React apps&quot;, output_type: &quot;payloads&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;generate&quot;, prompt: &quot;Wordlist for /api/v1/users/{id} IDOR&quot;, output_type: &quot;intruder_wordlist&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;generate&quot;, prompt: &quot;Scan config for Django REST API&quot;, output_type: &quot;scan_config&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;generate&quot;, prompt: &quot;Bambda filter for 500 errors with stack traces&quot;, output_type: &quot;bambda_filter&quot;)</span></span></code></pre>
+<p>Output types: <code>payloads</code>, <code>intruder_wordlist</code>, <code>scan_config</code>, <code>bambda_filter</code></p>
+<h4 id="explain"><a class="zola-anchor" href="#explain" aria-label="Anchor link for: explain">🔗</a>Explain</h4>
+<p>Analyze flows or text using the configured LLM:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;explain&quot;, flow_id: &quot;a3f2...&quot;, text: &quot;Explain the security implications&quot;)</span></span></code></pre><h4 id="explore-autonomous-agent"><a class="zola-anchor" href="#explore-autonomous-agent" aria-label="Anchor link for: explore-autonomous-agent">🔗</a>Explore (Autonomous Agent)</h4>
+<p>Start an autonomous agent that uses 52 tools to systematically test a target:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;explore_start&quot;,</span></span>
+<span class="giallo-l"><span>  prompt: &quot;Test oda.com for IDOR on /api/v1/user/ endpoints&quot;,</span></span>
+<span class="giallo-l"><span>  max_steps: 20,</span></span>
+<span class="giallo-l"><span>  max_requests: 50,</span></span>
+<span class="giallo-l"><span>  approval_policy: &quot;none&quot;)</span></span></code></pre>
+<p>The agent gets pre-loaded with the active project’s scope hosts, so it knows what’s in-scope without querying. It can use:</p>
+<ul>
+<li><strong>repeater_send / repeater_raw_send</strong> – send HTTP requests</li>
+<li><strong>sqli_scan / xss_scan / authz_scan / idor_scan / pathtraversal_scan</strong> – run vulnerability scans</li>
+<li><strong>ratrace_test</strong> – test race conditions with concurrent requests</li>
+<li><strong>flows_list / flows_get / flows_search</strong> – analyze captured traffic</li>
+<li><strong>scanner_check</strong> – queue active scanner checks</li>
+<li><strong>smart_decode_detect</strong> – decode tokens and encoded values</li>
+<li><strong>browser_navigate / browser_exec_js</strong> – browser automation</li>
+<li><strong>findings_create</strong> – report confirmed vulnerabilities</li>
+<li>Plus 40 more (sitemap, cookies, sequencer, comparer, intruder, etc.)</li>
+</ul>
+<p>Monitor and control running sessions:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;explore_status&quot;, session_id: &quot;...&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;explore_list&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;explore_pause&quot;, session_id: &quot;...&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;explore_resume&quot;, session_id: &quot;...&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;explore_cancel&quot;, session_id: &quot;...&quot;)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;explore_approve&quot;, session_id: &quot;...&quot;, step_index: 3)</span></span>
+<span class="giallo-l"><span>orchestrate(action: &quot;explore_reject&quot;, session_id: &quot;...&quot;, step_index: 3, reason: &quot;Out of scope&quot;)</span></span></code></pre>
+<p>Purge a terminated session from history (removes it from memory and deletes the on-disk record at <code>~/.config/hugin/orchestration/sessions/{id}.json</code>):</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;explore_delete&quot;, session_id: &quot;...&quot;)</span></span></code></pre>
+<p><code>explore_delete</code> is a history-purge for completed / cancelled / errored sessions. If you want to stop a running session, call <code>explore_cancel</code> first – <code>explore_delete</code> does not abort live tasks as a side effect.</p>
+<p>Approval policies:</p>
+<ul>
+<li><code>none</code> – fully autonomous, no human checkpoints</li>
+<li><code>send_only</code> – pauses before external HTTP requests</li>
+<li><code>every</code> – pauses before every tool call</li>
+</ul>
+<h4 id="fan-out-concurrent-http"><a class="zola-anchor" href="#fan-out-concurrent-http" aria-label="Anchor link for: fan-out-concurrent-http">🔗</a>Fan Out (Concurrent HTTP)</h4>
+<p>Send multiple HTTP requests concurrently:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;fan_out&quot;, requests: [</span></span>
+<span class="giallo-l"><span>  { &quot;method&quot;: &quot;GET&quot;, &quot;url&quot;: &quot;https://target.com/api/v1/users/1&quot; },</span></span>
+<span class="giallo-l"><span>  { &quot;method&quot;: &quot;GET&quot;, &quot;url&quot;: &quot;https://target.com/api/v1/users/2&quot; },</span></span>
+<span class="giallo-l"><span>  { &quot;method&quot;: &quot;POST&quot;, &quot;url&quot;: &quot;https://target.com/api/v1/login&quot;, &quot;body&quot;: &quot;{...}&quot;, &quot;headers&quot;: {&quot;Content-Type&quot;: &quot;application/json&quot;} }</span></span>
+<span class="giallo-l"><span>])</span></span></code></pre>
+<p>Up to 50 concurrent requests. Each result includes status code, headers, body, and timing.</p>
+<h4 id="auto-mode-4-phase-assessment"><a class="zola-anchor" href="#auto-mode-4-phase-assessment" aria-label="Anchor link for: auto-mode-4-phase-assessment">🔗</a>Auto Mode (4-Phase Assessment)</h4>
+<p>Fully automated security assessment that runs through recon, passive scan, active probe, and deep dive phases:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>orchestrate(action: &quot;auto_start&quot;,</span></span>
+<span class="giallo-l"><span>  target: &quot;example.com&quot;,</span></span>
+<span class="giallo-l"><span>  max_steps: 50,</span></span>
+<span class="giallo-l"><span>  max_requests: 200)</span></span></code></pre>
+<p>Monitor: <code>auto_status</code>, <code>auto_approve</code>, <code>auto_cancel</code></p>
+<h4 id="other-actions"><a class="zola-anchor" href="#other-actions" aria-label="Anchor link for: other-actions">🔗</a>Other Actions</h4>
+<ul>
+<li><code>batch_explain</code> – explain multiple items concurrently</li>
+<li><code>cache_stats</code> / <code>cache_clear</code> – response cache management</li>
+<li><code>pool_status</code> – task pool status</li>
+<li><code>diagnostics</code> – full engine diagnostics</li>
+<li><code>memory_stats</code> / <code>memory_history</code> / <code>memory_clear</code> – exploration memory</li>
+<li><code>pattern_stats</code> – learned vulnerability patterns</li>
+<li><code>natural_search</code> – natural language flow search</li>
+<li><code>generate_rule</code> – generate match &amp; replace rules from description</li>
+<li><code>draft_report</code> – generate security report from findings</li>
+<li><code>generate_intruder_payloads</code> – targeted payload generation</li>
+<li><code>identify_encoding</code> – identify encoding layers</li>
+<li><code>generate_workflow</code> – generate workflow definitions</li>
+<li><code>modify_request</code> – natural language request modification</li>
+</ul>
+<h4 id="configuration"><a class="zola-anchor" href="#configuration" aria-label="Anchor link for: configuration">🔗</a>Configuration</h4>
+<p>Configure in Settings &gt; AI or by adding an <code>[assistant]</code> section to <code>~/.hugin/config.toml</code>:</p>
+<ul>
+<li><code>provider</code>: openai, openrouter, anthropic, google, ollama</li>
+<li><code>model</code>: model ID (e.g. “mimo-v2-pro”, “claude-sonnet-4-20250514”)</li>
+<li><code>max_concurrent_llm</code>: max parallel LLM API calls (default: 5)</li>
+<li><code>max_concurrent_agents</code>: max parallel explore/auto sessions (default: 3)</li>
+<li><code>cache_enabled</code>: response caching (default: true)</li>
+<li><code>max_tokens_per_day</code>: daily token budget (0 = unlimited)</li>
+</ul>
+<hr />
+<h3 id="oob-detection-2-tools"><a class="zola-anchor" href="#oob-detection-2-tools" aria-label="Anchor link for: oob-detection-2-tools">🔗</a>OOB Detection (2 tools)</h3>
+<p><strong>oastify</strong> – Rust-native OOB server: local out-of-band interaction detection with DNS and HTTP listeners.</p>
+<p>Actions: <code>start</code>, <code>stop</code>, <code>status</code>, <code>domain</code>, <code>stats</code>, <code>generate_payload</code>, <code>batch_payloads</code>, <code>all_payloads</code>, <code>list_payloads</code>, <code>get_payload</code>, <code>interactions</code>, <code>interaction</code>, <code>delete_interaction</code>, <code>acknowledge</code>, <code>acknowledge_bulk</code></p>
+<p><strong>vurl_oastify</strong> – Oastify OOB callback tracking: central hub for all tools (intruder, vsploit, scanner, manual). Connect to oastify server, register payloads with unique tracked markers, poll/sync for callbacks.</p>
+<p>Actions: <code>connect</code>, <code>disconnect</code>, <code>status</code>, <code>generate</code>, <code>register_batch</code>, <code>payloads</code>, <code>interactions</code>, <code>sync</code>, <code>stats</code>, <code>commands</code>, <code>generate_local</code></p>
+<hr />
+<h3 id="token-analysis-1-tool"><a class="zola-anchor" href="#token-analysis-1-tool" aria-label="Anchor link for: token-analysis-1-tool">🔗</a>Token Analysis (1 tool)</h3>
+<p><strong>sequencer</strong> – Token randomness sequencer: capture tokens from repeated requests and analyze their randomness quality (FIPS statistical tests).</p>
+<p>Actions: <code>capture</code>, <code>tokens</code>, <code>stop</code>, <code>analyze</code>, <code>list</code>, <code>delete</code>, <code>status</code>, <code>compare</code>, <code>export</code></p>
+<hr />
+<h3 id="project-management-2-tools"><a class="zola-anchor" href="#project-management-2-tools" aria-label="Anchor link for: project-management-2-tools">🔗</a>Project Management (2 tools)</h3>
+<p><strong>project</strong> – Project isolation: manage per-target project profiles with isolated scope, flows, and recon data.</p>
+<p>Actions: <code>create</code>, <code>list</code>, <code>get</code>, <code>update</code>, <code>delete</code>, <code>activate</code>, <code>deactivate</code>, <code>archive</code>, <code>scope</code>, <code>stats</code>, <code>assign_flows</code>, <code>export</code>, <code>templates</code>, <code>create_from_template</code>, <code>fingerprint</code>, <code>import_scope</code>, <code>policy_get</code>, <code>policy_set</code>, <code>policy_search</code>. Legacy: <code>save</code>, <code>load</code>, <code>recent</code></p>
+<p><strong>environment</strong> – Manage named environments and variables: create environments, set/get/delete variables, activate.</p>
+<hr />
+<h3 id="reporting-and-export-3-tools"><a class="zola-anchor" href="#reporting-and-export-3-tools" aria-label="Anchor link for: reporting-and-export-3-tools">🔗</a>Reporting and Export (3 tools)</h3>
+<p><strong>reporting</strong> – Generate security reports in various formats.</p>
+<p>Actions: <code>sarif</code>, <code>summary</code>, <code>html</code>, <code>markdown</code>, <code>csv</code>, <code>formats</code>, <code>executive_summary</code>, <code>templates</code>, <code>list_templates</code>, <code>save_template</code>, <code>delete_template</code>, <code>generate</code>, <code>issue_select</code></p>
+<p><strong>exports</strong> – Export captured flows and project data in JSON, CSV, or HAR format.</p>
+<p><strong>output_store</strong> – Searchable output storage for large tool results. Stores outputs from intruder, repeater, scanner in SQLite with FTS5 full-text search.</p>
+<p>Actions: <code>list</code>, <code>search</code>, <code>get</code>, <code>delete</code>, <code>delete_old</code>, <code>stats</code></p>
+<hr />
+<h3 id="organization-and-workflow-6-tools"><a class="zola-anchor" href="#organization-and-workflow-6-tools" aria-label="Anchor link for: organization-and-workflow-6-tools">🔗</a>Organization and Workflow (6 tools)</h3>
+<p><strong>dashboard</strong> – Dashboard overview: get event log, active tasks, and aggregated stats.</p>
+<p>Actions: <code>events</code>, <code>tasks</code>, <code>stats</code></p>
+<p><strong>events</strong> – Event log management: view, filter, and manage system events.</p>
+<p>Actions: <code>list</code>, <code>recent</code>, <code>stats</code>, <code>clear</code>, <code>delete_before</code></p>
+<p><strong>organizer</strong> – Organizer: save, categorize, annotate, and search interesting HTTP requests for triage and reporting.</p>
+<p>Actions: <code>list</code>, <code>get</code>, <code>save</code>, <code>update</code>, <code>delete</code>, <code>search</code>, <code>categories</code>, <code>tags</code>, <code>export</code>, <code>bulk_tag</code>, <code>bulk_delete</code></p>
+<p><strong>collections</strong> – Manage collections: curated bundles of HTTP requests with annotations.</p>
+<p>Actions: <code>list</code>, <code>get</code>, <code>create</code>, <code>update</code>, <code>delete</code>, <code>add_flow</code>, <code>add_raw</code>, <code>remove_item</code>, <code>reorder</code>, <code>annotate_item</code>, <code>export</code>, <code>import</code>, <code>duplicate</code>, <code>share</code></p>
+<p><strong>scheduler</strong> – Manage scheduled scan jobs: list, create, update, delete, trigger, and view run history.</p>
+<p><strong>workflows</strong> – Manage event-driven workflows with graph-based node pipelines. 17 actions: CRUD, validate (cycle detection), run/test, schedule/unschedule (cron/interval). Action types include Scan (wired to ScanExecutor), RunJavaScript (Node.js/Deno), RunShell, Flag, Repeat, AddToFindings, SendNotification, and 10 encoding/transform operations. Inter-node data passing via <code>{{template}}</code> syntax. Passive engine auto-triggers on live traffic; scheduler executes on cron/interval.</p>
+<p>The same operations are also exposed as REST routes for curl/scripting: <code>GET /api/workflows</code>, <code>GET /api/workflows/{id}</code>, <code>POST /api/workflows/{id}/validate</code>, <code>POST /api/workflows/{id}/run</code> (body: <code>{"flow_id": "..."}</code>), and <code>GET /api/workflows/{id}/runs</code> for execution history. See the <a href="../../automation/workflows/">Workflows chapter</a> for the full catalog and semantics.</p>
+<hr />
+<h3 id="rules-and-filters-3-tools"><a class="zola-anchor" href="#rules-and-filters-3-tools" aria-label="Anchor link for: rules-and-filters-3-tools">🔗</a>Rules and Filters (3 tools)</h3>
+<p><strong>rules</strong> – Manage intercept rules for request/response filtering and actions. Rules can match by host, path, method, headers, body content.</p>
+<p>Actions: <code>list</code>, <code>get</code>, <code>create</code>, <code>update</code>, <code>delete</code>, <code>groups_list</code>, <code>groups_create</code>, <code>groups_delete</code></p>
+<p><strong>logger_filters</strong> – Logger filter management: save/load filter presets for HTTP history, manage capture filter rules for conditional logging.</p>
+<p>Preset actions: <code>list_presets</code>, <code>get_preset</code>, <code>save_preset</code>, <code>delete_preset</code>, <code>apply_preset</code>. Capture filter actions: <code>list_capture_filters</code>, <code>create_capture_filter</code>, <code>update_capture_filter</code>, <code>delete_capture_filter</code>, <code>enable_capture_filter</code>, <code>disable_capture_filter</code></p>
+<p><strong>bambda</strong> – Bambda: Lua filter expressions for flow tables. Write inline Lua code to filter, search, and transform captured proxy traffic.</p>
+<p>Actions: <code>filter</code>, <code>transform</code>, <code>test</code>, <code>presets</code>, <code>save_preset</code>, <code>delete_preset</code></p>
+<hr />
+<h3 id="dom-client-side-security-4-tools"><a class="zola-anchor" href="#dom-client-side-security-4-tools" aria-label="Anchor link for: dom-client-side-security-4-tools">🔗</a>DOM/Client-Side Security (4 tools)</h3>
+<p><strong>taint</strong> – Browser-based DOM XSS taint analysis: launch Chrome via CDP, inject instrumentation JS that hooks 7 source types (URL params, hash, referrer, cookies, window.name, postMessage, localStorage) and 14 sink types (innerHTML, eval, document.write, location.assign, setTimeout/setInterval string, Function constructor, script.src, jQuery.html, insertAdjacentHTML, dynamic script injection). Auto-creates findings with CWE classification and severity (High for DOM XSS, Medium for open redirect).</p>
+<p>Actions: <code>scan</code>, <code>scan_browser</code>, <code>analyze</code> (full flow: inject→navigate→collect→findings), <code>collect</code> (harvest from active session), <code>inject</code> (hook setup for manual testing), <code>analyze_flow</code>, <code>sources</code>, <code>sinks</code></p>
+<p><strong>cors</strong> – CORS misconfiguration scanner: test <code>Access-Control-Allow-Origin</code> / <code>Access-Control-Allow-Credentials</code> behavior with 9 origin probes.</p>
+<p>Actions: <code>scan</code>, <code>scan_flow</code>, <code>techniques</code></p>
+<p><strong>upload</strong> – File upload vulnerability scanner: test upload endpoints with 16 extension variants, 6 content-type mismatches, double extensions, null byte injection, and polyglot file generation.</p>
+<p>Actions: <code>scan</code>, <code>techniques</code>, <code>generate_polyglot</code></p>
+<p><strong>vurl_postmessage</strong> – postMessage security scanner: static analysis of JS chunks for postMessage handlers, origin validation quality, and event.data flow into dangerous sinks.</p>
+<p>Actions: <code>analyze</code>, <code>patterns</code>, <code>scan_url</code></p>
+<hr />
+<h3 id="js-analysis-4-tools"><a class="zola-anchor" href="#js-analysis-4-tools" aria-label="Anchor link for: js-analysis-4-tools">🔗</a>JS Analysis (4 tools)</h3>
+<p><strong>vurl_js_sinks</strong> – JS chunk DOM sink finder: download JavaScript chunks from a page, scan for dangerous sinks (innerHTML, eval, document.write) and track controllable data sources.</p>
+<p>Actions: <code>analyze</code>, <code>sinks</code>, <code>scan_url</code></p>
+<p><strong>vurl_js_endpoints</strong> – JS endpoint extractor: extract API routes, URLs, fetch/XHR calls, GraphQL operations, and WebSocket endpoints from JavaScript.</p>
+<p>Actions: <code>analyze</code>, <code>scan_url</code>, <code>patterns</code>, <code>mine_params</code></p>
+<p><strong>vurl_endpointer</strong> – EndPointer: endpoint behavioral profiler. Probes discovered API endpoints to build behavioral profile cards across 20 tiers.</p>
+<p>Actions: <code>probe</code>, <code>batch</code>, <code>methods</code>, <code>auth</code>, <code>profile</code></p>
+<p><strong>vurl_csp_nonce</strong> – CSP nonce leak detector: detect nonce values in CSP headers, meta tags, and script attributes. Test nonce reuse across multiple requests.</p>
+<p>Actions: <code>detect</code>, <code>headers</code>, <code>reuse</code></p>
+<hr />
+<h3 id="next-js-react-3-tools"><a class="zola-anchor" href="#next-js-react-3-tools" aria-label="Anchor link for: next-js-react-3-tools">🔗</a>Next.js / React (3 tools)</h3>
+<p><strong>vurl_hydration</strong> – Generate Next.js RSC hydration hijacking payloads. Exploits <code>__NEXT_DATA__</code>, RSC chunks, multipart prototype pollution.</p>
+<p>Actions: <code>generate</code>, <code>categories</code></p>
+<p><strong>vurl_nextjs_rsc</strong> – Next.js RSC (React Server Components) analyzer: parse RSC flight data, detect component tree leaks, test nonce reuse, cache poisoning.</p>
+<p>Actions: <code>analyze</code>, <code>nonce</code>, <code>cache_poison</code>, <code>reflection</code></p>
+<p><strong>vurl_nextjs_middleware</strong> – Next.js middleware bypass tester: test header-based, path normalization, locale prefix, and <code>_next/data</code> route bypasses.</p>
+<p>Actions: <code>test</code>, <code>headers</code>, <code>paths</code>, <code>locale</code></p>
+<hr />
+<h3 id="http-smuggling-2-tools"><a class="zola-anchor" href="#http-smuggling-2-tools" aria-label="Anchor link for: http-smuggling-2-tools">🔗</a>HTTP Smuggling (2 tools)</h3>
+<p><strong>vurl_smuggle</strong> – HTTP request smuggling payloads and detection.</p>
+<p>Actions: <code>payloads</code> (CL.TE/TE.CL), <code>te_variants</code>, <code>host</code>, <code>keep_alive</code>, <code>probe_0cl</code>, <code>probe_cl0</code>, <code>double_desync</code>, <code>early_gadgets</code>, <code>full_scan</code>, <code>header_casing</code></p>
+<p><strong>vurl_harvest</strong> – SmuggleHarvester: continuous request smuggling attack daemon. Rotates through confirmed techniques, captures victim data.</p>
+<p>Actions: <code>start</code>, <code>stop</code>, <code>status</code>, <code>list</code>, <code>results</code>, <code>techniques</code></p>
+<hr />
+<h3 id="ssrf-and-cloud-4-tools"><a class="zola-anchor" href="#ssrf-and-cloud-4-tools" aria-label="Anchor link for: ssrf-and-cloud-4-tools">🔗</a>SSRF and Cloud (4 tools)</h3>
+<p><strong>vurl_cloud</strong> – Generate cloud metadata SSRF payloads for AWS, GCP, Azure, DigitalOcean, Alibaba, Oracle, Kubernetes, Docker. Includes IMDSv1/v2.</p>
+<p><strong>vurl_ssrf_detect</strong> – SSRF detection engine: analyze responses for SSRF indicators and perform timing-based blind SSRF detection.</p>
+<p>Actions: <code>analyze</code>, <code>indicators</code>, <code>timing_baseline</code>, <code>timing_analyze</code>, <code>timing_compare</code>, <code>is_blocked</code></p>
+<p><strong>vurl_k8s</strong> – Generate Kubernetes SSRF payloads (IngressNightmare, storage controller, admission webhooks).</p>
+<p>Actions: <code>generate</code>, <code>types</code></p>
+<p><strong>vurl_redirect</strong> – Open redirect chain payloads for SSRF.</p>
+<p>Actions: <code>generate</code>, <code>params</code>, <code>redirectors</code></p>
+<hr />
+<h3 id="waf-evasion-and-fingerprinting-6-tools"><a class="zola-anchor" href="#waf-evasion-and-fingerprinting-6-tools" aria-label="Anchor link for: waf-evasion-and-fingerprinting-6-tools">🔗</a>WAF Evasion and Fingerprinting (6 tools)</h3>
+<p><strong>vurl_evade</strong> – Generate WAF evasion payloads using encoding tricks, case manipulation, null bytes, unicode normalization.</p>
+<p><strong>vurl_waf_evasion</strong> – WAF evasion techniques: encoding mutations, protocol quirks, Unicode tricks, chunked abuse.</p>
+<p>Actions: <code>evade</code>, <code>categories</code></p>
+<p><strong>vurl_mirage</strong> – Browser fingerprint spoofing and WAF evasion via Mirage module. Generate coherent browser profiles (TLS JA3/JA4, HTTP/2 AKAMAI fingerprints).</p>
+<p>Actions: <code>bypasses</code>, <code>profiles</code>, <code>headers</code>, <code>oracle</code>, <code>techniques</code></p>
+<p><strong>vurl_sni</strong> – TLS SNI manipulation for WAF bypass. Exploits disconnect between TLS SNI (routing) and HTTP Host header (application).</p>
+<p>Actions: <code>payloads</code>, <code>openssl</code>, <code>ncat</code>, <code>python</code>, <code>curl</code>, <code>raw</code>, <code>all</code></p>
+<p><strong>vurl_fingerprint</strong> – Parser fingerprinting via probe requests. Identifies target parser behavior.</p>
+<p>Actions: <code>probes</code>, <code>all_probes</code>, <code>categories</code>, <code>signatures</code></p>
+<p><strong>vurl_charset</strong> – Generate charset-based RCE payloads using Best-Fit/Worst-Fit encoding attacks (Orange Tsai research).</p>
+<p>Actions: <code>generate</code>, <code>command</code>, <code>path</code>, <code>curl</code>, <code>encodings</code>, <code>attack_types</code></p>
+<hr />
+<h3 id="url-parsing-and-mutation-3-tools"><a class="zola-anchor" href="#url-parsing-and-mutation-3-tools" aria-label="Anchor link for: url-parsing-and-mutation-3-tools">🔗</a>URL Parsing and Mutation (3 tools)</h3>
+<p><strong>vurl_compare</strong> – Compare how different URL parsers interpret a URL. Detects parser differentials exploitable for SSRF bypass, open redirect, and path traversal.</p>
+<p><strong>vurl_hunt</strong> – Hunt for parser differential vulnerabilities by generating URL mutations and comparing parser outputs.</p>
+<p><strong>vurl_mutator</strong> – URL mutation engine for parser differential hunting. 15+ mutator strategies.</p>
+<p>Actions: <code>mutate</code>, <code>chains</code>, <code>crlf</code>, <code>nfkc</code>, <code>strategies</code></p>
+<hr />
+<h3 id="http-client-4-tools"><a class="zola-anchor" href="#http-client-4-tools" aria-label="Anchor link for: http-client-4-tools">🔗</a>HTTP Client (4 tools)</h3>
+<p><strong>vurl_http</strong> – Send HTTP request with full control over method, headers, body, timeouts, redirects, and proxy. Keep <code>max_body_size</code> under 15000 to avoid token overflow.</p>
+<p><strong>vurl_http_raw</strong> – Send raw HTTP request string for smuggling attacks, malformed requests, or protocol-level testing.</p>
+<p><strong>vurl_http_compare</strong> – Compare HTTP responses from two URLs to detect behavioral differences, timing variations, and content changes.</p>
+<p><strong>vurl_chain</strong> – Chain HTTP requests with variable extraction. Each step can extract values from responses (JSON path or regex) and use them in subsequent requests via <code>{{variable}}</code> placeholders.</p>
+<hr />
+<h3 id="response-diffing-2-tools"><a class="zola-anchor" href="#response-diffing-2-tools" aria-label="Anchor link for: response-diffing-2-tools">🔗</a>Response Diffing (2 tools)</h3>
+<p><strong>vurl_diff</strong> – Response diffing engine for 0-day detection. Compares HTTP responses with 1-byte precision and 10ms timing resolution.</p>
+<p>Actions: <code>compare</code>, <code>quick</code>, <code>batch</code>, <code>hash</code>, <code>timing</code>, <code>config</code>, <code>severity_score</code></p>
+<p><strong>vurl_diffing</strong> – Response diffing for 0-day detection: compare responses for byte-level and timing differences.</p>
+<p>Actions: <code>compare</code>, <code>timing</code>, <code>config</code></p>
+<hr />
+<h3 id="protocol-level-attacks-6-tools"><a class="zola-anchor" href="#protocol-level-attacks-6-tools" aria-label="Anchor link for: protocol-level-attacks-6-tools">🔗</a>Protocol-Level Attacks (6 tools)</h3>
+<p><strong>vurl_grpc</strong> – Generate gRPC gateway differential attack payloads. Exploits parsing differences between gRPC gateways and backends.</p>
+<p><strong>vurl_grpc_matrix</strong> – Get gRPC gateway vs backend compatibility matrix showing known differential risks.</p>
+<p><strong>vurl_h2</strong> – HTTP/2 single-packet race condition attacks. Uses frame multiplexing for microsecond-precision race conditions (James Kettle’s research).</p>
+<p>Actions: <code>payloads</code>, <code>curl</code>, <code>turbo_intruder</code>, <code>templates</code>, <code>frame_types</code>, <code>config</code>, <code>analyze</code></p>
+<p><strong>vurl_rust_http</strong> – Generate Rust HTTP parser differential payloads for request smuggling. Based on RUSTSEC-2020-0008, CVE-2021-32715, CVE-2025-32094.</p>
+<p>Actions: <code>generate</code>, <code>templates</code>, <code>matrix</code>, <code>endpoints</code>, <code>cves</code></p>
+<p><strong>vurl_hopbyhop</strong> – Generate hop-by-hop header attack payloads for proxy bypass.</p>
+<p><strong>vurl_quic</strong> – Generate HTTP/3 and QUIC attack payloads: 0-RTT replay, connection ID manipulation, QPACK table poisoning, Alt-Svc injection.</p>
+<p>Actions: <code>generate</code>, <code>curl</code>, <code>detect</code>, <code>types</code></p>
+<hr />
+<h3 id="authentication-bypass-3-tools"><a class="zola-anchor" href="#authentication-bypass-3-tools" aria-label="Anchor link for: authentication-bypass-3-tools">🔗</a>Authentication Bypass (3 tools)</h3>
+<p><strong>vurl_ip_bypass</strong> – Generate IP spoofing headers (X-Forwarded-For, X-Real-IP, etc.) to bypass IP-based access controls.</p>
+<p><strong>vurl_auth_bypass</strong> – Generate authentication bypass headers for proxy-level auth bypass attacks.</p>
+<p><strong>vurl_identity</strong> – Identity protocol attacks: OIDC front-channel logout injection, session fixation, Entra ID cross-tenant sync.</p>
+<p>Actions: <code>oidc_logout</code>, <code>categories</code></p>
+<hr />
+<h3 id="ai-llm-security-6-tools"><a class="zola-anchor" href="#ai-llm-security-6-tools" aria-label="Anchor link for: ai-llm-security-6-tools">🔗</a>AI/LLM Security (6 tools)</h3>
+<p><strong>vurl_mcp_rce</strong> – Generate AI agent exploitation payloads for MCP RCE, Langflow, CrewAI, AutoGPT, LangChain, OpenAI Assistants, Claude MCP, Gemini, Dify, Flowise.</p>
+<p><strong>vurl_langflow</strong> – Langflow-specific exploitation payloads for CVE-2025-3248 and other RCE vectors.</p>
+<p><strong>vurl_tool_payloads</strong> – Generate exploitation payloads for specific AI agent tool types: http_request, file_read, file_write, code_exec, shell_exec, database, browser.</p>
+<p><strong>vurl_llm_poison</strong> – Generate LLM context poisoning payloads for RAG injection, system prompt extraction, jailbreaks, and tool manipulation.</p>
+<p>Actions: <code>generate</code>, <code>types</code></p>
+<p><strong>vurl_shadow_ai</strong> – Generate shadow AI prompt injection payloads for exploiting AI agents via reflected content.</p>
+<p>Actions: <code>generate</code>, <code>json</code>, <code>html</code>, <code>categories</code>, <code>context</code>, <code>detection</code></p>
+<p><strong>vurl_ai_gateway</strong> – AI Gateway bypass payloads for Cloudflare AI, AWS Bedrock, Azure Content Safety.</p>
+<p>Actions: <code>detect</code>, <code>bypass</code>, <code>encode</code>, <code>gateways</code></p>
+<hr />
+<h3 id="payload-generation-2-tools"><a class="zola-anchor" href="#payload-generation-2-tools" aria-label="Anchor link for: payload-generation-2-tools">🔗</a>Payload Generation (2 tools)</h3>
+<p><strong>vurl_payload</strong> – Generate protocol payloads for SSRF exploitation: Redis, Memcached, SMTP, FastCGI, MySQL, PostgreSQL, LDAP, DNS, Gopher, CoAP (IoT), MQTT (IoT), Dict, GraphQL, gRPC-Web, XXE.</p>
+<p><strong>vurl_csd</strong> – Client-Side Desync (CSD) attack payloads: browser-powered desync attacks.</p>
+<p>Actions: <code>generate</code>, <code>triggers</code></p>
+<hr />
+<h3 id="edge-runtime-and-server-specific-4-tools"><a class="zola-anchor" href="#edge-runtime-and-server-specific-4-tools" aria-label="Anchor link for: edge-runtime-and-server-specific-4-tools">🔗</a>Edge Runtime and Server-Specific (4 tools)</h3>
+<p><strong>vurl_edge</strong> – Generate edge runtime attack payloads for Vercel Edge, Cloudflare Workers, Deno Deploy, Netlify Edge, AWS Lambda@Edge.</p>
+<p>Actions: <code>generate</code>, <code>middleware</code>, <code>signatures</code>, <code>runtimes</code>, <code>categories</code></p>
+<p><strong>vurl_fluentbit</strong> – Generate Fluent Bit CVE-2025-12970 exploitation payloads. Targets 15+ billion deployments.</p>
+<p>Actions: <code>generate</code>, <code>large_payload</code>, <code>ssrf_endpoints</code>, <code>manifests</code>, <code>detection</code>, <code>categories</code></p>
+<p><strong>vurl_sharepoint</strong> – Generate SharePoint CVE-2025-53770 exploitation payloads.</p>
+<p>Actions: <code>generate</code>, <code>cve</code>, <code>high_risk</code>, <code>categories</code></p>
+<p><strong>vurl_rust_panic</strong> – Generate Rust panic DoS/RCE payloads targeting validation panics in Safe Rust wrappers around Unsafe C libraries. Based on CVE-2026-21895.</p>
+<p>Actions: <code>generate</code>, <code>deepsurf</code>, <code>templates</code>, <code>endpoints</code>, <code>categories</code>, <code>targets</code>, <code>large</code>, <code>cves</code>, <code>microservices</code></p>
+<hr />
+<h3 id="dns-and-network-2-tools"><a class="zola-anchor" href="#dns-and-network-2-tools" aria-label="Anchor link for: dns-and-network-2-tools">🔗</a>DNS and Network (2 tools)</h3>
+<p><strong>vurl_rebind</strong> – DNS rebinding timing analysis for TOCTOU exploitation.</p>
+<p>Actions: <code>analyze</code>, <code>payloads</code>, <code>timing</code></p>
+<p><strong>vurl_rebind_v2</strong> – DNS rebinding v2 with advanced async timing analysis for TOCTOU exploitation.</p>
+<p>Actions: <code>analyze</code>, <code>timing</code>, <code>payloads</code>, <code>detect</code>, <code>resolve</code></p>
+<hr />
+<h3 id="vector-database-and-rag-1-tool"><a class="zola-anchor" href="#vector-database-and-rag-1-tool" aria-label="Anchor link for: vector-database-and-rag-1-tool">🔗</a>Vector Database and RAG (1 tool)</h3>
+<p><strong>vurl_vectordb</strong> – Vector database injection payloads for Pinecone, Milvus, Weaviate, Qdrant, Chroma.</p>
+<p>Actions: <code>detect</code>, <code>exploit</code>, <code>databases</code></p>
+<hr />
+<h3 id="race-detection-1-tool"><a class="zola-anchor" href="#race-detection-1-tool" aria-label="Anchor link for: race-detection-1-tool">🔗</a>Race Detection (1 tool)</h3>
+<p><strong>vurl_race</strong> – Race condition and parser differential detection: fire URLs at multiple endpoints and detect differences.</p>
+<p>Actions: <code>quick</code>, <code>types</code></p>
+<hr />
+<h3 id="asset-management-1-tool"><a class="zola-anchor" href="#asset-management-1-tool" aria-label="Anchor link for: asset-management-1-tool">🔗</a>Asset Management (1 tool)</h3>
+<p><strong>assets</strong> – Asset inventory: unified recon database for SubFlow, XMass, vmap results.</p>
+<p>CRUD: <code>list</code>, <code>get</code>, <code>create</code>, <code>update</code>, <code>delete</code>, <code>ports</code>, <code>events</code>. Intelligence: <code>stats</code>, <code>coverage</code>, <code>cluster_jarm</code>, <code>cluster_favicon</code>. Ingest: <code>ingest_subflow</code>, <code>ingest_xmass</code>, <code>ingest_vmap</code>. Pipeline: <code>crawl_seeds</code>.</p>
+<hr />
+<h3 id="mobile-security-1-tool"><a class="zola-anchor" href="#mobile-security-1-tool" aria-label="Anchor link for: mobile-security-1-tool">🔗</a>Mobile Security (1 tool)</h3>
+<p><strong>mobile</strong> – Mobile app security analysis: static analysis (APK/IPA), device management, dynamic instrumentation (Frida), proxy setup.</p>
+<p>Actions: <code>toolchain</code>, <code>devices</code>, <code>device_info</code>, <code>emulator_start</code>, <code>emulator_list</code>, <code>analyze_apk</code>, <code>analyze_ipa</code>, <code>decompile</code>, <code>decode</code>, <code>manifest</code>, <code>network_config</code>, <code>binary_info</code>, <code>scan_secrets</code>, <code>apps</code>, <code>app_info</code>, <code>install</code>, <code>uninstall</code>, <code>launch</code>, <code>stop</code>, <code>clear_data</code>, <code>pull_apk</code>, <code>frida_ps</code>, <code>frida_apps</code>, <code>frida_spawn</code>, <code>frida_attach</code>, <code>ssl_bypass</code>, <code>root_bypass</code>, <code>objection_ssl</code>, <code>objection_env</code>, <code>objection_classes</code>, <code>objection_methods</code>, <code>proxy_setup</code>, <code>proxy_clear</code>, <code>proxy_check</code>, <code>push_ca</code>, <code>check_cleartext</code>, <code>ios_proxy_instructions</code>, <code>shared_prefs</code>, <code>read_shared_pref</code>, <code>databases</code>, <code>dump_database</code>, <code>app_files</code>, <code>pull_storage</code>, <code>logcat</code>, <code>crash_detect</code>, <code>syslog</code>, <code>crashes</code>, <code>raw_shell</code>, <code>forward</code>, <code>reverse</code></p>
+<hr />
+<h3 id="collaboration-1-tool"><a class="zola-anchor" href="#collaboration-1-tool" aria-label="Anchor link for: collaboration-1-tool">🔗</a>Collaboration (1 tool)</h3>
+<p><strong>collab</strong> – Real-time collaboration between hunters. Share your Hugin session with a teammate (Pro license required).</p>
+<p>Actions: <code>share</code>, <code>join</code>, <code>status</code>, <code>leave</code>, <code>publish</code></p>
+<hr />
+<h3 id="extensions-and-tooling-3-tools"><a class="zola-anchor" href="#extensions-and-tooling-3-tools" aria-label="Anchor link for: extensions-and-tooling-3-tools">🔗</a>Extensions and Tooling (3 tools)</h3>
+<p><strong>extensions</strong> – Lua extension management: load, unload, enable, disable extensions and test hooks.</p>
+<p>Actions: <code>list</code>, <code>get</code>, <code>load</code>, <code>unload</code>, <code>enable</code>, <code>disable</code>, <code>reload</code>, <code>stats</code>, <code>test_hook</code></p>
+<p><strong>tools_registry</strong> – External tools registry: list registered tools, check health, execute tool commands.</p>
+<p><strong>files</strong> – Manage payload file library: add, remove, list, preview, search files and manage tags.</p>
+<hr />
+<h3 id="campaigns-and-automation-1-tool"><a class="zola-anchor" href="#campaigns-and-automation-1-tool" aria-label="Anchor link for: campaigns-and-automation-1-tool">🔗</a>Campaigns and Automation (1 tool)</h3>
+<p><strong>campaigns</strong> – Manage automation campaigns: create, configure, start/stop multi-step intruder attacks with payload sets.</p>
+<hr />
+<h3 id="bug-bounty-platforms-1-tool"><a class="zola-anchor" href="#bug-bounty-platforms-1-tool" aria-label="Anchor link for: bug-bounty-platforms-1-tool">🔗</a>Bug Bounty Platforms (1 tool)</h3>
+<p><strong>platforms</strong> – Bug bounty platform integrations: manage API keys and sync programs from HackerOne, Bugcrowd, YesWeHack, and Intigriti.</p>
+<p>Actions: <code>list</code>, <code>get</code>, <code>set</code> (api_key + optional username/base_url), <code>remove</code>, <code>test</code> (verify API connectivity), <code>sync_programs</code> (fetch available programs), <code>get_program</code> (program details + scope)</p>
+<hr />
+<h3 id="ui-automation-1-tool-21-actions-121-interactive-components"><a class="zola-anchor" href="#ui-automation-1-tool-21-actions-121-interactive-components" aria-label="Anchor link for: ui-automation-1-tool-21-actions-121-interactive-components">🔗</a>UI Automation (1 tool, 21 actions, 121 interactive components)</h3>
+<p><strong>ui_automate</strong> – Scriptable UI automation for the Hugin desktop window. Every interactive element (buttons, inputs, selects, toggles, tabs, table rows) is registered in a component registry with stable IDs, enabling full programmatic control via MCP. An AI agent can take over the entire hunter’s workflow — navigate views, fill inputs, click buttons, select flows, toggle settings, read state, and capture screenshots.</p>
+<p>Requires the desktop GUI to be running. Communication uses a Unix domain socket (<code>~/.hugin/ui_command.sock</code>) with newline-delimited JSON. The MCP tool translates high-level actions into <code>UiCommand</code>/<code>UiAction</code> dispatches to the Dioxus reactive runtime.</p>
+<h4 id="actions-21"><a class="zola-anchor" href="#actions-21" aria-label="Anchor link for: actions-21">🔗</a>Actions (21)</h4>
+<p><strong>Navigation &amp; State</strong></p>
+<ul>
+<li><code>navigate</code> (view) — Switch to a view by name. Accepts both labels (“HTTP History”) and enum names (“Dashboard”).</li>
+<li><code>status</code> — Return current view, selected flow, flow/MCP flow counts.</li>
+<li><code>list_components</code> (view?) — List all interactive components registered for the current or specified view. Returns component IDs, kinds, labels, and current state.</li>
+<li><code>get_state</code> (id) — Read current state of a specific component (input value, toggle state, selected option, etc.).</li>
+<li><code>refresh</code> (view?) — Trigger a data refresh on the current or specified view.</li>
+</ul>
+<p><strong>Component Interaction</strong></p>
+<ul>
+<li><code>click</code> (id) — Click a button by component ID (e.g., <code>logger.refresh</code>, <code>scanner.start</code>).</li>
+<li><code>type_input</code> (id, value) — Set text input value (e.g., <code>type_input id=decoder.input value="SGVsbG8="</code>).</li>
+<li><code>set_select</code> (id, value) — Set dropdown/select value (e.g., <code>set_select id=scanner.severity_filter value=High</code>).</li>
+<li><code>toggle</code> (id) — Toggle a boolean control on/off (e.g., <code>toggle id=intercept.toggle</code>).</li>
+<li><code>select_row</code> (table, row_id) — Select a table row by ID (e.g., <code>select_row table=http_flows row_id=a3f2</code>).</li>
+<li><code>sort_table</code> (table, column) — Sort a table by column name.</li>
+<li><code>filter_table</code> (table, query) — Apply a text filter to a table.</li>
+</ul>
+<p><strong>Flow &amp; Detail Pane</strong></p>
+<ul>
+<li><code>select_flow</code> (flow_id, navigate?=true) — Select a flow by UUID/prefix, optionally auto-navigate to Logger.</li>
+<li><code>set_pane</code> (pane?=response, mode?=pretty) — Switch detail pane display: pane=request|response, mode=pretty|raw|hex|preview.</li>
+</ul>
+<p><strong>Visual</strong></p>
+<ul>
+<li><code>scroll</code> (target, container?=detail) — Scroll to position: target={kind: top|bottom|offset|css_selector}, container=detail|table|workspace.</li>
+<li><code>highlight</code> (css_selector, duration_ms?=2000) — Highlight a DOM element with a visual pulse.</li>
+<li><code>highlight_text</code> (text, search_in?=detail, duration_ms?=2000) — Find and highlight text in detail|request|response pane.</li>
+<li><code>capture</code> (output?, delay_ms?=200) — Screenshot the window to a file. Returns the output path.</li>
+</ul>
+<p><strong>Dialogs &amp; Sequences</strong></p>
+<ul>
+<li><code>open_dialog</code> (name) — Open a dialog: go_to_flow, keyboard_shortcuts, command_palette.</li>
+<li><code>close_dialog</code> (name) — Close a named dialog.</li>
+<li><code>sequence</code> (steps, delay_ms?=300) — Run multiple actions in order with configurable delay between steps.</li>
+</ul>
+<h4 id="component-registry-121-components-across-15-views"><a class="zola-anchor" href="#component-registry-121-components-across-15-views" aria-label="Anchor link for: component-registry-121-components-across-15-views">🔗</a>Component Registry (121 components across 15 views)</h4>
+<p>Every view registers its interactive elements on mount with stable IDs following the pattern <code>{view}.{element}</code>. Use <code>list_components</code> to discover available components for any view.</p>
+<p><strong>Logger</strong> (5): <code>logger.search</code> (input), <code>logger.source_filter</code> (select), <code>logger.select_flow</code> (table_row), <code>logger.refresh</code> (button), <code>logger.clear_filters</code> (button)</p>
+<p><strong>Intercept</strong> (13): <code>intercept.toggle</code> (toggle), <code>intercept.hold</code> (toggle), <code>intercept.responses</code> (toggle), <code>intercept.websockets</code> (toggle), <code>intercept.forward</code> (button), <code>intercept.forward_all</code> (button), <code>intercept.drop</code> (button), <code>intercept.drop_all</code> (button), <code>intercept.clear</code> (button), <code>intercept.rules</code> (button), <code>intercept.select_request</code> (table_row), <code>intercept.edit_body</code> (input), <code>intercept.search</code> (input)</p>
+<p><strong>Repeater</strong> (11): <code>repeater.send</code> (button), <code>repeater.request_editor</code> (input), <code>repeater.target_input</code> (input), <code>repeater.follow_redirects</code> (toggle), <code>repeater.auto_content_length</code> (toggle), <code>repeater.send_mode</code> (select), <code>repeater.settings_toggle</code> (toggle), <code>repeater.collections_toggle</code> (toggle), <code>repeater.select_history</code> (table_row), <code>repeater.new_tab</code> (button), <code>repeater.transport_select</code> (select)</p>
+<p><strong>Scanner</strong> (17): <code>scanner.start</code> (button), <code>scanner.stop</code> (button), <code>scanner.pause</code> (button), <code>scanner.resume</code> (button), <code>scanner.refresh</code> (button), <code>scanner.report</code> (button), <code>scanner.comparer</code> (button), <code>scanner.clear_filters</code> (button), <code>scanner.select_scan</code> (table_row), <code>scanner.select_finding</code> (table_row), <code>scanner.severity_filter</code> (select), <code>scanner.confidence_filter</code> (select), <code>scanner.check_filter</code> (select), <code>scanner.passive</code> (toggle), <code>scanner.active</code> (toggle), <code>scanner.consolidate</code> (toggle), <code>scanner.view_tab</code> (tab)</p>
+<p><strong>WebSocket</strong> (13): <code>ws.search</code> (input), <code>ws.refresh</code> (button), <code>ws.clear_all</code> (button), <code>ws.select_connection</code> (table_row), <code>ws.select_message</code> (table_row), <code>ws.send_message</code> (button), <code>ws.message_input</code> (input), <code>ws.send_opcode</code> (select), <code>ws.direction_filter</code> (select), <code>ws.content_filter</code> (input), <code>ws.auto_scroll</code> (toggle), <code>ws.intercept_toggle</code> (toggle), <code>ws.detail_mode</code> (tab)</p>
+<p><strong>Decoder</strong> (6): <code>decoder.input</code> (input), <code>decoder.output</code> (input), <code>decoder.encode</code> (button), <code>decoder.decode</code> (button), <code>decoder.operation_select</code> (select), <code>decoder.smart_decode</code> (button)</p>
+<p><strong>Intruder</strong> (9): <code>intruder.start</code> (button), <code>intruder.stop</code> (button), <code>intruder.pause</code> (button), <code>intruder.resume</code> (button), <code>intruder.search</code> (input), <code>intruder.target_url</code> (input), <code>intruder.payload_input</code> (input), <code>intruder.select_result</code> (table_row), <code>intruder.attack_type</code> (select)</p>
+<p><strong>Search</strong> (4): <code>search.query</code> (input), <code>search.search_button</code> (button), <code>search.select_result</code> (table_row), <code>search.scope_filter</code> (select)</p>
+<p><strong>Findings</strong> (5): <code>findings.search</code> (input), <code>findings.select_finding</code> (table_row), <code>findings.severity_filter</code> (select), <code>findings.delete</code> (button), <code>findings.export</code> (button)</p>
+<p><strong>Scopes</strong> (6): <code>scopes.add_include</code> (button), <code>scopes.add_exclude</code> (button), <code>scopes.mode_select</code> (select), <code>scopes.pattern_input</code> (input), <code>scopes.search</code> (input), <code>scopes.select_pattern</code> (table_row)</p>
+<p><strong>Crawler</strong> (9): <code>crawler.start</code> (button), <code>crawler.stop</code> (button), <code>crawler.pause</code> (button), <code>crawler.resume</code> (button), <code>crawler.target_url</code> (input), <code>crawler.search</code> (input), <code>crawler.select_url</code> (table_row), <code>crawler.max_depth</code> (input), <code>crawler.max_pages</code> (input)</p>
+<p><strong>Sequencer</strong> (6): <code>sequencer.start</code> (button), <code>sequencer.stop</code> (button), <code>sequencer.analyze</code> (button), <code>sequencer.target_url</code> (input), <code>sequencer.token_name</code> (input), <code>sequencer.select_capture</code> (table_row)</p>
+<p><strong>Comparer</strong> (4): <code>comparer.compare</code> (button), <code>comparer.request_a</code> (input), <code>comparer.request_b</code> (input), <code>comparer.select_diff</code> (table_row)</p>
+<p><strong>Dashboard / HTTP History</strong> (7): <code>dashboard.search</code> (input), <code>dashboard.select_flow</code> (table_row), <code>dashboard.refresh</code> (button), <code>dashboard.method_filter</code> (select), <code>dashboard.status_filter</code> (select), <code>dashboard.host_filter</code> (input), <code>dashboard.flag_filter</code> (toggle)</p>
+<p><strong>Oastify / Collaborator</strong> (6): <code>oastify.start</code> (button), <code>oastify.stop</code> (button), <code>oastify.generate_payload</code> (button), <code>oastify.search</code> (input), <code>oastify.select_interaction</code> (table_row), <code>oastify.copy_payload</code> (button)</p>
+<h4 id="example-full-agent-workflow"><a class="zola-anchor" href="#example-full-agent-workflow" aria-label="Anchor link for: example-full-agent-workflow">🔗</a>Example: Full Agent Workflow</h4>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span># 1. Navigate to scanner, start a scan</span></span>
+<span class="giallo-l"><span>ui_automate action=navigate view=Scanner</span></span>
+<span class="giallo-l"><span>ui_automate action=type_input id=scanner.target_url value=&quot;https://target.com&quot;</span></span>
+<span class="giallo-l"><span>ui_automate action=click id=scanner.start</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># 2. Check findings</span></span>
+<span class="giallo-l"><span>ui_automate action=set_select id=scanner.severity_filter value=High</span></span>
+<span class="giallo-l"><span>ui_automate action=list_components    # see what&#39;s available</span></span>
+<span class="giallo-l"><span>ui_automate action=get_state id=scanner.active  # check if scan is running</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># 3. Select a finding and screenshot</span></span>
+<span class="giallo-l"><span>ui_automate action=select_row table=scanner_findings row_id=abc123</span></span>
+<span class="giallo-l"><span>ui_automate action=capture output=/tmp/finding.png</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># 4. Multi-step sequence</span></span>
+<span class="giallo-l"><span>ui_automate action=sequence steps=&#39;[</span></span>
+<span class="giallo-l"><span>  {&quot;action&quot;:&quot;navigate&quot;,&quot;view&quot;:&quot;Repeater&quot;},</span></span>
+<span class="giallo-l"><span>  {&quot;action&quot;:&quot;type_input&quot;,&quot;id&quot;:&quot;repeater.request_editor&quot;,&quot;value&quot;:&quot;GET /api/admin HTTP/1.1\\nHost: target.com&quot;},</span></span>
+<span class="giallo-l"><span>  {&quot;action&quot;:&quot;click&quot;,&quot;id&quot;:&quot;repeater.send&quot;},</span></span>
+<span class="giallo-l"><span>  {&quot;action&quot;:&quot;capture&quot;,&quot;output&quot;:&quot;/tmp/repeater.png&quot;}</span></span>
+<span class="giallo-l"><span>]&#39; delay_ms=500</span></span></code></pre>
+<hr />
+<h3 id="enterprise-4-tools"><a class="zola-anchor" href="#enterprise-4-tools" aria-label="Anchor link for: enterprise-4-tools">🔗</a>Enterprise (4 tools)</h3>
+<p><strong>rbac</strong> – Role-Based Access Control: manage users, roles, permissions, and audit logging for multi-user environments.</p>
+<p>Actions: <code>list_users</code>, <code>get_user</code>, <code>create_user</code>, <code>update_user</code>, <code>delete_user</code>, <code>list_roles</code>, <code>create_role</code>, <code>delete_role</code>, <code>check_permission</code>, <code>audit_log</code>, <code>log_action</code></p>
+<p><strong>invisible_proxy</strong> – Invisible (transparent) proxy mode: configure and manage transparent proxy interception without client-side proxy settings.</p>
+<p>Actions: <code>status</code>, <code>configure</code>, <code>enable</code>, <code>disable</code>, <code>generate_rules</code>, <code>connections</code>, <code>dns_config</code></p>
+<p><strong>http3</strong> – HTTP/3 (QUIC) proxy configuration and analysis.</p>
+<p>Actions: <code>status</code>, <code>configure</code>, <code>probe</code>, <code>alt_svc_scan</code>, <code>fingerprint</code>, <code>stats</code></p>
+<p><strong>spnego</strong> – SPNEGO/NTLM enterprise authentication: configure credentials, detect auth challenges, generate tokens.</p>
+<p>Actions: <code>status</code>, <code>configure</code>, <code>list_credentials</code>, <code>delete_credential</code>, <code>detect</code>, <code>generate_type1</code>, <code>parse_challenge</code>, <code>generate_type3</code>, <code>sessions</code>, <code>test</code></p>
+<hr />
+<h2 id="mcp-resources"><a class="zola-anchor" href="#mcp-resources" aria-label="Anchor link for: mcp-resources">🔗</a>MCP Resources</h2>
+<p>The MCP server also exposes resources for reading configuration and state:</p>
+<ul>
+<li><code>hugin://flows</code> – Last 20 captured HTTP flows</li>
+<li><code>hugin://findings</code> – Current vulnerability scanner findings</li>
+<li><code>hugin://stats</code> – Proxy status and statistics</li>
+<li><code>hugin://scope</code> – Active scope configuration (mode, include/exclude patterns)</li>
+<li><code>hugin://ratrace</code> – Recent race condition test sessions and results</li>
+<li><code>hugin://outputs</code> – Output store statistics (intruder, repeater, scanner saved outputs)</li>
+</ul>
+<h2 id="auto-reload"><a class="zola-anchor" href="#auto-reload" aria-label="Anchor link for: auto-reload">🔗</a>Auto-Reload</h2>
+<p>When developing Hugin or using it in a workflow where the binary is frequently rebuilt, the MCP server supports transparent auto-reload. This means connected MCP clients (Claude Code, Claude Desktop, Cursor, etc.) automatically pick up new tools and changes without manual reconnection.</p>
+<h3 id="how-it-works"><a class="zola-anchor" href="#how-it-works" aria-label="Anchor link for: how-it-works">🔗</a>How It Works</h3>
+<p>When you run <code>hugin mcp</code>, the process operates as a lightweight relay:</p>
+<ol>
+<li>The relay spawns <code>hugin mcp --inner</code> as a child process, which runs the actual MCP server</li>
+<li>All JSON-RPC messages are piped transparently between the MCP client and the inner server</li>
+<li>A background watcher polls the hugin binary’s modification time (every 2 seconds by default)</li>
+<li>When the binary changes (e.g., after <code>cargo build --release</code>):
+<ul>
+<li>The old inner server is gracefully killed</li>
+<li>A new inner server is spawned from the updated binary</li>
+<li>A <code>notifications/tools/list_changed</code> notification is sent to the client</li>
+<li>The client automatically re-fetches the tool list</li>
+</ul>
+</li>
+</ol>
+<p>From the MCP client’s perspective, the connection never drops — only the tool list refreshes.</p>
+<h3 id="configuration-1"><a class="zola-anchor" href="#configuration-1" aria-label="Anchor link for: configuration-1">🔗</a>Configuration</h3>
+<p>Auto-reload is enabled by default. To configure it, edit <code>~/.config/hugin/config.toml</code>:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="toml"><span class="giallo-l"><span style="color: #9CABCA;">[</span><span style="color: #7AA89F;">mcp</span><span style="color: #9CABCA;">]</span></span>
+<span class="giallo-l"><span style="color: #727169;"># Enable/disable auto-reload (default: true)</span></span>
+<span class="giallo-l"><span>auto_reload</span><span style="color: #9CABCA;"> =</span><span style="color: #FFA066;"> true</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: #727169;"># How often to check for binary changes, in seconds (default: 2)</span></span>
+<span class="giallo-l"><span>poll_interval_secs</span><span style="color: #9CABCA;"> =</span><span style="color: #D27E99;"> 2</span></span></code></pre>
+<p>You can also toggle this from the desktop GUI: <strong>Settings &gt; General &gt; MCP Server</strong>.</p>
+<p>To disable auto-reload and run the MCP server directly (legacy behavior), either set <code>auto_reload = false</code> in config or use the internal flag:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #7AA89F;">hugin</span><span style="color: #98BB6C;"> mcp --inner</span></span></code></pre><h3 id="notes"><a class="zola-anchor" href="#notes" aria-label="Anchor link for: notes">🔗</a>Notes</h3>
+<ul>
+<li>The relay process itself stays as the original binary version — it’s intentionally minimal (just a stdio pipe + file watcher), so it doesn’t need updating</li>
+<li>stderr output from the inner server is passed through, so tracing logs work normally</li>
+<li>If the inner server crashes unexpectedly (not from a reload), the relay exits with the same exit code</li>
+<li>Auto-reload works with any MCP client that supports the <code>notifications/tools/list_changed</code> notification (Claude Code, Claude Desktop, and most MCP SDK clients do)</li>
+</ul>
+<h2 id="usage-tips"><a class="zola-anchor" href="#usage-tips" aria-label="Anchor link for: usage-tips">🔗</a>Usage Tips</h2>
+<ul>
+<li>Start broad: use <code>list_flows</code> and <code>search_flows</code> to understand captured traffic before diving deep.</li>
+<li>Use <code>get_flow</code> with short ID prefixes (e.g., <code>get_flow(id: "a3f2")</code>) instead of copying full UUIDs.</li>
+<li>For WAF-protected targets: use <code>browser(action: "launch")</code> first, then <code>browser(action: "exec_js")</code> with <code>fetch()</code> to make requests through the browser’s real TLS fingerprint.</li>
+<li>Chain tools together: <code>vurl_js_endpoints</code> to find endpoints, then <code>vurl_endpointer</code> to profile them, then <code>intruder</code> or <code>sqli</code> to test.</li>
+<li>Use <code>pipeline</code> to run all scanners in sequence on a host with one call.</li>
+<li>Track OOB callbacks with <code>vurl_oastify</code> – it correlates callbacks to specific payloads automatically.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+</article>
+
+
+
+<nav class="page-nav" aria-label="Page navigation">
+    
+
+    
+</nav>
+
+
+
+                </main>
+
+                
+                
+                
+
+
+
+
+<aside id="page-toc-panel" class="page-toc-panel" aria-hidden="true" aria-label="On this page">
+    <div class="page-toc-panel__content">
+        <div class="page-toc-panel__header">
+            <span class="page-toc-panel__title">On this page</span>
+            <button class="page-toc-panel__close" type="button" aria-label="Close table of contents">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="page-toc-panel__nav" aria-label="Page sections">
+            <ul class="page-toc-panel__list">
+                
+                <li class="page-toc-panel__item">
+                    <a href="#setup" class="page-toc-panel__link">
+                        Setup
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#claude-code" class="page-toc-panel__link">
+                                Claude Code
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#claude-desktop" class="page-toc-panel__link">
+                                Claude Desktop
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#standalone-mode" class="page-toc-panel__link">
+                                Standalone Mode
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#architecture" class="page-toc-panel__link">
+                        Architecture
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#license-tiers" class="page-toc-panel__link">
+                        License Tiers
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#tool-reference" class="page-toc-panel__link">
+                        Tool Reference
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#flow-management-4-tools" class="page-toc-panel__link">
+                                Flow Management (4 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#proxy-control-3-tools" class="page-toc-panel__link">
+                                Proxy Control (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#request-replay-2-tools" class="page-toc-panel__link">
+                                Request Replay (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#vulnerability-scanning-12-tools" class="page-toc-panel__link">
+                                Vulnerability Scanning (12 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#fuzzing-and-discovery-5-tools" class="page-toc-panel__link">
+                                Fuzzing and Discovery (5 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#intelligence-and-analysis-5-tools" class="page-toc-panel__link">
+                                Intelligence and Analysis (5 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#race-condition-testing-1-tool" class="page-toc-panel__link">
+                                Race Condition Testing (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#encoding-and-decoding-2-tools" class="page-toc-panel__link">
+                                Encoding and Decoding (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#site-map-and-crawling-3-tools" class="page-toc-panel__link">
+                                Site Map and Crawling (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#session-and-authentication-6-tools" class="page-toc-panel__link">
+                                Session and Authentication (6 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#browser-automation-3-tools" class="page-toc-panel__link">
+                                Browser Automation (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#ai-orchestration-1-tool-30-actions" class="page-toc-panel__link">
+                                AI Orchestration (1 tool, 30+ actions)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#oob-detection-2-tools" class="page-toc-panel__link">
+                                OOB Detection (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#token-analysis-1-tool" class="page-toc-panel__link">
+                                Token Analysis (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#project-management-2-tools" class="page-toc-panel__link">
+                                Project Management (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#reporting-and-export-3-tools" class="page-toc-panel__link">
+                                Reporting and Export (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#organization-and-workflow-6-tools" class="page-toc-panel__link">
+                                Organization and Workflow (6 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#rules-and-filters-3-tools" class="page-toc-panel__link">
+                                Rules and Filters (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#dom-client-side-security-4-tools" class="page-toc-panel__link">
+                                DOM&#x2F;Client-Side Security (4 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#js-analysis-4-tools" class="page-toc-panel__link">
+                                JS Analysis (4 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#next-js-react-3-tools" class="page-toc-panel__link">
+                                Next.js &#x2F; React (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#http-smuggling-2-tools" class="page-toc-panel__link">
+                                HTTP Smuggling (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#ssrf-and-cloud-4-tools" class="page-toc-panel__link">
+                                SSRF and Cloud (4 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#waf-evasion-and-fingerprinting-6-tools" class="page-toc-panel__link">
+                                WAF Evasion and Fingerprinting (6 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#url-parsing-and-mutation-3-tools" class="page-toc-panel__link">
+                                URL Parsing and Mutation (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#http-client-4-tools" class="page-toc-panel__link">
+                                HTTP Client (4 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#response-diffing-2-tools" class="page-toc-panel__link">
+                                Response Diffing (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#protocol-level-attacks-6-tools" class="page-toc-panel__link">
+                                Protocol-Level Attacks (6 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#authentication-bypass-3-tools" class="page-toc-panel__link">
+                                Authentication Bypass (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#ai-llm-security-6-tools" class="page-toc-panel__link">
+                                AI&#x2F;LLM Security (6 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#payload-generation-2-tools" class="page-toc-panel__link">
+                                Payload Generation (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#edge-runtime-and-server-specific-4-tools" class="page-toc-panel__link">
+                                Edge Runtime and Server-Specific (4 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#dns-and-network-2-tools" class="page-toc-panel__link">
+                                DNS and Network (2 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#vector-database-and-rag-1-tool" class="page-toc-panel__link">
+                                Vector Database and RAG (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#race-detection-1-tool" class="page-toc-panel__link">
+                                Race Detection (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#asset-management-1-tool" class="page-toc-panel__link">
+                                Asset Management (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#mobile-security-1-tool" class="page-toc-panel__link">
+                                Mobile Security (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#collaboration-1-tool" class="page-toc-panel__link">
+                                Collaboration (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#extensions-and-tooling-3-tools" class="page-toc-panel__link">
+                                Extensions and Tooling (3 tools)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#campaigns-and-automation-1-tool" class="page-toc-panel__link">
+                                Campaigns and Automation (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#bug-bounty-platforms-1-tool" class="page-toc-panel__link">
+                                Bug Bounty Platforms (1 tool)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#ui-automation-1-tool-21-actions-121-interactive-components" class="page-toc-panel__link">
+                                UI Automation (1 tool, 21 actions, 121 interactive components)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#enterprise-4-tools" class="page-toc-panel__link">
+                                Enterprise (4 tools)
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#mcp-resources" class="page-toc-panel__link">
+                        MCP Resources
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#auto-reload" class="page-toc-panel__link">
+                        Auto-Reload
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#how-it-works" class="page-toc-panel__link">
+                                How It Works
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#configuration-1" class="page-toc-panel__link">
+                                Configuration
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#notes" class="page-toc-panel__link">
+                                Notes
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#usage-tips" class="page-toc-panel__link">
+                        Usage Tips
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+                
+            </div>
+
+            
+            
+            
+        </div>
+    </div>
+
+    
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+
+    
+    
+    
+<div class="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-title" aria-describedby="search-description">
+    <div class="search">
+        <h2 id="search-title" class="sr-only">Search documentation</h2>
+        <p id="search-description" class="sr-only">Type to search. Use arrow keys to navigate results, Enter to select, Escape to close.</p>
+
+        <div class="search__input-wrapper">
+            <span class="search__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.3-4.3"/>
+                </svg>
+            </span>
+            <input
+                type="search"
+                class="search__input"
+                placeholder="Search documentation..."
+                autocomplete="off"
+                autofocus
+                aria-label="Search query"
+                aria-controls="search-results"
+                aria-autocomplete="list"
+            >
+            <span class="search__shortcut" aria-hidden="true">/</span>
+            <button class="search__close" type="button" aria-label="Close search dialog" title="Close (Esc)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="search-results" class="search__results" role="listbox" aria-label="Search results">
+            
+        </div>
+
+        <footer class="search__footer">
+            <nav class="search__hints" aria-label="Keyboard shortcuts">
+                <span class="search__hint">
+                    <kbd aria-label="Up and down arrows">↑</kbd><kbd aria-hidden="true">↓</kbd> <span>Navigate</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Enter">↵</kbd> <span>Select</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Escape">esc</kbd> <span>Close</span>
+                </span>
+            </nav>
+        </footer>
+    </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    <button class="page-toc-toggle" type="button" aria-label="Toggle table of contents" aria-expanded="false" aria-controls="page-toc-panel" title="On this page">
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--list" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 5H3"/>
+            <path d="M16 12H3"/>
+            <path d="M16 19H3"/>
+            <path d="M21 5h.01"/>
+            <path d="M21 12h.01"/>
+            <path d="M21 19h.01"/>
+        </svg>
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    <button class="fab scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    
+    <script src="https://docs.hugin.nu/docs/js/theme.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/navigation.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/code.js" defer></script>
+
+    
+    <script src="https://docs.hugin.nu/docs/elasticlunr.min.js"></script>
+    <script src="https://docs.hugin.nu/docs/search_index.en.js"></script>
+    <script src="https://docs.hugin.nu/docs/js/search.js" defer></script>
+    
+    
+
+    
+</body>
+</html>

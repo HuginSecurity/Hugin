@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <script>
+    (function(){var s='auto';try{s=localStorage.getItem('tanuki-theme')||'auto'}catch(e){}
+    var t=s==='auto'?(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):s;
+    document.documentElement.setAttribute('data-theme',t);
+    document.documentElement.setAttribute('data-theme-setting',s)})();
+    </script>
+
+    
+    <title>REST API | Hugin Documentation</title>
+
+    
+    
+    <meta name="description" content="Security intercepting proxy for web application penetration testing">
+    
+
+    
+    
+
+    
+    
+
+    
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    
+    
+    <link rel="canonical" href="https://docs.hugin.nu/docs/api/rest/">
+    <link rel="alternate" hreflang="en" href="https://docs.hugin.nu/docs/api/rest/">
+    <link rel="alternate" hreflang="x-default" href="https://docs.hugin.nu/docs/api/rest/">
+    
+
+    
+    <meta property="og:type" content="article">
+    
+    <meta property="og:url" content="https://docs.hugin.nu/docs/api/rest/">
+    
+    
+    <meta property="og:title" content="REST API">
+    
+    
+    <meta property="og:description" content="">
+    
+    
+    <meta property="og:site_name" content="Hugin Documentation">
+    <meta property="og:locale" content="en">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:url" content="https://docs.hugin.nu/docs/api/rest/">
+    
+    
+    <meta name="twitter:title" content="REST API">
+    
+    
+    <meta name="twitter:description" content="">
+    
+    
+    
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://docs.hugin.nu/docs#website",
+                "url": "https://docs.hugin.nu/docs",
+                "name": "Hugin Documentation",
+                "description": "Security intercepting proxy for web application penetration testing",
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "inLanguage": "en",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://docs.hugin.nu/docs?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://zentinelproxy.io/#organization",
+                "name": "raskell.io",
+                "url": "https://zentinelproxy.io",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://zentinelproxy.io/img/og-image.png",
+                    "width": 1200,
+                    "height": 630
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://docs.hugin.nu/docs/api/rest/#webpage",
+                "url": "https://docs.hugin.nu/docs/api/rest/",
+                "name": "REST API",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs#website"
+                },
+                "description": "",
+                "inLanguage": "en"
+                
+                
+            }
+            
+            ,{
+                "@type": "Article",
+                "@id": "https://docs.hugin.nu/docs/api/rest/#article",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs/api/rest/#webpage"
+                },
+                "headline": "REST API",
+                
+                
+                
+                "author": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                
+                
+                "wordCount": 397,
+                
+                "inLanguage": "en"
+            }
+            
+        ]
+    }
+    </script>
+
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hugin Documentation",
+                "item": "https://docs.hugin.nu/docs"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Hugin",
+                "item": "https://docs.hugin.nu/docs/"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "API",
+                "item": "https://docs.hugin.nu/docs/api/"
+            }
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 4,
+                "name": "REST API",
+                "item": "https://docs.hugin.nu/docs/api/rest/"
+            }
+        ]
+    }
+    </script>
+    
+
+    
+    <link rel="stylesheet" href="https://docs.hugin.nu/docs/style.css">
+
+    
+    
+
+    
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('tanuki-theme') || 'auto';
+                var theme = stored === 'auto'
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : stored;
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme-setting', stored);
+            } catch(e) {}
+        })();
+    </script>
+    
+
+    
+</head>
+<body class="page-rest">
+    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+        
+    
+
+    
+    <div class="layout layout--docs layout--fixed-header" data-mode="docs">
+        
+
+
+<aside id="sidebar" class="sidebar" role="complementary" aria-labelledby="sidebar-title">
+    
+    <div class="sidebar__resize-handle" aria-hidden="true" title="Drag to resize sidebar width"></div>
+
+    <div class="sidebar__header">
+        <span id="sidebar-title" class="sidebar__title">Table of contents</span>
+        <button class="sidebar__close" type="button" aria-label="Close sidebar" title="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18"/>
+                <path d="m6 6 12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <nav class="sidebar__content" aria-label="Documentation navigation">
+        <div class="toc">
+            
+            
+
+            
+
+            
+
+            
+            
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/getting-started/" class="toc__section-title ">Getting Started</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/installation/" class="toc__link ">
+                            Installation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/first-run/" class="toc__link ">
+                            First Run
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/browser-setup/" class="toc__link ">
+                            Browser Setup
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/configuration/" class="toc__link ">
+                            Configuration
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/core/" class="toc__section-title ">Core Tools</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/proxy/" class="toc__link ">
+                            Proxy
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept/" class="toc__link ">
+                            Intercept
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/repeater/" class="toc__link ">
+                            Repeater
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intruder/" class="toc__link ">
+                            Intruder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/sequencer/" class="toc__link ">
+                            Sequencer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/decoder/" class="toc__link ">
+                            Decoder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/comparer/" class="toc__link ">
+                            Comparer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/findings/" class="toc__link ">
+                            Findings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/match-replace/" class="toc__link ">
+                            Match &amp; Replace
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/session-rules/" class="toc__link ">
+                            Session Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept-rules/" class="toc__link ">
+                            Intercept Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/websocket/" class="toc__link ">
+                            WebSocket
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ui-views/" class="toc__section-title ">UI Views</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/dashboard/" class="toc__link ">
+                            Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/logger/" class="toc__link ">
+                            HTTP History (Logger)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/projects/" class="toc__link ">
+                            Projects
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/sitemap/" class="toc__link ">
+                            Sitemap
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/search/" class="toc__link ">
+                            Search
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/settings/" class="toc__link ">
+                            Settings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/cookie-jar/" class="toc__link ">
+                            Cookie Jar
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/organizer/" class="toc__link ">
+                            Organizer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/exports/" class="toc__link ">
+                            Exports
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/environment/" class="toc__link ">
+                            Environment
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/events/" class="toc__link ">
+                            Events
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/files/" class="toc__link ">
+                            Files (Hosted Files)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/tools/" class="toc__link ">
+                            Tools (External Tool Registry)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/authorize/" class="toc__link ">
+                            Authorize (BAC)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/scanning/" class="toc__section-title ">Scanning</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/builtin-scanner/" class="toc__link ">
+                            Built-in Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/synaps/" class="toc__link ">
+                            Synaps Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/module-development/" class="toc__link ">
+                            Module Development
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/community-modules/" class="toc__link ">
+                            Community Modules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/vurl/" class="toc__link ">
+                            vurl-offensive (Active Hunting)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/authz/" class="toc__link ">
+                            Authorization Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/bac/" class="toc__link ">
+                            BAC — Broken Access Control Pipeline
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/cors/" class="toc__link ">
+                            CORS Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/upload/" class="toc__link ">
+                            File Upload Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/scan-optimizer/" class="toc__link ">
+                            Scan Optimizer
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/automation/" class="toc__section-title ">Automation</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/workflows/" class="toc__link ">
+                            Workflows
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/campaigns/" class="toc__link ">
+                            Campaigns
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/scheduler/" class="toc__link ">
+                            Scheduler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/macros/" class="toc__link ">
+                            Macros
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/recon/" class="toc__section-title ">Recon</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/assets/" class="toc__link ">
+                            Recon — Assets
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/param-discover/" class="toc__link ">
+                            Param Discover
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/ffuzzer/" class="toc__link ">
+                            FFuzzer (FUZZ keyword fuzzer)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/wordlists/" class="toc__link ">
+                            Wordlists
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/intelligence/" class="toc__section-title ">Intelligence</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/nerve/" class="toc__link ">
+                            Nerve — Passive Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/crawler/" class="toc__link ">
+                            Crawler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/ratrace/" class="toc__link ">
+                            RatRace — Race Conditions
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/oastify/" class="toc__link ">
+                            Oastify — OOB Detection
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/intelligence/" class="toc__link ">
+                            Intelligence (Cross-Flow Analysis)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/flow-analysis/" class="toc__link ">
+                            Flow Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/fingerprint/" class="toc__link ">
+                            Fingerprint
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ai/" class="toc__section-title ">AI &amp; Orchestration</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/assistant/" class="toc__link ">
+                            AI Assistant
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/orchestration/" class="toc__link ">
+                            Orchestration Engine
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/browser-automation/" class="toc__link ">
+                            Browser Automation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/taint-analysis/" class="toc__link ">
+                            Taint Analysis
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/plugins/" class="toc__section-title ">Plugins</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/discovery/" class="toc__link ">
+                            Discovery
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/yeswehugin/" class="toc__link ">
+                            YesWeHugin
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/collaboration/" class="toc__link ">
+                            Collaboration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/mobile/" class="toc__link ">
+                            Mobile (APK &#x2F; IPA + Frida)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/hackerone/" class="toc__link ">
+                            HackerOne
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/platforms/" class="toc__link ">
+                            Platforms (Unified BB Manager)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/extensibility/" class="toc__section-title ">Extensibility</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/lua-plugins/" class="toc__link ">
+                            Lua Plugins
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/mcp/" class="toc__link ">
+                            MCP Integration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugin-sdk/" class="toc__link ">
+                            Plugin SDK
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugins-ui/" class="toc__link ">
+                            Plugins UI
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/bambda/" class="toc__link ">
+                            Bambda (Inline Lua Filters)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/api/" class="toc__section-title ">API</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rest/" class="toc__link active">
+                            REST API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/graphql/" class="toc__link ">
+                            GraphQL API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/authentication/" class="toc__link ">
+                            Authentication
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rbac/" class="toc__link ">
+                            RBAC (Role-Based Access Control)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/operations/" class="toc__section-title ">Operations</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/release-signing/" class="toc__link ">
+                            Release Signing
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/license/" class="toc__link ">
+                            License &amp; Trial
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/backups/" class="toc__link ">
+                            Backup &amp; Restore
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/updates/" class="toc__link ">
+                            Updates &amp; Channels
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/browser-engines/" class="toc__link ">
+                            Browser Engines
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/reference/" class="toc__section-title ">Reference</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/cli/" class="toc__link ">
+                            CLI Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/configuration/" class="toc__link ">
+                            Configuration Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/architecture/" class="toc__link ">
+                            Architecture
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/telemetry/" class="toc__link ">
+                            Telemetry
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/changelog/" class="toc__link ">
+                            Changelog
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+    </nav>
+
+    <div class="sidebar__footer">
+        
+        <div class="sidebar__actions-mobile">
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Version</span>
+                <div class="sidebar__version">
+                    <span class="sidebar__version-current">v0.1.0</span>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Theme</span>
+                
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            </div>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="sidebar__github" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub (opens in new tab)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                <span>View on GitHub</span>
+            </a>
+            
+        </div>
+
+        
+        <a href="https://docs.hugin.nu/docs/print?auto=true" class="print-button" target="_blank" rel="noopener" aria-label="Print all documentation pages (opens print dialog)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect width="12" height="8" x="6" y="14"/>
+            </svg>
+            <span>Print all pages</span>
+        </a>
+    </div>
+</aside>
+
+
+
+
+        <div class="layout__main">
+            
+            
+
+
+
+
+<header class="header" role="banner">
+    <div class="header__left">
+        
+        
+        <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar navigation" aria-expanded="true" aria-controls="sidebar" title="Toggle sidebar">
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m14 9 3 3-3 3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+        <button class="toc-toggle toc-toggle--docs" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="sidebar" title="Table of contents">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+
+        
+        
+
+        
+        <a href="https://docs.hugin.nu/docs" class="header__logo" aria-label="Hugin Documentation - Go to homepage">
+            
+            
+            
+            <img src="https://docs.hugin.nu/docs/img/hugin-logo.png" alt="" aria-hidden="true">
+            
+            <span>Hugin Documentation</span>
+        </a>
+    </div>
+
+    
+    <nav class="header__nav" role="navigation" aria-label="Main navigation">
+        
+    </nav>
+
+    
+    <div class="header__actions" role="group" aria-label="Site actions">
+        
+        
+        <button class="search-toggle" type="button" aria-label="Open search dialog" aria-keyshortcuts="/" aria-haspopup="dialog" title="Search (press /)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+            </svg>
+        </button>
+        
+
+        
+        <div class="header__actions-desktop">
+            
+            
+            
+
+
+
+<div class="version-picker">
+    <button class="version-picker__button" aria-haspopup="listbox" aria-expanded="false">
+        <span>v0.1.0</span>
+        
+        
+        <span class="version-picker__badge">latest</span>
+        
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </button>
+
+    <div class="version-picker__dropdown" role="listbox">
+        
+        <a href="/docs/" class="version-picker__item active" role="option">
+            v0.1.0
+            
+            <span class="version-picker__badge">latest</span>
+            
+        </a>
+        
+        <hr class="version-picker__divider">
+        <a href="https://docs.hugin.nu/docs/appendix/versioning" class="version-picker__item version-picker__item--link">
+            All versions
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+
+            
+
+            
+            
+            
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin&#x2F;edit&#x2F;main&#x2F;docs&#x2F;zola&#x2F;content/api&#x2F;rest.md" class="btn btn--icon btn--ghost" aria-label="Edit this page on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="Edit this page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    <path d="m15 5 4 4"/>
+                </svg>
+            </a>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="btn btn--icon btn--ghost" aria-label="View project on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+
+            
+
+            
+            
+            <div class="scroll-progress" aria-hidden="true">
+                <div class="scroll-progress__bar"></div>
+                <span class="scroll-progress__percent">0%</span>
+            </div>
+            
+
+            
+
+
+
+
+
+
+    
+
+
+<nav class="nav-buttons" aria-label="Page navigation">
+    
+    
+    <div class="nav-button nav-button--prev disabled" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+        </svg>
+    </div>
+    
+
+    
+    
+    <a href="https://docs.hugin.nu/docs/api/graphql/" class="nav-button nav-button--next" aria-label="Next: GraphQL API">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+        </svg>
+        <span class="nav-button__label">
+            GraphQL API
+            <span class="nav-button__shortcut">→</span>
+        </span>
+    </a>
+    
+</nav>
+
+
+
+
+            <div class="layout__content-area">
+                <main id="main-content" class="main-content" role="main" aria-label="Main content">
+                    
+
+
+<article class="article" itemscope itemtype="https://schema.org/Article" aria-labelledby="article-title">
+    
+    <header class="article__header article__header--docs">
+        <h1 id="article-title" itemprop="headline">REST API</h1>
+        
+    </header>
+
+    <div class="article__content" itemprop="articleBody">
+        <p>The Hugin API server exposes a REST API for automation, scripting, and integration with external tools. Every feature accessible through the UI is also accessible via REST.</p>
+<h2 id="base-url-and-default-port"><a class="zola-anchor" href="#base-url-and-default-port" aria-label="Anchor link for: base-url-and-default-port">🔗</a>Base URL and Default Port</h2>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>http://127.0.0.1:8081/api/</span></span></code></pre>
+<p>The API port defaults to 8081 and is configurable via <code>--api-port</code> or the config file. An OpenAPI spec is served at <code>/openapi.json</code>.</p>
+<h2 id="authentication"><a class="zola-anchor" href="#authentication" aria-label="Anchor link for: authentication">🔗</a>Authentication</h2>
+<p>When running locally (bound to 127.0.0.1), authentication is disabled by default. When exposed on a network interface (0.0.0.0), enable authentication. See <a href="https://docs.hugin.nu/docs/api/rest/authentication.md">Authentication</a> for details.</p>
+<h2 id="endpoint-reference"><a class="zola-anchor" href="#endpoint-reference" aria-label="Anchor link for: endpoint-reference">🔗</a>Endpoint Reference</h2>
+<p>All endpoints are prefixed with <code>/api/</code> unless otherwise noted.</p>
+<h3 id="infrastructure"><a class="zola-anchor" href="#infrastructure" aria-label="Anchor link for: infrastructure">🔗</a>Infrastructure</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/health               Health check (no auth required)</span></span>
+<span class="giallo-l"><span>GET  /api/update/check         Check for updates</span></span>
+<span class="giallo-l"><span>GET  /api/ca.pem               Download CA certificate</span></span>
+<span class="giallo-l"><span>GET  /api/proxy/status         Proxy status and statistics</span></span></code></pre><h3 id="flows"><a class="zola-anchor" href="#flows" aria-label="Anchor link for: flows">🔗</a>Flows</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/flows                List flows (query params: method, host, flagged, limit, offset)</span></span>
+<span class="giallo-l"><span>POST /api/flows                Create/import a flow</span></span>
+<span class="giallo-l"><span>GET  /api/flows/{id}           Get flow details</span></span></code></pre><h3 id="repeater"><a class="zola-anchor" href="#repeater" aria-label="Anchor link for: repeater">🔗</a>Repeater</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/repeater/send        Replay a request with modifications</span></span>
+<span class="giallo-l"><span>POST /api/repeater/batch       Send batch requests</span></span>
+<span class="giallo-l"><span>GET  /api/repeater/history     List replay history</span></span>
+<span class="giallo-l"><span>GET  /api/repeater/queue       Queue status</span></span>
+<span class="giallo-l"><span>POST /api/repeater/queue       Queue a request for later</span></span>
+<span class="giallo-l"><span>GET  /api/repeater/queue/list  List queued requests</span></span>
+<span class="giallo-l"><span>DELETE /api/repeater/queue     Clear the queue</span></span>
+<span class="giallo-l"><span>DELETE /api/repeater/queue/{id} Cancel a queued request</span></span>
+<span class="giallo-l"><span>POST /api/repeat               Send raw HTTP request</span></span>
+<span class="giallo-l"><span>POST /api/flows/{id}/repeat    Replay a flow through the proxy</span></span></code></pre><h3 id="intercept"><a class="zola-anchor" href="#intercept" aria-label="Anchor link for: intercept">🔗</a>Intercept</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/intercept                    Intercept status</span></span>
+<span class="giallo-l"><span>POST /api/intercept                    Toggle intercept on/off</span></span>
+<span class="giallo-l"><span>GET  /api/intercept/pending            List pending intercepted requests</span></span>
+<span class="giallo-l"><span>GET  /api/intercept/pending/{id}       Get a pending request</span></span>
+<span class="giallo-l"><span>POST /api/intercept/forward/{id}       Forward a request</span></span>
+<span class="giallo-l"><span>POST /api/intercept/drop/{id}          Drop a request</span></span>
+<span class="giallo-l"><span>POST /api/intercept/forward-all        Forward all pending</span></span>
+<span class="giallo-l"><span>POST /api/intercept/drop-all           Drop all pending</span></span>
+<span class="giallo-l"><span>GET  /api/intercept/captured           List captured intercepts</span></span>
+<span class="giallo-l"><span>POST /api/intercept/captured/clear     Clear captured intercepts</span></span></code></pre>
+<p><strong>Response Intercept:</strong></p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/intercept/responses                  List pending responses</span></span>
+<span class="giallo-l"><span>GET  /api/intercept/responses/{id}             Get a pending response</span></span>
+<span class="giallo-l"><span>POST /api/intercept/responses/forward/{id}     Forward a response</span></span>
+<span class="giallo-l"><span>POST /api/intercept/responses/drop/{id}        Drop a response</span></span>
+<span class="giallo-l"><span>POST /api/intercept/responses/forward-all      Forward all responses</span></span>
+<span class="giallo-l"><span>POST /api/intercept/responses/drop-all         Drop all responses</span></span></code></pre><h3 id="rules"><a class="zola-anchor" href="#rules" aria-label="Anchor link for: rules">🔗</a>Rules</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/rules                List intercept rules</span></span>
+<span class="giallo-l"><span>POST /api/rules                Create a rule</span></span>
+<span class="giallo-l"><span>GET  /api/rules/{id}           Get rule details</span></span>
+<span class="giallo-l"><span>PATCH /api/rules/{id}          Update a rule</span></span>
+<span class="giallo-l"><span>DELETE /api/rules/{id}         Delete a rule</span></span>
+<span class="giallo-l"><span>GET  /api/rules/groups         List rule groups</span></span>
+<span class="giallo-l"><span>POST /api/rules/groups         Create a group</span></span>
+<span class="giallo-l"><span>DELETE /api/rules/groups/{id}  Delete a group</span></span></code></pre><h3 id="scope"><a class="zola-anchor" href="#scope" aria-label="Anchor link for: scope">🔗</a>Scope</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/scope                Get scope configuration</span></span>
+<span class="giallo-l"><span>POST /api/scope                Update scope</span></span>
+<span class="giallo-l"><span>POST /api/scope/mode           Set scope mode</span></span>
+<span class="giallo-l"><span>POST /api/scope/recording      Toggle recording</span></span>
+<span class="giallo-l"><span>POST /api/scope/pattern        Add a scope pattern</span></span>
+<span class="giallo-l"><span>DELETE /api/scope/pattern/{p}  Remove a scope pattern</span></span></code></pre><h3 id="scanner"><a class="zola-anchor" href="#scanner" aria-label="Anchor link for: scanner">🔗</a>Scanner</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/scanner/scan                     Start a scan</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/status                   Scan status</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/findings                 List findings</span></span>
+<span class="giallo-l"><span>POST /api/scanner/findings                 Create a manual finding</span></span>
+<span class="giallo-l"><span>DELETE /api/scanner/findings               Clear all findings</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/findings/{id}            Get finding details</span></span>
+<span class="giallo-l"><span>DELETE /api/scanner/findings/{id}          Delete a finding</span></span>
+<span class="giallo-l"><span>PATCH /api/scanner/findings/{id}           Update a finding</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/findings/{id}/flows      List flows for a finding</span></span>
+<span class="giallo-l"><span>POST /api/scanner/findings/{id}/flows      Add flow to finding</span></span>
+<span class="giallo-l"><span>DELETE /api/scanner/findings/{id}/flows/{flow_id}  Remove flow from finding</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/findings/{id}/tags       List finding tags</span></span>
+<span class="giallo-l"><span>POST /api/scanner/findings/{id}/tags       Add tag to finding</span></span>
+<span class="giallo-l"><span>DELETE /api/scanner/findings/{id}/tags/{tag}  Remove tag</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/findings/tags            List all tags across findings</span></span>
+<span class="giallo-l"><span>POST /api/scanner/cancel                   Cancel active scan</span></span>
+<span class="giallo-l"><span>POST /api/scanner/pause                    Pause scan</span></span>
+<span class="giallo-l"><span>POST /api/scanner/resume                   Resume scan</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/checks                   List available checks</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/scans                    List scan history</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/scans/{id}               Get scan details</span></span>
+<span class="giallo-l"><span>DELETE /api/scanner/scans/{id}             Delete a scan</span></span>
+<span class="giallo-l"><span>POST /api/scanner/scans/{id}/cancel        Cancel specific scan</span></span>
+<span class="giallo-l"><span>GET  /api/scanner/scans/{scan_id}/audit-items  Audit items for a scan</span></span></code></pre><h3 id="bac-pro"><a class="zola-anchor" href="#bac-pro" aria-label="Anchor link for: bac-pro">🔗</a>BAC (Pro)</h3>
+<p>All <code>/api/bac/*</code> routes require <code>Feature::Bac</code>. Community tier gets <code>402 Payment Required</code> on every route. Trial, Pro, and Dev-bypass builds have full access.</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET    /api/bac/findings                 List scored BAC findings (kind/min_severity/limit)</span></span>
+<span class="giallo-l"><span>DELETE /api/bac/findings                 Purge findings (project_id)</span></span>
+<span class="giallo-l"><span>GET    /api/bac/signals                  List passive BAC observations (kind/identity_id/limit)</span></span>
+<span class="giallo-l"><span>DELETE /api/bac/signals                  Purge signals (project_id)</span></span>
+<span class="giallo-l"><span>GET    /api/bac/corpus                   List classified ID corpus (id_kind/identity_id/limit)</span></span>
+<span class="giallo-l"><span>DELETE /api/bac/corpus                   Purge corpus (project_id)</span></span>
+<span class="giallo-l"><span>GET    /api/bac/shapes                   Response shape groupings (requires endpoint)</span></span>
+<span class="giallo-l"><span>POST   /api/bac/audit                    Start an audit; body matches bac_audit audit params; returns audit_id</span></span>
+<span class="giallo-l"><span>POST   /api/bac/audit/progress           Read live counters for a running audit; body {audit_id}</span></span>
+<span class="giallo-l"><span>POST   /api/bac/audit/cancel             Flip cancel flag; body {audit_id}</span></span>
+<span class="giallo-l"><span>POST   /api/bac/export                   Render findings (markdown|sarif|html|csv|summary|json)</span></span></code></pre>
+<p><code>audit_id</code> from <code>POST /api/bac/audit</code> is shared with the MCP <code>bac_audit</code> tool and the UI progress registry — a UI-initiated audit is observable from a <code>curl</code> progress poll and cancellable from an MCP <code>bac_audit cancel</code>.</p>
+<p>See the <a href="/docs/scanning/bac">BAC pipeline</a> doc for the full surface and check reference.</p>
+<h3 id="live-audit-scanner-continuous-mode"><a class="zola-anchor" href="#live-audit-scanner-continuous-mode" aria-label="Anchor link for: live-audit-scanner-continuous-mode">🔗</a>Live Audit (Scanner Continuous Mode)</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/live_audit/start        Begin continuous scanning (body: profile|config)</span></span>
+<span class="giallo-l"><span>POST /api/live_audit/stop         Halt continuous scanning</span></span>
+<span class="giallo-l"><span>GET  /api/live_audit/status       flows_seen/flows_scanned/flows_skipped/findings_count/config</span></span></code></pre>
+<p>Toggles the same singleton the <code>live_audit</code> MCP tool and the Scanner view’s Continuous toggle both drive. Every captured flow through the proxy gets auto-scanned against the configured check set, deduplicated by <code>(method, host, path-pattern)</code> with numeric / UUID / hex path segments normalised. Known CDN / static-asset hosts are skipped.</p>
+<h3 id="session"><a class="zola-anchor" href="#session" aria-label="Anchor link for: session">🔗</a>Session</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/session/tokens              List tracked tokens</span></span>
+<span class="giallo-l"><span>GET  /api/session/status              Session status</span></span>
+<span class="giallo-l"><span>GET  /api/session/macro               List macros</span></span>
+<span class="giallo-l"><span>POST /api/session/macro               Create a macro</span></span>
+<span class="giallo-l"><span>GET  /api/session/macro/{id}          Get macro details</span></span>
+<span class="giallo-l"><span>DELETE /api/session/macro/{id}        Delete a macro</span></span>
+<span class="giallo-l"><span>POST /api/session/macro/{id}/execute  Execute a macro</span></span>
+<span class="giallo-l"><span>POST /api/session/refresh             Refresh all sessions</span></span></code></pre><h3 id="websocket"><a class="zola-anchor" href="#websocket" aria-label="Anchor link for: websocket">🔗</a>WebSocket</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/websocket/connections               List WS connections</span></span>
+<span class="giallo-l"><span>GET  /api/websocket/connections/{id}          Get connection details</span></span>
+<span class="giallo-l"><span>DELETE /api/websocket/connections/{id}        Close a connection</span></span>
+<span class="giallo-l"><span>GET  /api/websocket/connections/{id}/messages Get messages</span></span>
+<span class="giallo-l"><span>POST /api/websocket/connections/{id}/send     Send a message</span></span>
+<span class="giallo-l"><span>GET  /api/websocket/stream/messages           SSE stream of WS messages</span></span>
+<span class="giallo-l"><span>GET  /api/websocket/stream/connections        SSE stream of WS connections</span></span></code></pre>
+<p><strong>WebSocket Intercept:</strong></p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/websocket/intercept                  Intercept status</span></span>
+<span class="giallo-l"><span>POST /api/websocket/intercept                  Toggle WS intercept</span></span>
+<span class="giallo-l"><span>GET  /api/websocket/intercept/pending          List pending</span></span>
+<span class="giallo-l"><span>GET  /api/websocket/intercept/pending/{id}     Get pending message</span></span>
+<span class="giallo-l"><span>POST /api/websocket/intercept/forward/{id}     Forward message</span></span>
+<span class="giallo-l"><span>POST /api/websocket/intercept/drop/{id}        Drop message</span></span>
+<span class="giallo-l"><span>POST /api/websocket/intercept/forward-all      Forward all</span></span>
+<span class="giallo-l"><span>POST /api/websocket/intercept/drop-all         Drop all</span></span></code></pre><h3 id="projects"><a class="zola-anchor" href="#projects" aria-label="Anchor link for: projects">🔗</a>Projects</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/projects                             List projects</span></span>
+<span class="giallo-l"><span>POST /api/projects                             Create project</span></span>
+<span class="giallo-l"><span>GET  /api/projects/{id}                        Get project</span></span>
+<span class="giallo-l"><span>PUT  /api/projects/{id}                        Update project</span></span>
+<span class="giallo-l"><span>DELETE /api/projects/{id}                      Delete project</span></span>
+<span class="giallo-l"><span>POST /api/projects/{id}/archive                Archive/unarchive</span></span>
+<span class="giallo-l"><span>POST /api/projects/{id}/activate               Set as active project</span></span>
+<span class="giallo-l"><span>GET  /api/projects/{id}/stats                  Project statistics</span></span>
+<span class="giallo-l"><span>GET  /api/projects/{id}/scope                  Get project scope</span></span>
+<span class="giallo-l"><span>PUT  /api/projects/{id}/scope                  Update project scope</span></span>
+<span class="giallo-l"><span>POST /api/projects/{id}/assign-flows           Assign flows to project</span></span>
+<span class="giallo-l"><span>POST /api/projects/{id}/scope/snapshots        Create scope snapshot</span></span>
+<span class="giallo-l"><span>GET  /api/projects/{id}/scope/snapshots        List scope snapshots</span></span>
+<span class="giallo-l"><span>GET  /api/projects/{id}/scope/snapshots/{sid}  Get snapshot</span></span>
+<span class="giallo-l"><span>GET  /api/projects/{id}/export                 Export project</span></span>
+<span class="giallo-l"><span>POST /api/projects/import                      Import project</span></span>
+<span class="giallo-l"><span>POST /api/projects/deactivate                  Deactivate project context</span></span></code></pre>
+<p><strong>Legacy project API (file-based):</strong></p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/project/save     Save project to file</span></span>
+<span class="giallo-l"><span>POST /api/project/load     Load project from file</span></span>
+<span class="giallo-l"><span>GET  /api/project/recent   List recent projects</span></span></code></pre><h3 id="site-map"><a class="zola-anchor" href="#site-map" aria-label="Anchor link for: site-map">🔗</a>Site Map</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET /api/hosts                          List all hosts</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/hosts                  List hosts with stats</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/hosts/{host}           Host details</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/hosts/{host}/paths     Paths for a host</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/hosts/{host}/flows     Flows for a host</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/paths/{host}/{path}    Path details</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/search                 Search URLs</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/stats                  Aggregated stats</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/tree                   Hierarchical tree</span></span>
+<span class="giallo-l"><span>GET /api/sitemap/export                 Export site map</span></span></code></pre><h3 id="sequencer"><a class="zola-anchor" href="#sequencer" aria-label="Anchor link for: sequencer">🔗</a>Sequencer</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/sequencer/captures               List capture sessions</span></span>
+<span class="giallo-l"><span>POST /api/sequencer/capture                Start a token capture</span></span>
+<span class="giallo-l"><span>DELETE /api/sequencer/capture/{id}         Delete session</span></span>
+<span class="giallo-l"><span>GET  /api/sequencer/capture/{id}/status    Session status</span></span>
+<span class="giallo-l"><span>GET  /api/sequencer/capture/{id}/tokens    Get captured tokens</span></span>
+<span class="giallo-l"><span>POST /api/sequencer/capture/{id}/stop      Stop capture</span></span>
+<span class="giallo-l"><span>GET  /api/sequencer/capture/{id}/export    Export session</span></span>
+<span class="giallo-l"><span>POST /api/sequencer/analyze                Analyze tokens</span></span>
+<span class="giallo-l"><span>POST /api/sequencer/compare                Compare token sets</span></span></code></pre><h3 id="crawler"><a class="zola-anchor" href="#crawler" aria-label="Anchor link for: crawler">🔗</a>Crawler</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/crawler/start    Start a crawl</span></span>
+<span class="giallo-l"><span>POST /api/crawler/stop     Stop crawl</span></span>
+<span class="giallo-l"><span>POST /api/crawler/pause    Pause crawl</span></span>
+<span class="giallo-l"><span>POST /api/crawler/resume   Resume crawl</span></span>
+<span class="giallo-l"><span>GET  /api/crawler/status   Crawl status</span></span>
+<span class="giallo-l"><span>GET  /api/crawler/urls     Discovered URLs</span></span>
+<span class="giallo-l"><span>GET  /api/crawler/export   Export URLs</span></span></code></pre><h3 id="browser"><a class="zola-anchor" href="#browser" aria-label="Anchor link for: browser">🔗</a>Browser</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/browser/launch       Launch a browser session</span></span>
+<span class="giallo-l"><span>POST /api/browser/sweep        Full sweep (launch + crawl)</span></span>
+<span class="giallo-l"><span>POST /api/browser/close        Close browser</span></span>
+<span class="giallo-l"><span>GET  /api/browser/status       Browser status</span></span>
+<span class="giallo-l"><span>POST /api/browser/navigate     Navigate to URL</span></span>
+<span class="giallo-l"><span>POST /api/browser/exec_js      Execute JavaScript</span></span>
+<span class="giallo-l"><span>POST /api/browser/screenshot   Take screenshot</span></span>
+<span class="giallo-l"><span>GET  /api/browser/list         List active browser sessions</span></span></code></pre><h3 id="tunnel-mode"><a class="zola-anchor" href="#tunnel-mode" aria-label="Anchor link for: tunnel-mode">🔗</a>Tunnel Mode</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/tunnel/domains        List tunnel domains</span></span>
+<span class="giallo-l"><span>POST /api/tunnel/domains/add    Add a domain to tunnel mode</span></span>
+<span class="giallo-l"><span>POST /api/tunnel/domains/remove Remove a domain from tunnel mode</span></span></code></pre><h3 id="oastify-native-oob-server"><a class="zola-anchor" href="#oastify-native-oob-server" aria-label="Anchor link for: oastify-native-oob-server">🔗</a>Oastify (Native OOB Server)</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/oastify-native/start              Start OOB server</span></span>
+<span class="giallo-l"><span>POST /api/oastify-native/stop               Stop OOB server</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/status             Server status</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/domain             Get callback domain</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/stats              Statistics</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/payloads           List payloads</span></span>
+<span class="giallo-l"><span>POST /api/oastify-native/payloads           Generate a payload</span></span>
+<span class="giallo-l"><span>POST /api/oastify-native/payloads/batch     Generate batch payloads</span></span>
+<span class="giallo-l"><span>POST /api/oastify-native/payloads/all       All protocol payloads</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/payloads/{id}      Get payload details</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/interactions       List interactions</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/interactions/{id}  Get interaction</span></span>
+<span class="giallo-l"><span>DELETE /api/oastify-native/interactions/{id} Delete interaction</span></span>
+<span class="giallo-l"><span>POST /api/oastify-native/interactions/{id}/acknowledge  Acknowledge</span></span>
+<span class="giallo-l"><span>POST /api/oastify-native/interactions/acknowledge-bulk  Bulk acknowledge</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/interactions/correlation/{id}  By correlation ID</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/poll               Poll for new interactions</span></span>
+<span class="giallo-l"><span>GET  /api/oastify-native/stream             SSE stream of interactions</span></span></code></pre><h3 id="oastify-remote-tracker"><a class="zola-anchor" href="#oastify-remote-tracker" aria-label="Anchor link for: oastify-remote-tracker">🔗</a>Oastify (Remote Tracker)</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/oastify/status           Connection status</span></span>
+<span class="giallo-l"><span>POST /api/oastify/connect          Connect to remote server</span></span>
+<span class="giallo-l"><span>POST /api/oastify/disconnect       Disconnect</span></span>
+<span class="giallo-l"><span>GET  /api/oastify/stats            Statistics</span></span>
+<span class="giallo-l"><span>POST /api/oastify/generate         Generate tracked payload</span></span>
+<span class="giallo-l"><span>GET  /api/oastify/payloads         List tracked payloads</span></span>
+<span class="giallo-l"><span>GET  /api/oastify/interactions     List interactions</span></span>
+<span class="giallo-l"><span>POST /api/oastify/sync             Sync callbacks</span></span>
+<span class="giallo-l"><span>POST /api/oastify/register_batch   Register batch payloads</span></span></code></pre><h3 id="dashboard"><a class="zola-anchor" href="#dashboard" aria-label="Anchor link for: dashboard">🔗</a>Dashboard</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET /api/dashboard/events   Event log (query: limit, since_id)</span></span>
+<span class="giallo-l"><span>GET /api/dashboard/tasks    Active tasks</span></span>
+<span class="giallo-l"><span>GET /api/dashboard/stats    Aggregated statistics</span></span></code></pre><h3 id="events"><a class="zola-anchor" href="#events" aria-label="Anchor link for: events">🔗</a>Events</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET    /api/events          List events (query: category, level, search, since, until)</span></span>
+<span class="giallo-l"><span>DELETE /api/events          Clear all events</span></span>
+<span class="giallo-l"><span>GET    /api/events/recent   Recent events from memory cache</span></span>
+<span class="giallo-l"><span>GET    /api/events/stats    Event statistics</span></span>
+<span class="giallo-l"><span>GET    /api/events/stream   SSE stream of events</span></span>
+<span class="giallo-l"><span>DELETE /api/events/before   Delete events before timestamp</span></span></code></pre><h3 id="ratrace"><a class="zola-anchor" href="#ratrace" aria-label="Anchor link for: ratrace">🔗</a>RatRace</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/ratrace/test                   Run race condition test</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/detect                 Detect race conditions</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/quick                  Quick race test</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/limit                  Rate limit test</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/batch                  Batch race test</span></span>
+<span class="giallo-l"><span>GET  /api/ratrace/sessions               List sessions</span></span>
+<span class="giallo-l"><span>GET  /api/ratrace/sessions/{id}          Get session</span></span>
+<span class="giallo-l"><span>DELETE /api/ratrace/sessions/{id}        Delete session</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/sessions/{id}/cancel   Cancel session</span></span>
+<span class="giallo-l"><span>GET  /api/ratrace/results/{id}           Get results</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/discover               Discover endpoints</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/param-hunt             Hunt for race-prone params</span></span>
+<span class="giallo-l"><span>GET  /api/ratrace/endpoints              List discovered endpoints</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/scan                   Full race scan</span></span>
+<span class="giallo-l"><span>GET  /api/ratrace/scan/findings          Scan findings</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/ws                     WebSocket race test</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/microservice           Microservice race test</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/cache-race             Cache race test</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/state-fuzz             State fuzzing</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/orchestrate            Multi-step orchestration</span></span>
+<span class="giallo-l"><span>GET  /api/ratrace/report/{id}            Generate report</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/graphql-subscription   GraphQL subscription race</span></span>
+<span class="giallo-l"><span>POST /api/ratrace/oidc-logout            OIDC logout race</span></span></code></pre><h3 id="intruder"><a class="zola-anchor" href="#intruder" aria-label="Anchor link for: intruder">🔗</a>Intruder</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/intruder/attacks               List attacks</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks               Start an attack</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/attacks/{id}          Get attack details</span></span>
+<span class="giallo-l"><span>DELETE /api/intruder/attacks/{id}        Delete attack</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/attacks/{id}/status   Attack status</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks/{id}/pause    Pause</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks/{id}/resume   Resume</span></span>
+<span class="giallo-l"><span>POST /api/intruder/attacks/{id}/cancel   Cancel</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/attacks/{id}/results  Get results</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/generators            List payload generators</span></span>
+<span class="giallo-l"><span>GET  /api/intruder/processors            List processing rules</span></span></code></pre><h3 id="comparer"><a class="zola-anchor" href="#comparer" aria-label="Anchor link for: comparer">🔗</a>Comparer</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/comparer/compare       Compare two responses</span></span>
+<span class="giallo-l"><span>POST /api/comparer/blind-detect  Blind vulnerability detection</span></span>
+<span class="giallo-l"><span>GET  /api/comparer/similarity    Calculate similarity score</span></span></code></pre><h3 id="extensions"><a class="zola-anchor" href="#extensions" aria-label="Anchor link for: extensions">🔗</a>Extensions</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/extensions              List extensions</span></span>
+<span class="giallo-l"><span>GET  /api/extensions/stats        Statistics</span></span>
+<span class="giallo-l"><span>GET  /api/extensions/{id}         Get extension details</span></span>
+<span class="giallo-l"><span>POST /api/extensions/{id}/load    Load</span></span>
+<span class="giallo-l"><span>POST /api/extensions/{id}/unload  Unload</span></span>
+<span class="giallo-l"><span>POST /api/extensions/{id}/enable  Enable</span></span>
+<span class="giallo-l"><span>POST /api/extensions/{id}/disable Disable</span></span>
+<span class="giallo-l"><span>POST /api/extensions/{id}/reload  Reload</span></span>
+<span class="giallo-l"><span>POST /api/extensions/test-hook    Test a hook</span></span></code></pre><h3 id="settings"><a class="zola-anchor" href="#settings" aria-label="Anchor link for: settings">🔗</a>Settings</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET    /api/settings/upstream-proxy          Get upstream proxy config</span></span>
+<span class="giallo-l"><span>POST   /api/settings/upstream-proxy          Set upstream proxy</span></span>
+<span class="giallo-l"><span>DELETE /api/settings/upstream-proxy          Clear upstream proxy</span></span>
+<span class="giallo-l"><span>GET    /api/settings/upstream-proxy/rules    List proxy rules</span></span>
+<span class="giallo-l"><span>POST   /api/settings/upstream-proxy/rules    Add proxy rule</span></span>
+<span class="giallo-l"><span>PUT    /api/settings/upstream-proxy/rules    Replace all rules</span></span>
+<span class="giallo-l"><span>DELETE /api/settings/upstream-proxy/rules/{id}  Remove rule</span></span>
+<span class="giallo-l"><span>POST   /api/settings/upstream-proxy/test     Test proxy connection</span></span>
+<span class="giallo-l"><span>POST   /api/settings/upstream-proxy/preset   Apply preset (tor, burp, mullvad, etc.)</span></span>
+<span class="giallo-l"><span>GET    /api/settings/http2                   Get HTTP/2 config</span></span>
+<span class="giallo-l"><span>POST   /api/settings/http2                   Set HTTP/2 config</span></span></code></pre><h3 id="decoder"><a class="zola-anchor" href="#decoder" aria-label="Anchor link for: decoder">🔗</a>Decoder</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/decoder/encode              Encode data</span></span>
+<span class="giallo-l"><span>POST /api/decoder/decode              Decode data</span></span>
+<span class="giallo-l"><span>POST /api/decoder/chain               Chain encode/decode operations</span></span>
+<span class="giallo-l"><span>POST /api/decoder/analyze             Analyze encoding layers</span></span>
+<span class="giallo-l"><span>POST /api/decoder/reencode            Re-encode detected layers</span></span>
+<span class="giallo-l"><span>POST /api/decoder/jwt/decode          Decode JWT</span></span>
+<span class="giallo-l"><span>POST /api/decoder/jwt/forge           Forge JWT</span></span>
+<span class="giallo-l"><span>POST /api/decoder/polyglot            Generate polyglot payloads</span></span>
+<span class="giallo-l"><span>GET  /api/decoder/polyglot/contexts   List polyglot contexts</span></span>
+<span class="giallo-l"><span>GET  /api/decoder/operations          List available operations</span></span></code></pre><h3 id="assets"><a class="zola-anchor" href="#assets" aria-label="Anchor link for: assets">🔗</a>Assets</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/assets                       List assets</span></span>
+<span class="giallo-l"><span>POST /api/assets                       Create asset</span></span>
+<span class="giallo-l"><span>GET  /api/assets/stats                 Statistics</span></span>
+<span class="giallo-l"><span>GET  /api/assets/coverage              Pipeline coverage</span></span>
+<span class="giallo-l"><span>POST /api/assets/ingest/subflow        Ingest SubFlow results</span></span>
+<span class="giallo-l"><span>POST /api/assets/ingest/xmass          Ingest XMass results</span></span>
+<span class="giallo-l"><span>POST /api/assets/ingest/vmap           Ingest vmap results</span></span>
+<span class="giallo-l"><span>POST /api/assets/crawl-seeds           Generate crawl seeds from assets</span></span>
+<span class="giallo-l"><span>GET  /api/assets/cluster/jarm/{hash}   Cluster by JARM hash</span></span>
+<span class="giallo-l"><span>GET  /api/assets/cluster/favicon/{mmh3} Cluster by favicon hash</span></span>
+<span class="giallo-l"><span>GET  /api/assets/{id}                  Get asset</span></span>
+<span class="giallo-l"><span>DELETE /api/assets/{id}                Delete asset</span></span>
+<span class="giallo-l"><span>PATCH /api/assets/{id}                 Update asset</span></span>
+<span class="giallo-l"><span>GET  /api/assets/{id}/ports            List ports</span></span>
+<span class="giallo-l"><span>GET  /api/assets/{id}/events           List events</span></span></code></pre><h3 id="intelligence"><a class="zola-anchor" href="#intelligence" aria-label="Anchor link for: intelligence">🔗</a>Intelligence</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/intelligence/params                   List discovered params</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/params/search            Search params by name</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/params/stats             Param statistics</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/params/endpoint          Params for endpoint</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/routes                   List routes</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/routes/detail            Route details</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/reflections              List reflected params</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/reflections/candidates   XSS candidates</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/reflections/stats        Reflection stats</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/endpoints                List endpoints</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/endpoints/detail         Endpoint details</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/endpoints/stats          Endpoint stats</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/rollups                  Security rollups</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/rollups/summary          Rollup summary</span></span>
+<span class="giallo-l"><span>GET  /api/intelligence/rollups/host/{host}      Host posture</span></span>
+<span class="giallo-l"><span>POST /api/intelligence/analyze                  Analyze existing flows</span></span></code></pre><h3 id="nerve-parameter-analysis"><a class="zola-anchor" href="#nerve-parameter-analysis" aria-label="Anchor link for: nerve-parameter-analysis">🔗</a>Nerve (Parameter Analysis)</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/nerve/analyze             Analyze parameters</span></span>
+<span class="giallo-l"><span>POST /api/nerve/analyze-flows       Analyze params from flows</span></span>
+<span class="giallo-l"><span>GET  /api/nerve/categories          List categories</span></span>
+<span class="giallo-l"><span>GET  /api/nerve/categories/{short}  Category details</span></span>
+<span class="giallo-l"><span>GET  /api/nerve/stats               Statistics</span></span></code></pre><h3 id="collaboration-pro"><a class="zola-anchor" href="#collaboration-pro" aria-label="Anchor link for: collaboration-pro">🔗</a>Collaboration (Pro)</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>POST /api/collab/share    Create shared session</span></span>
+<span class="giallo-l"><span>POST /api/collab/join     Join via invite code</span></span>
+<span class="giallo-l"><span>GET  /api/collab/status   Session status</span></span>
+<span class="giallo-l"><span>POST /api/collab/leave    Leave session</span></span>
+<span class="giallo-l"><span>POST /api/collab/publish  Publish annotation to partner</span></span></code></pre><h3 id="access-tokens"><a class="zola-anchor" href="#access-tokens" aria-label="Anchor link for: access-tokens">🔗</a>Access Tokens</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET    /api/tokens          List tokens</span></span>
+<span class="giallo-l"><span>POST   /api/tokens/create   Create token</span></span>
+<span class="giallo-l"><span>DELETE /api/tokens/{token}  Revoke token</span></span></code></pre><h3 id="license"><a class="zola-anchor" href="#license" aria-label="Anchor link for: license">🔗</a>License</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/license/status    License status</span></span>
+<span class="giallo-l"><span>POST /api/license/account   Set account ID</span></span></code></pre><h3 id="external-tools"><a class="zola-anchor" href="#external-tools" aria-label="Anchor link for: external-tools">🔗</a>External Tools</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/tools                  List registered tools</span></span>
+<span class="giallo-l"><span>GET  /api/tools/health           Health check all tools</span></span>
+<span class="giallo-l"><span>GET  /api/tools/{name}           Get tool info</span></span>
+<span class="giallo-l"><span>GET  /api/tools/{name}/health    Health check one tool</span></span>
+<span class="giallo-l"><span>POST /api/tools/{name}/execute   Execute tool command</span></span></code></pre><h3 id="scheduler"><a class="zola-anchor" href="#scheduler" aria-label="Anchor link for: scheduler">🔗</a>Scheduler</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET    /api/scheduler/jobs              List jobs</span></span>
+<span class="giallo-l"><span>POST   /api/scheduler/jobs              Create job</span></span>
+<span class="giallo-l"><span>GET    /api/scheduler/jobs/{id}         Get job</span></span>
+<span class="giallo-l"><span>PATCH  /api/scheduler/jobs/{id}         Update job</span></span>
+<span class="giallo-l"><span>DELETE /api/scheduler/jobs/{id}         Delete job</span></span>
+<span class="giallo-l"><span>POST   /api/scheduler/jobs/{id}/run     Trigger job</span></span>
+<span class="giallo-l"><span>GET    /api/scheduler/jobs/{id}/runs    List run history</span></span></code></pre><h3 id="workflows"><a class="zola-anchor" href="#workflows" aria-label="Anchor link for: workflows">🔗</a>Workflows</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /api/workflows                   List all workflows</span></span>
+<span class="giallo-l"><span>GET  /api/workflows/{id}              Fetch one workflow</span></span>
+<span class="giallo-l"><span>POST /api/workflows/{id}/validate     Validate graph (nodes, edges, trigger/action presence)</span></span>
+<span class="giallo-l"><span>POST /api/workflows/{id}/run          Manual one-shot run  (body: {&quot;flow_id&quot;: &quot;uuid&quot;})</span></span>
+<span class="giallo-l"><span>GET  /api/workflows/{id}/runs         Execution history    (?limit=N&amp;offset=N)</span></span></code></pre>
+<p>The passive engine auto-runs workflows against live flows – these REST routes are for manual invocation and history inspection. The <code>run</code> response includes <code>triggers_matched</code> so you can tell whether the passive engine would have selected this flow. Run records persist in SQLite (<code>workflow_runs</code> table). See the <a href="../../automation/workflows/">Workflows chapter</a> for the full data model.</p>
+<h3 id="graphql"><a class="zola-anchor" href="#graphql" aria-label="Anchor link for: graphql">🔗</a>GraphQL</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET  /graphql    GraphQL Playground (HTML)</span></span>
+<span class="giallo-l"><span>POST /graphql    GraphQL query/mutation endpoint</span></span></code></pre><h3 id="real-time"><a class="zola-anchor" href="#real-time" aria-label="Anchor link for: real-time">🔗</a>Real-time</h3>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>GET /ws    WebSocket endpoint for real-time flow updates</span></span></code></pre><h2 id="response-format"><a class="zola-anchor" href="#response-format" aria-label="Anchor link for: response-format">🔗</a>Response Format</h2>
+<p>All API responses return JSON. Successful responses typically include the data directly. Errors return HTTP status codes:</p>
+<ul>
+<li><code>200</code> – Success</li>
+<li><code>400</code> – Bad request (invalid parameters)</li>
+<li><code>401</code> – Unauthorized (auth required)</li>
+<li><code>404</code> – Not found</li>
+<li><code>500</code> – Internal server error</li>
+</ul>
+<h2 id="cors"><a class="zola-anchor" href="#cors" aria-label="Anchor link for: cors">🔗</a>CORS</h2>
+<p>The API enables permissive CORS (all origins, all methods, all headers) to allow browser-based tooling to connect from any domain.</p>
+
+    </div>
+
+    
+    
+    
+</article>
+
+
+
+<nav class="page-nav" aria-label="Page navigation">
+    
+
+    
+</nav>
+
+
+
+                </main>
+
+                
+                
+                
+
+
+
+
+<aside id="page-toc-panel" class="page-toc-panel" aria-hidden="true" aria-label="On this page">
+    <div class="page-toc-panel__content">
+        <div class="page-toc-panel__header">
+            <span class="page-toc-panel__title">On this page</span>
+            <button class="page-toc-panel__close" type="button" aria-label="Close table of contents">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="page-toc-panel__nav" aria-label="Page sections">
+            <ul class="page-toc-panel__list">
+                
+                <li class="page-toc-panel__item">
+                    <a href="#base-url-and-default-port" class="page-toc-panel__link">
+                        Base URL and Default Port
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#authentication" class="page-toc-panel__link">
+                        Authentication
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#endpoint-reference" class="page-toc-panel__link">
+                        Endpoint Reference
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#infrastructure" class="page-toc-panel__link">
+                                Infrastructure
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#flows" class="page-toc-panel__link">
+                                Flows
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#repeater" class="page-toc-panel__link">
+                                Repeater
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#intercept" class="page-toc-panel__link">
+                                Intercept
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#rules" class="page-toc-panel__link">
+                                Rules
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#scope" class="page-toc-panel__link">
+                                Scope
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#scanner" class="page-toc-panel__link">
+                                Scanner
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#bac-pro" class="page-toc-panel__link">
+                                BAC (Pro)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#live-audit-scanner-continuous-mode" class="page-toc-panel__link">
+                                Live Audit (Scanner Continuous Mode)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#session" class="page-toc-panel__link">
+                                Session
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#websocket" class="page-toc-panel__link">
+                                WebSocket
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#projects" class="page-toc-panel__link">
+                                Projects
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#site-map" class="page-toc-panel__link">
+                                Site Map
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#sequencer" class="page-toc-panel__link">
+                                Sequencer
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#crawler" class="page-toc-panel__link">
+                                Crawler
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#browser" class="page-toc-panel__link">
+                                Browser
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#tunnel-mode" class="page-toc-panel__link">
+                                Tunnel Mode
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#oastify-native-oob-server" class="page-toc-panel__link">
+                                Oastify (Native OOB Server)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#oastify-remote-tracker" class="page-toc-panel__link">
+                                Oastify (Remote Tracker)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#dashboard" class="page-toc-panel__link">
+                                Dashboard
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#events" class="page-toc-panel__link">
+                                Events
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#ratrace" class="page-toc-panel__link">
+                                RatRace
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#intruder" class="page-toc-panel__link">
+                                Intruder
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#comparer" class="page-toc-panel__link">
+                                Comparer
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#extensions" class="page-toc-panel__link">
+                                Extensions
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#settings" class="page-toc-panel__link">
+                                Settings
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#decoder" class="page-toc-panel__link">
+                                Decoder
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#assets" class="page-toc-panel__link">
+                                Assets
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#intelligence" class="page-toc-panel__link">
+                                Intelligence
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#nerve-parameter-analysis" class="page-toc-panel__link">
+                                Nerve (Parameter Analysis)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#collaboration-pro" class="page-toc-panel__link">
+                                Collaboration (Pro)
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#access-tokens" class="page-toc-panel__link">
+                                Access Tokens
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#license" class="page-toc-panel__link">
+                                License
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#external-tools" class="page-toc-panel__link">
+                                External Tools
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#scheduler" class="page-toc-panel__link">
+                                Scheduler
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#workflows" class="page-toc-panel__link">
+                                Workflows
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#graphql" class="page-toc-panel__link">
+                                GraphQL
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#real-time" class="page-toc-panel__link">
+                                Real-time
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#response-format" class="page-toc-panel__link">
+                        Response Format
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#cors" class="page-toc-panel__link">
+                        CORS
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+                
+            </div>
+
+            
+            
+            
+        </div>
+    </div>
+
+    
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+
+    
+    
+    
+<div class="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-title" aria-describedby="search-description">
+    <div class="search">
+        <h2 id="search-title" class="sr-only">Search documentation</h2>
+        <p id="search-description" class="sr-only">Type to search. Use arrow keys to navigate results, Enter to select, Escape to close.</p>
+
+        <div class="search__input-wrapper">
+            <span class="search__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.3-4.3"/>
+                </svg>
+            </span>
+            <input
+                type="search"
+                class="search__input"
+                placeholder="Search documentation..."
+                autocomplete="off"
+                autofocus
+                aria-label="Search query"
+                aria-controls="search-results"
+                aria-autocomplete="list"
+            >
+            <span class="search__shortcut" aria-hidden="true">/</span>
+            <button class="search__close" type="button" aria-label="Close search dialog" title="Close (Esc)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="search-results" class="search__results" role="listbox" aria-label="Search results">
+            
+        </div>
+
+        <footer class="search__footer">
+            <nav class="search__hints" aria-label="Keyboard shortcuts">
+                <span class="search__hint">
+                    <kbd aria-label="Up and down arrows">↑</kbd><kbd aria-hidden="true">↓</kbd> <span>Navigate</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Enter">↵</kbd> <span>Select</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Escape">esc</kbd> <span>Close</span>
+                </span>
+            </nav>
+        </footer>
+    </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    <button class="page-toc-toggle" type="button" aria-label="Toggle table of contents" aria-expanded="false" aria-controls="page-toc-panel" title="On this page">
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--list" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 5H3"/>
+            <path d="M16 12H3"/>
+            <path d="M16 19H3"/>
+            <path d="M21 5h.01"/>
+            <path d="M21 12h.01"/>
+            <path d="M21 19h.01"/>
+        </svg>
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    <button class="fab scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    
+    <script src="https://docs.hugin.nu/docs/js/theme.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/navigation.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/code.js" defer></script>
+
+    
+    <script src="https://docs.hugin.nu/docs/elasticlunr.min.js"></script>
+    <script src="https://docs.hugin.nu/docs/search_index.en.js"></script>
+    <script src="https://docs.hugin.nu/docs/js/search.js" defer></script>
+    
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <script>
+    (function(){var s='auto';try{s=localStorage.getItem('tanuki-theme')||'auto'}catch(e){}
+    var t=s==='auto'?(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):s;
+    document.documentElement.setAttribute('data-theme',t);
+    document.documentElement.setAttribute('data-theme-setting',s)})();
+    </script>
+
+    
+    <title>Built-in Scanner | Hugin Documentation</title>
+
+    
+    
+    <meta name="description" content="Security intercepting proxy for web application penetration testing">
+    
+
+    
+    
+
+    
+    
+
+    
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    
+    
+    <link rel="canonical" href="https://docs.hugin.nu/docs/scanning/builtin-scanner/">
+    <link rel="alternate" hreflang="en" href="https://docs.hugin.nu/docs/scanning/builtin-scanner/">
+    <link rel="alternate" hreflang="x-default" href="https://docs.hugin.nu/docs/scanning/builtin-scanner/">
+    
+
+    
+    <meta property="og:type" content="article">
+    
+    <meta property="og:url" content="https://docs.hugin.nu/docs/scanning/builtin-scanner/">
+    
+    
+    <meta property="og:title" content="Built-in Scanner">
+    
+    
+    <meta property="og:description" content="">
+    
+    
+    <meta property="og:site_name" content="Hugin Documentation">
+    <meta property="og:locale" content="en">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:url" content="https://docs.hugin.nu/docs/scanning/builtin-scanner/">
+    
+    
+    <meta name="twitter:title" content="Built-in Scanner">
+    
+    
+    <meta name="twitter:description" content="">
+    
+    
+    
+
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://docs.hugin.nu/docs#website",
+                "url": "https://docs.hugin.nu/docs",
+                "name": "Hugin Documentation",
+                "description": "Security intercepting proxy for web application penetration testing",
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "inLanguage": "en",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://docs.hugin.nu/docs?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://zentinelproxy.io/#organization",
+                "name": "raskell.io",
+                "url": "https://zentinelproxy.io",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://zentinelproxy.io/img/og-image.png",
+                    "width": 1200,
+                    "height": 630
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://docs.hugin.nu/docs/scanning/builtin-scanner/#webpage",
+                "url": "https://docs.hugin.nu/docs/scanning/builtin-scanner/",
+                "name": "Built-in Scanner",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs#website"
+                },
+                "description": "",
+                "inLanguage": "en"
+                
+                
+            }
+            
+            ,{
+                "@type": "Article",
+                "@id": "https://docs.hugin.nu/docs/scanning/builtin-scanner/#article",
+                "isPartOf": {
+                    "@id": "https://docs.hugin.nu/docs/scanning/builtin-scanner/#webpage"
+                },
+                "headline": "Built-in Scanner",
+                
+                
+                
+                "author": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                "publisher": {
+                    "@id": "https://zentinelproxy.io/#organization"
+                },
+                
+                
+                "wordCount": 2101,
+                
+                "inLanguage": "en"
+            }
+            
+        ]
+    }
+    </script>
+
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hugin Documentation",
+                "item": "https://docs.hugin.nu/docs"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Hugin",
+                "item": "https://docs.hugin.nu/docs/"
+            }
+            
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Scanning",
+                "item": "https://docs.hugin.nu/docs/scanning/"
+            }
+            
+            
+            ,{
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Built-in Scanner",
+                "item": "https://docs.hugin.nu/docs/scanning/builtin-scanner/"
+            }
+        ]
+    }
+    </script>
+    
+
+    
+    <link rel="stylesheet" href="https://docs.hugin.nu/docs/style.css">
+
+    
+    
+
+    
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://docs.hugin.nu/docs/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('tanuki-theme') || 'auto';
+                var theme = stored === 'auto'
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : stored;
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme-setting', stored);
+            } catch(e) {}
+        })();
+    </script>
+    
+
+    
+</head>
+<body class="page-builtin-scanner">
+    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+        
+    
+
+    
+    <div class="layout layout--docs layout--fixed-header" data-mode="docs">
+        
+
+
+<aside id="sidebar" class="sidebar" role="complementary" aria-labelledby="sidebar-title">
+    
+    <div class="sidebar__resize-handle" aria-hidden="true" title="Drag to resize sidebar width"></div>
+
+    <div class="sidebar__header">
+        <span id="sidebar-title" class="sidebar__title">Table of contents</span>
+        <button class="sidebar__close" type="button" aria-label="Close sidebar" title="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18"/>
+                <path d="m6 6 12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <nav class="sidebar__content" aria-label="Documentation navigation">
+        <div class="toc">
+            
+            
+
+            
+
+            
+
+            
+            
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/getting-started/" class="toc__section-title ">Getting Started</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/installation/" class="toc__link ">
+                            Installation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/first-run/" class="toc__link ">
+                            First Run
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/browser-setup/" class="toc__link ">
+                            Browser Setup
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/getting-started/configuration/" class="toc__link ">
+                            Configuration
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/core/" class="toc__section-title ">Core Tools</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/proxy/" class="toc__link ">
+                            Proxy
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept/" class="toc__link ">
+                            Intercept
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/repeater/" class="toc__link ">
+                            Repeater
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intruder/" class="toc__link ">
+                            Intruder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/sequencer/" class="toc__link ">
+                            Sequencer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/decoder/" class="toc__link ">
+                            Decoder
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/comparer/" class="toc__link ">
+                            Comparer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/findings/" class="toc__link ">
+                            Findings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/match-replace/" class="toc__link ">
+                            Match &amp; Replace
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/session-rules/" class="toc__link ">
+                            Session Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/intercept-rules/" class="toc__link ">
+                            Intercept Rules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/core/websocket/" class="toc__link ">
+                            WebSocket
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ui-views/" class="toc__section-title ">UI Views</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/dashboard/" class="toc__link ">
+                            Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/logger/" class="toc__link ">
+                            HTTP History (Logger)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/projects/" class="toc__link ">
+                            Projects
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/sitemap/" class="toc__link ">
+                            Sitemap
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/search/" class="toc__link ">
+                            Search
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/settings/" class="toc__link ">
+                            Settings
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/cookie-jar/" class="toc__link ">
+                            Cookie Jar
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/organizer/" class="toc__link ">
+                            Organizer
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/exports/" class="toc__link ">
+                            Exports
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/environment/" class="toc__link ">
+                            Environment
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/events/" class="toc__link ">
+                            Events
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/files/" class="toc__link ">
+                            Files (Hosted Files)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/tools/" class="toc__link ">
+                            Tools (External Tool Registry)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ui-views/authorize/" class="toc__link ">
+                            Authorize (BAC)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/scanning/" class="toc__section-title ">Scanning</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/builtin-scanner/" class="toc__link active">
+                            Built-in Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/synaps/" class="toc__link ">
+                            Synaps Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/module-development/" class="toc__link ">
+                            Module Development
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/community-modules/" class="toc__link ">
+                            Community Modules
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/vurl/" class="toc__link ">
+                            vurl-offensive (Active Hunting)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/authz/" class="toc__link ">
+                            Authorization Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/bac/" class="toc__link ">
+                            BAC — Broken Access Control Pipeline
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/cors/" class="toc__link ">
+                            CORS Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/upload/" class="toc__link ">
+                            File Upload Scanner
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/scanning/scan-optimizer/" class="toc__link ">
+                            Scan Optimizer
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/automation/" class="toc__section-title ">Automation</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/workflows/" class="toc__link ">
+                            Workflows
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/campaigns/" class="toc__link ">
+                            Campaigns
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/scheduler/" class="toc__link ">
+                            Scheduler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/automation/macros/" class="toc__link ">
+                            Macros
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/recon/" class="toc__section-title ">Recon</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/assets/" class="toc__link ">
+                            Recon — Assets
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/param-discover/" class="toc__link ">
+                            Param Discover
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/ffuzzer/" class="toc__link ">
+                            FFuzzer (FUZZ keyword fuzzer)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/recon/wordlists/" class="toc__link ">
+                            Wordlists
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/intelligence/" class="toc__section-title ">Intelligence</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/nerve/" class="toc__link ">
+                            Nerve — Passive Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/crawler/" class="toc__link ">
+                            Crawler
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/ratrace/" class="toc__link ">
+                            RatRace — Race Conditions
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/oastify/" class="toc__link ">
+                            Oastify — OOB Detection
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/intelligence/" class="toc__link ">
+                            Intelligence (Cross-Flow Analysis)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/flow-analysis/" class="toc__link ">
+                            Flow Analysis
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/intelligence/fingerprint/" class="toc__link ">
+                            Fingerprint
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/ai/" class="toc__section-title ">AI &amp; Orchestration</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/assistant/" class="toc__link ">
+                            AI Assistant
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/orchestration/" class="toc__link ">
+                            Orchestration Engine
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/browser-automation/" class="toc__link ">
+                            Browser Automation
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/ai/taint-analysis/" class="toc__link ">
+                            Taint Analysis
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/plugins/" class="toc__section-title ">Plugins</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/discovery/" class="toc__link ">
+                            Discovery
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/yeswehugin/" class="toc__link ">
+                            YesWeHugin
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/collaboration/" class="toc__link ">
+                            Collaboration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/mobile/" class="toc__link ">
+                            Mobile (APK &#x2F; IPA + Frida)
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/hackerone/" class="toc__link ">
+                            HackerOne
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/plugins/platforms/" class="toc__link ">
+                            Platforms (Unified BB Manager)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/extensibility/" class="toc__section-title ">Extensibility</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/lua-plugins/" class="toc__link ">
+                            Lua Plugins
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/mcp/" class="toc__link ">
+                            MCP Integration
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugin-sdk/" class="toc__link ">
+                            Plugin SDK
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/plugins-ui/" class="toc__link ">
+                            Plugins UI
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/extensibility/bambda/" class="toc__link ">
+                            Bambda (Inline Lua Filters)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/api/" class="toc__section-title ">API</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rest/" class="toc__link ">
+                            REST API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/graphql/" class="toc__link ">
+                            GraphQL API
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/authentication/" class="toc__link ">
+                            Authentication
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/api/rbac/" class="toc__link ">
+                            RBAC (Role-Based Access Control)
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/operations/" class="toc__section-title ">Operations</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/release-signing/" class="toc__link ">
+                            Release Signing
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/license/" class="toc__link ">
+                            License &amp; Trial
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/backups/" class="toc__link ">
+                            Backup &amp; Restore
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/updates/" class="toc__link ">
+                            Updates &amp; Channels
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/operations/browser-engines/" class="toc__link ">
+                            Browser Engines
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            <div class="toc__section">
+                <a href="https://docs.hugin.nu/docs/reference/" class="toc__section-title ">Reference</a>
+                <ul class="toc__list">
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/cli/" class="toc__link ">
+                            CLI Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/configuration/" class="toc__link ">
+                            Configuration Reference
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/architecture/" class="toc__link ">
+                            Architecture
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/telemetry/" class="toc__link ">
+                            Telemetry
+                        </a>
+                    </li>
+                    
+                    <li class="toc__item">
+                        <a href="https://docs.hugin.nu/docs/reference/changelog/" class="toc__link ">
+                            Changelog
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+    </nav>
+
+    <div class="sidebar__footer">
+        
+        <div class="sidebar__actions-mobile">
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Version</span>
+                <div class="sidebar__version">
+                    <span class="sidebar__version-current">v0.1.0</span>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+
+            
+            
+            <div class="sidebar__action">
+                <span class="sidebar__action-label">Theme</span>
+                
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            </div>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="sidebar__github" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub (opens in new tab)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                <span>View on GitHub</span>
+            </a>
+            
+        </div>
+
+        
+        <a href="https://docs.hugin.nu/docs/print?auto=true" class="print-button" target="_blank" rel="noopener" aria-label="Print all documentation pages (opens print dialog)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 6 2 18 2 18 9"/>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                <rect width="12" height="8" x="6" y="14"/>
+            </svg>
+            <span>Print all pages</span>
+        </a>
+    </div>
+</aside>
+
+
+
+
+        <div class="layout__main">
+            
+            
+
+
+
+
+<header class="header" role="banner">
+    <div class="header__left">
+        
+        
+        <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar navigation" aria-expanded="true" aria-controls="sidebar" title="Toggle sidebar">
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+            <svg class="sidebar-toggle__icon sidebar-toggle__icon--closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m14 9 3 3-3 3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+        <button class="toc-toggle toc-toggle--docs" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="sidebar" title="Table of contents">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+        </button>
+        
+
+        
+        
+
+        
+        
+
+        
+        <a href="https://docs.hugin.nu/docs" class="header__logo" aria-label="Hugin Documentation - Go to homepage">
+            
+            
+            
+            <img src="https://docs.hugin.nu/docs/img/hugin-logo.png" alt="" aria-hidden="true">
+            
+            <span>Hugin Documentation</span>
+        </a>
+    </div>
+
+    
+    <nav class="header__nav" role="navigation" aria-label="Main navigation">
+        
+    </nav>
+
+    
+    <div class="header__actions" role="group" aria-label="Site actions">
+        
+        
+        <button class="search-toggle" type="button" aria-label="Open search dialog" aria-keyshortcuts="/" aria-haspopup="dialog" title="Search (press /)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+            </svg>
+        </button>
+        
+
+        
+        <div class="header__actions-desktop">
+            
+            
+            
+
+
+
+<div class="version-picker">
+    <button class="version-picker__button" aria-haspopup="listbox" aria-expanded="false">
+        <span>v0.1.0</span>
+        
+        
+        <span class="version-picker__badge">latest</span>
+        
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+        </svg>
+    </button>
+
+    <div class="version-picker__dropdown" role="listbox">
+        
+        <a href="/docs/" class="version-picker__item active" role="option">
+            v0.1.0
+            
+            <span class="version-picker__badge">latest</span>
+            
+        </a>
+        
+        <hr class="version-picker__divider">
+        <a href="https://docs.hugin.nu/docs/appendix/versioning" class="version-picker__item version-picker__item--link">
+            All versions
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+
+            
+
+            
+            
+            
+<button class="theme-toggle" type="button" aria-label="Toggle color theme: cycles through light, dark, and auto modes" aria-live="polite" title="Toggle theme">
+    <span class="theme-toggle__icons">
+        
+        <span class="theme-toggle__sun" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__moon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+        </span>
+
+        
+        <span class="theme-toggle__auto" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a7 7 0 1 0 7 7"/>
+            </svg>
+        </span>
+    </span>
+    <span class="sr-only theme-toggle__status">Current theme: auto</span>
+</button>
+
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin&#x2F;edit&#x2F;main&#x2F;docs&#x2F;zola&#x2F;content/scanning&#x2F;builtin-scanner.md" class="btn btn--icon btn--ghost" aria-label="Edit this page on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="Edit this page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    <path d="m15 5 4 4"/>
+                </svg>
+            </a>
+            
+
+            
+            
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;HuginSecurity&#x2F;Hugin" class="btn btn--icon btn--ghost" aria-label="View project on GitHub (opens in new tab)" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+
+            
+
+            
+            
+            <div class="scroll-progress" aria-hidden="true">
+                <div class="scroll-progress__bar"></div>
+                <span class="scroll-progress__percent">0%</span>
+            </div>
+            
+
+            
+
+
+
+
+
+
+    
+
+
+<nav class="nav-buttons" aria-label="Page navigation">
+    
+    
+    <div class="nav-button nav-button--prev disabled" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+        </svg>
+    </div>
+    
+
+    
+    
+    <a href="https://docs.hugin.nu/docs/scanning/synaps/" class="nav-button nav-button--next" aria-label="Next: Synaps Scanner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+        </svg>
+        <span class="nav-button__label">
+            Synaps Scanner
+            <span class="nav-button__shortcut">→</span>
+        </span>
+    </a>
+    
+</nav>
+
+
+
+
+            <div class="layout__content-area">
+                <main id="main-content" class="main-content" role="main" aria-label="Main content">
+                    
+
+
+<article class="article" itemscope itemtype="https://schema.org/Article" aria-labelledby="article-title">
+    
+    <header class="article__header article__header--docs">
+        <h1 id="article-title" itemprop="headline">Built-in Scanner</h1>
+        
+    </header>
+
+    <div class="article__content" itemprop="articleBody">
+        <p>Hugin ships a native vulnerability scanner compiled directly into the binary. Unlike Synaps (WASM modules) or vurl-offensive (MCP plugin), the built-in scanner requires no plugins, no compilation, and no Pro license. It analyzes HTTP flows captured by the proxy, running 41 active checks and 36 passive checks against each target.</p>
+<p>Active checks send modified requests with crafted payloads to detect vulnerabilities. Passive checks analyze existing request/response pairs without generating additional traffic.</p>
+<h2 id="scanner-features"><a class="zola-anchor" href="#scanner-features" aria-label="Anchor link for: scanner-features">🔗</a>Scanner Features</h2>
+<ul>
+<li><strong>OOB detection</strong> – Oastify integration for out-of-band callbacks (DNS, HTTP) across SQLi, CMDi, XSS, SSRF, XXE, LDAP, JWT, and Deserialization checks</li>
+<li><strong>Baseline-relative timing</strong> – adaptive threshold calibration eliminates false positives on slow servers; the scanner measures normal response time before issuing time-based payloads</li>
+<li><strong>Multi-request verification</strong> – checks like Server-Side Prototype Pollution use a pollute-then-verify pattern across separate requests to confirm impact</li>
+<li><strong>WAF detection</strong> – automatically identifies WAF block pages and skips them to avoid flooding findings with false positives</li>
+<li><strong>CWE auto-classification</strong> – every finding is tagged with the relevant CWE identifier</li>
+<li><strong>Configurable concurrency</strong> – control parallelism, rate limiting, and retry-on-timeout behavior</li>
+<li><strong>Scan profiles</strong> – five built-in profiles to balance speed and coverage</li>
+</ul>
+<h3 id="scan-profiles"><a class="zola-anchor" href="#scan-profiles" aria-label="Anchor link for: scan-profiles">🔗</a>Scan Profiles</h3>
+<table><thead><tr><th>Profile</th><th>Description</th></tr></thead><tbody>
+<tr><td><strong>Quick</strong></td><td>Fast surface scan. Runs a subset of checks with minimal payloads. Good for initial reconnaissance.</td></tr>
+<tr><td><strong>Normal</strong></td><td>Balanced coverage. Runs all checks with standard payload sets. Default profile.</td></tr>
+<tr><td><strong>Thorough</strong></td><td>Maximum coverage. Extended payload sets, longer timing windows, deeper fuzzing. Slower but comprehensive.</td></tr>
+<tr><td><strong>PassiveOnly</strong></td><td>No active traffic. Runs all 36 passive checks against existing flows.</td></tr>
+<tr><td><strong>AuditOnly</strong></td><td>Active checks only, no passive analysis. Useful when passive findings have already been reviewed.</td></tr>
+</tbody></table>
+<h2 id="active-checks-41"><a class="zola-anchor" href="#active-checks-41" aria-label="Anchor link for: active-checks-41">🔗</a>Active Checks (41)</h2>
+<h3 id="injection"><a class="zola-anchor" href="#injection" aria-label="Anchor link for: injection">🔗</a>Injection</h3>
+<p><strong>SQL Injection</strong> – CWE-89
+Error-based, time-based blind, boolean-based blind, and out-of-band (via Oastify DNS/HTTP callbacks). Tests across insertion points in query parameters, headers, cookies, and body fields.</p>
+<p><strong>Cross-Site Scripting (Reflected)</strong> – CWE-79
+Reflected XSS with context-aware payloads for HTML body, attribute, JavaScript, URL, and CSS contexts. Template injection variants for client-side frameworks.</p>
+<p><strong>Command Injection</strong> – CWE-78
+Unix and Windows command separators, IFS bypass techniques, and OOB verification via Oastify. Tests both inline execution and blind injection with time delays.</p>
+<p><strong>Server-Side Template Injection</strong> – CWE-1336
+Engine-specific payloads for Jinja2, Twig, Pug, EJS, and Go templates. Detects template evaluation through arithmetic expressions and function calls.</p>
+<p><strong>NoSQL Injection</strong> – CWE-943
+MongoDB-style operator injection (<code>$ne</code>, <code>$where</code>), boolean-based and time-based detection. Tests JSON body parameters and query string injection points.</p>
+<p><strong>LDAP Injection</strong> – CWE-90
+Filter manipulation, authentication bypass via wildcard injection, and OOB detection through LDAP callback payloads.</p>
+<p><strong>XPath Injection</strong> – CWE-643
+Boolean-based extraction, union queries, and function abuse (<code>string-length</code>, <code>substring</code>). Targets XML-backed authentication and search endpoints.</p>
+<p><strong>Expression Language Injection</strong> – CWE-917
+SpEL, OGNL, and MVEL expression evaluation. Detects code execution through runtime expression interpreters in Java frameworks (Spring, Struts).</p>
+<p><strong>Email Header Injection</strong> – CWE-93
+CC/BCC injection, Reply-To manipulation, and From header spoofing via CRLF sequences in email-related parameters.</p>
+<p><strong>XML Injection</strong> – CWE-91
+Element injection, attribute injection, CDATA breakout, and SOAP body manipulation. Tests XML parsers for improper input handling.</p>
+<p><strong>Server-Side JavaScript Injection</strong> – CWE-94
+Detection of <code>eval()</code> and <code>Function()</code> sinks in server-side JavaScript (Node.js). Time-based and error-based confirmation.</p>
+<p><strong>HTTP Response Splitting / Header Injection</strong> – CWE-113
+CRLF injection in response headers. Tests for header injection leading to response splitting, cache poisoning, or XSS via injected headers.</p>
+<h3 id="web-application"><a class="zola-anchor" href="#web-application" aria-label="Anchor link for: web-application">🔗</a>Web Application</h3>
+<p><strong>SSRF</strong> – CWE-918
+Internal IP ranges (127.0.0.1, 169.254.169.254, 10.x, 172.16.x, fd00::), cloud metadata endpoints (AWS IMDSv1/v2, GCP, Azure), DNS rebinding, and OOB confirmation via Oastify.</p>
+<p><strong>XXE</strong> – CWE-611
+File read via <code>file://</code>, SOAP-based XXE, SVG upload vectors, XInclude injection, and OOB exfiltration through external DTDs. Tests XML content types and multipart uploads.</p>
+<p><strong>HTTP Request Smuggling</strong> – CWE-444
+CL.TE, TE.CL, TE.TE obfuscation, and H2.CL downgrade attacks. Differential response analysis confirms desync between front-end and back-end servers.</p>
+<p><strong>Insecure Deserialization</strong> – CWE-502
+Gadget chains for Java (Commons Collections, Spring), PHP (<code>unserialize</code>), Python (pickle), .NET (BinaryFormatter, ObjectStateFormatter), Ruby (Marshal), Fastjson, Node.js, and JNDI lookup triggers. OOB verification for blind deserialization.</p>
+<p><strong>JWT Attacks</strong> – CWE-347
+Algorithm <code>none</code> bypass, RSA/HMAC confusion (RS256 to HS256), KID path traversal and SQL injection, weak secret brute-force, and JWK header embedding.</p>
+<p><strong>OAuth/OIDC</strong> – CWE-863
+<code>redirect_uri</code> bypass (open redirect, path traversal, subdomain takeover), missing <code>state</code> parameter, PKCE downgrade, and token leakage via referrer.</p>
+<p><strong>CSRF</strong> – CWE-352
+Token removal, content-type switching (JSON to form), and HTTP method override to bypass CSRF protections.</p>
+<p><strong>Session Fixation</strong> – CWE-384
+URL-based session tokens, cookie fixation before authentication, path-scoped cookies, and <code>__Host-</code>/<code>__Secure-</code> prefix bypass.</p>
+<p><strong>Race Conditions</strong> – CWE-362
+Concurrent request replay, single-packet attack (multiple requests in one TCP segment), TOCTOU exploitation, and double-spend verification.</p>
+<h3 id="client-side-and-infrastructure"><a class="zola-anchor" href="#client-side-and-infrastructure" aria-label="Anchor link for: client-side-and-infrastructure">🔗</a>Client-Side and Infrastructure</h3>
+<p><strong>Client-Side Prototype Pollution</strong> – CWE-1321
+Injects <code>__proto__</code>, <code>constructor.prototype</code>, and <code>Object.prototype</code> payloads via query parameters and JSON bodies. Verifies pollution through reflected property access.</p>
+<p><strong>Server-Side Prototype Pollution</strong> – CWE-1321
+Multi-request verification: sends a pollution payload, then a separate request to confirm the prototype chain was modified on the server. Detects status code changes, new headers, and body mutations.</p>
+<p><strong>CORS Active Probing</strong> – CWE-942
+Tests null origin, full reflection, prefix/suffix matching (e.g., <code>evil-example.com</code>, <code>example.com.evil.com</code>), and special character injection in the Origin header.</p>
+<p><strong>Cache Poisoning</strong> – CWE-349
+Unkeyed header injection (X-Forwarded-Host, X-Original-URL), unkeyed query parameter injection, and parameter cloaking via semicolons and duplicate keys.</p>
+<p><strong>Web Cache Deception</strong> – CWE-525
+Path extension appending (<code>.css</code>, <code>.js</code>, <code>.png</code>), path delimiter confusion (<code>/profile%00.css</code>), and encoding tricks to make authenticated responses cacheable.</p>
+<p><strong>BOLA/IDOR</strong> – CWE-639
+Sequential numeric ID iteration, UUID enumeration, base64-encoded ID tampering, Relay/GraphQL global ID decoding, and privilege escalation by substituting resource identifiers.</p>
+<p><strong>File Upload</strong> – CWE-434
+Extension bypass (double extension, null byte, case variation), content-type mismatch, polyglot files (GIF89a + PHP), web.config/<code>.htaccess</code> upload, and path traversal in filenames.</p>
+<p><strong>HTTP/2 Attacks</strong> – CWE-444
+Pseudo-header injection (<code>:authority</code>, <code>:path</code>), CRLF in HTTP/2 header values, and method confusion between HTTP/2 and HTTP/1.1 backends.</p>
+<p><strong>Client-Side Desync</strong> – CWE-444
+Browser-compatible CL.TE desync attacks that poison the browser’s connection pool, enabling same-origin request hijacking.</p>
+<p><strong>Open Redirect</strong> – CWE-601
+Absolute URL redirect (<code>//evil.com</code>), protocol-relative URLs, <code>javascript:</code> and <code>data:</code> URI schemes, and backslash/encoded variations.</p>
+<p><strong>Host Header Injection</strong> – CWE-644
+Password reset poisoning, cache poisoning via Host header, and protocol downgrade through X-Forwarded-Proto manipulation.</p>
+<p><strong>HTTP Method Override</strong> – CWE-650
+Override headers (<code>X-HTTP-Method-Override</code>, <code>X-Method-Override</code>), query parameter override (<code>_method=PUT</code>), and body parameter override.</p>
+<p><strong>HTTP Parameter Pollution</strong> – CWE-235
+Framework-specific duplicate parameter handling: PHP (last wins), ASP.NET (comma-join), Express (array), Java (first wins). Tests for authorization and filter bypass.</p>
+<p><strong>Mass Assignment</strong> – CWE-915
+Flat parameter injection (<code>is_admin=true</code>), nested object injection, Rails bracket notation (<code>user[role]</code>), Django/Spring/Mongoose-specific patterns, and <code>$set</code> operator injection.</p>
+<p><strong>HTTP Method Testing</strong> – CWE-650
+TRACE method reflection, WebDAV methods (PROPFIND, MOVE, COPY), and verb tampering to bypass access controls.</p>
+<p><strong>Stored/Blind XSS</strong> – CWE-79
+Payload injection with OOB verification for blind XSS, mXSS through HTML sanitizer bypass, DOM clobbering, Angular template injection, and Oastify callback confirmation.</p>
+<p><strong>GraphQL Info Disclosure</strong> – CWE-200
+Introspection query enablement, query batching abuse, alias-based DoS amplification, and Automatic Persisted Query (APQ) cache bypass.</p>
+<p><strong>GraphQL Authorization Bypass</strong> – CWE-862
+IDOR through GraphQL node IDs, field-level authorization gaps, nested relationship traversal, and mutation-level access control bypass.</p>
+<p><strong>Keycloak Misconfiguration</strong> – CWE-287
+Admin console XSS, JWT signature forgery via JWKS endpoint manipulation, open user registration, and reverse proxy bypass to access admin endpoints.</p>
+<p><strong>WebSocket Security</strong> – CWE-1385
+Cross-Site WebSocket Hijacking (CSWSH via Origin validation), message injection through parameter tampering, token replay across sessions, and authentication persistence after logout.</p>
+<h2 id="passive-checks-36"><a class="zola-anchor" href="#passive-checks-36" aria-label="Anchor link for: passive-checks-36">🔗</a>Passive Checks (36)</h2>
+<p>Passive checks run automatically on every flow captured by the proxy. They never send additional requests.</p>
+<p><strong>Security Headers</strong> – Missing or misconfigured Content-Security-Policy, Strict-Transport-Security, X-Frame-Options, and X-Content-Type-Options headers.</p>
+<p><strong>Sensitive Data Detection</strong> – API keys, AWS access keys, private keys (RSA, EC, Ed25519), JWTs, OAuth tokens, and other credentials in response bodies.</p>
+<p><strong>Cookie Security</strong> – Missing <code>HttpOnly</code>, <code>Secure</code>, or <code>SameSite</code> attributes on session and authentication cookies.</p>
+<p><strong>Information Disclosure</strong> – Server version headers, stack traces, debug pages, and verbose error messages revealing internal details.</p>
+<p><strong>CORS Misconfiguration</strong> – Wildcard <code>Access-Control-Allow-Origin</code>, full origin reflection, and <code>null</code> origin acceptance.</p>
+<p><strong>OAuth Flow Analysis</strong> – Implicit flow usage (token in URL fragment), missing <code>state</code> parameter, and absent PKCE challenge.</p>
+<p><strong>Deserialization Content-Type Detection</strong> – Responses with content types indicating serialized objects (Java serialization, PHP serialization, .NET ViewState).</p>
+<p><strong>Mixed Content Detection</strong> – HTTPS pages loading resources over HTTP (scripts, stylesheets, images, iframes).</p>
+<p><strong>Open Redirect (Passive)</strong> – URL parameters reflecting in <code>Location</code> headers or <code>meta</code> refresh tags without validation.</p>
+<p><strong>Cacheable Sensitive Response</strong> – Responses containing sensitive data (authentication tokens, PII) served with permissive cache headers.</p>
+<p><strong>Directory Listing Detection</strong> – Server-generated directory index pages (Apache, Nginx, IIS).</p>
+<p><strong>Clickjacking</strong> – Missing <code>X-Frame-Options</code> and <code>frame-ancestors</code> CSP directive on authenticated pages.</p>
+<p><strong>CSP Detailed Analysis</strong> – Identifies <code>unsafe-inline</code>, <code>unsafe-eval</code>, <code>data:</code>, <code>blob:</code>, wildcard sources, and other CSP weaknesses.</p>
+<p><strong>Content-Type Mismatch</strong> – Response body content not matching the declared Content-Type header (e.g., HTML served as <code>text/plain</code>).</p>
+<p><strong>Subresource Integrity</strong> – External scripts and stylesheets loaded without <code>integrity</code> attributes.</p>
+<p><strong>Referrer Policy</strong> – Missing or overly permissive Referrer-Policy header leaking URLs to third parties.</p>
+<p><strong>Permissions Policy</strong> – Missing Permissions-Policy (formerly Feature-Policy) header for sensitive APIs (camera, microphone, geolocation).</p>
+<p><strong>HSTS Detailed</strong> – Short <code>max-age</code> values, missing <code>includeSubDomains</code>, and absent <code>preload</code> directive.</p>
+<p><strong>Private IP Disclosure</strong> – Internal IP addresses (RFC 1918, link-local, loopback) exposed in response headers or bodies.</p>
+<p><strong>Email Disclosure</strong> – Email addresses in response bodies that may reveal internal contacts or organizational structure.</p>
+<p><strong>Credit Card Detection</strong> – Credit card number patterns with Luhn algorithm validation to reduce false positives.</p>
+<p><strong>Stack Trace Disclosure</strong> – Language-specific stack traces for Java, .NET, PHP, Python, Ruby, Node.js, Go, and Rust.</p>
+<p><strong>Software Version Disclosure</strong> – Version strings for web servers, frameworks, libraries, and CMS platforms.</p>
+<p><strong>Internal Path Disclosure</strong> – Absolute file system paths (Unix and Windows) in responses revealing server directory structure.</p>
+<p><strong>ViewState Analysis</strong> – .NET ViewState decoding, MAC validation detection, and sensitive data exposure in unencrypted ViewState.</p>
+<p><strong>Password Autocomplete</strong> – Password fields without <code>autocomplete="off"</code> or <code>autocomplete="new-password"</code>.</p>
+<p><strong>Cleartext Password Submission</strong> – Login forms submitting credentials over unencrypted HTTP.</p>
+<p><strong>Session Token in URL</strong> – Session identifiers passed as URL query parameters instead of cookies.</p>
+<p><strong>Sensitive Data in URL</strong> – Passwords, tokens, and API keys present in URL query strings.</p>
+<p><strong>Cross-Domain Referer Leak</strong> – Sensitive URLs leaked to third-party domains via the Referer header.</p>
+<p><strong>Input Reflection</strong> – User input reflected verbatim in responses without encoding, indicating potential injection points.</p>
+<p><strong>Outdated JavaScript Libraries</strong> – Version detection for jQuery, AngularJS, Bootstrap, Lodash, Moment.js, and other libraries with known CVEs.</p>
+<p><strong>DOM XSS Source/Sink Analysis</strong> – JavaScript source-to-sink data flow analysis identifying <code>location.hash</code>, <code>document.referrer</code>, <code>postMessage</code>, and other DOM XSS vectors.</p>
+<p><strong>HTML Comment Mining</strong> – Extracts TODO comments, credentials, internal URLs, API keys, and developer notes from HTML comments.</p>
+<p><strong>Form Security</strong> – Forms with cleartext <code>action</code> URLs, missing CSRF tokens, or autocomplete enabled on sensitive fields.</p>
+<p><strong>TLS Security</strong> – TLS configuration analysis: weak ciphers, deprecated protocol versions (SSLv3, TLS 1.0/1.1), self-signed or expired certificates, certificate-host mismatches.</p>
+<h2 id="how-to-use"><a class="zola-anchor" href="#how-to-use" aria-label="Anchor link for: how-to-use">🔗</a>How to Use</h2>
+<h3 id="ui"><a class="zola-anchor" href="#ui" aria-label="Anchor link for: ui">🔗</a>UI</h3>
+<ol>
+<li>Open the <strong>Scanner</strong> tab from the sidebar.</li>
+<li>Select one or more flows from the History view to scan.</li>
+<li>Choose a scan profile (Quick, Normal, Thorough, PassiveOnly, or AuditOnly).</li>
+<li>Start the scan. Progress is shown in real time with check names and status.</li>
+<li>Findings appear in the <strong>Findings</strong> tab as they are discovered.</li>
+</ol>
+<h3 id="mcp-tool"><a class="zola-anchor" href="#mcp-tool" aria-label="Anchor link for: mcp-tool">🔗</a>MCP Tool</h3>
+<p>The <code>scanner</code> MCP tool provides full control over the scanning engine.</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>scanner action:&quot;scan&quot; flow_id:&quot;&lt;uuid&gt;&quot; profile:&quot;normal&quot;</span></span></code></pre>
+<p>Key actions:</p>
+<ul>
+<li><code>scan</code> – scan a specific flow or list of flows</li>
+<li><code>status</code> – check scan progress</li>
+<li><code>stop</code> – cancel a running scan</li>
+<li><code>findings</code> – list findings from completed scans</li>
+<li><code>profiles</code> – list available scan profiles</li>
+</ul>
+<p>Example – scan a flow with the Thorough profile:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>scanner action:&quot;scan&quot; flow_id:&quot;abc123&quot; profile:&quot;thorough&quot;</span></span></code></pre>
+<p>Example – run passive checks only:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>scanner action:&quot;scan&quot; flow_id:&quot;abc123&quot; profile:&quot;passive_only&quot;</span></span></code></pre><h3 id="oastify-integration"><a class="zola-anchor" href="#oastify-integration" aria-label="Anchor link for: oastify-integration">🔗</a>Oastify Integration</h3>
+<p>For checks that support out-of-band detection, Oastify must be running. Start the OOB listener before scanning:</p>
+<pre class="giallo" style="color: #DCD7BA; background-color: #1F1F28;"><code data-lang="plain"><span class="giallo-l"><span>oastify action:&quot;start&quot;</span></span></code></pre>
+<p>The scanner automatically generates Oastify payloads for relevant checks (SQLi, CMDi, XSS, SSRF, XXE, LDAP, JWT, Deserialization) and polls for callbacks after payload delivery.</p>
+<h2 id="architecture-note"><a class="zola-anchor" href="#architecture-note" aria-label="Anchor link for: architecture-note">🔗</a>Architecture Note</h2>
+<p>The built-in scanner is one of three scanning systems in Hugin:</p>
+<ul>
+<li><strong>Built-in Scanner</strong> (this chapter) – 41 active + 36 passive checks, compiled into the binary, no license required</li>
+<li><strong><a href="https://docs.hugin.nu/docs/scanning/builtin-scanner/./synaps.md">Synaps</a></strong> – WASM-based community modules, sandboxed runtime, Pro license, loaded as a dynamic plugin</li>
+<li><strong><a href="https://docs.hugin.nu/docs/scanning/builtin-scanner/./vurl.md">vurl-offensive</a></strong> – 46 specialized hunting tools for manual testing, Pro license, loaded as a dynamic plugin</li>
+</ul>
+<p>All three systems write findings to the same store, viewable in the unified <a href="../core/findings.md">Findings</a> tab.</p>
+
+    </div>
+
+    
+    
+    
+</article>
+
+
+
+<nav class="page-nav" aria-label="Page navigation">
+    
+
+    
+</nav>
+
+
+
+                </main>
+
+                
+                
+                
+
+
+
+
+<aside id="page-toc-panel" class="page-toc-panel" aria-hidden="true" aria-label="On this page">
+    <div class="page-toc-panel__content">
+        <div class="page-toc-panel__header">
+            <span class="page-toc-panel__title">On this page</span>
+            <button class="page-toc-panel__close" type="button" aria-label="Close table of contents">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="page-toc-panel__nav" aria-label="Page sections">
+            <ul class="page-toc-panel__list">
+                
+                <li class="page-toc-panel__item">
+                    <a href="#scanner-features" class="page-toc-panel__link">
+                        Scanner Features
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#scan-profiles" class="page-toc-panel__link">
+                                Scan Profiles
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#active-checks-41" class="page-toc-panel__link">
+                        Active Checks (41)
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#injection" class="page-toc-panel__link">
+                                Injection
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#web-application" class="page-toc-panel__link">
+                                Web Application
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#client-side-and-infrastructure" class="page-toc-panel__link">
+                                Client-Side and Infrastructure
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#passive-checks-36" class="page-toc-panel__link">
+                        Passive Checks (36)
+                    </a>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#how-to-use" class="page-toc-panel__link">
+                        How to Use
+                    </a>
+                    
+                    <ul class="page-toc-panel__list page-toc-panel__list--nested">
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#ui" class="page-toc-panel__link">
+                                UI
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#mcp-tool" class="page-toc-panel__link">
+                                MCP Tool
+                            </a>
+                        </li>
+                        
+                        <li class="page-toc-panel__item">
+                            <a href="#oastify-integration" class="page-toc-panel__link">
+                                Oastify Integration
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="page-toc-panel__item">
+                    <a href="#architecture-note" class="page-toc-panel__link">
+                        Architecture Note
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+
+                
+            </div>
+
+            
+            
+            
+        </div>
+    </div>
+
+    
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+
+    
+    
+    
+<div class="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-title" aria-describedby="search-description">
+    <div class="search">
+        <h2 id="search-title" class="sr-only">Search documentation</h2>
+        <p id="search-description" class="sr-only">Type to search. Use arrow keys to navigate results, Enter to select, Escape to close.</p>
+
+        <div class="search__input-wrapper">
+            <span class="search__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.3-4.3"/>
+                </svg>
+            </span>
+            <input
+                type="search"
+                class="search__input"
+                placeholder="Search documentation..."
+                autocomplete="off"
+                autofocus
+                aria-label="Search query"
+                aria-controls="search-results"
+                aria-autocomplete="list"
+            >
+            <span class="search__shortcut" aria-hidden="true">/</span>
+            <button class="search__close" type="button" aria-label="Close search dialog" title="Close (Esc)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="search-results" class="search__results" role="listbox" aria-label="Search results">
+            
+        </div>
+
+        <footer class="search__footer">
+            <nav class="search__hints" aria-label="Keyboard shortcuts">
+                <span class="search__hint">
+                    <kbd aria-label="Up and down arrows">↑</kbd><kbd aria-hidden="true">↓</kbd> <span>Navigate</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Enter">↵</kbd> <span>Select</span>
+                </span>
+                <span class="search__hint">
+                    <kbd aria-label="Escape">esc</kbd> <span>Close</span>
+                </span>
+            </nav>
+        </footer>
+    </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    <button class="page-toc-toggle" type="button" aria-label="Toggle table of contents" aria-expanded="false" aria-controls="page-toc-panel" title="On this page">
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--list" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 5H3"/>
+            <path d="M16 12H3"/>
+            <path d="M16 19H3"/>
+            <path d="M21 5h.01"/>
+            <path d="M21 12h.01"/>
+            <path d="M21 19h.01"/>
+        </svg>
+        <svg class="page-toc-toggle__icon page-toc-toggle__icon--close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    <button class="fab scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
+    
+
+    
+    
+    
+    <script src="https://docs.hugin.nu/docs/js/theme.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/navigation.js" defer></script>
+    <script src="https://docs.hugin.nu/docs/js/code.js" defer></script>
+
+    
+    <script src="https://docs.hugin.nu/docs/elasticlunr.min.js"></script>
+    <script src="https://docs.hugin.nu/docs/search_index.en.js"></script>
+    <script src="https://docs.hugin.nu/docs/js/search.js" defer></script>
+    
+    
+
+    
+</body>
+</html>
